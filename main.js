@@ -105,7 +105,7 @@ class SalezyWidget {
     document.addEventListener("DOMContentLoaded", () => {
       if(!this.DOMLoaded) {
         const urlParams = new URLSearchParams(window.location.search);
-        this.admin_access = urlParams.get('?id=');
+        this.admin_access = urlParams.get('id');
         this.LoadUpsequence(this.widgetID, this.admin_access);
         this.handleSSEConnection();
         this.DOMLoaded = true;
