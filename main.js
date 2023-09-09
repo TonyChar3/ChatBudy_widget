@@ -5,7 +5,6 @@ class SalezyWidget {
     this.position = this.getPosition(position);// save the position of the widget
     this.ask_email_copy = "Hi! Want to know about our special offer 👀?";
     this.ask_email_page = true;// show the input for the email and the buttons & hide the chat input
-    this.admin_access = null;// Get the hash set in the url to set up the specific widget
     this.widgetID = "__HASH__";// To identify the widget for each request he makes
     this.adminStatus = false;// To set the Online - Offline status of the admin in the widget header
     this.DOMLoaded = false;
@@ -105,8 +104,8 @@ class SalezyWidget {
     document.addEventListener("DOMContentLoaded", () => {
       if(!this.DOMLoaded) {
         const urlParams = new URLSearchParams(window.location.search);
-        this.admin_access = urlParams.get('id');
-        this.LoadUpsequence(this.widgetID, this.admin_access);
+        const admin_access = urlParams.get('id');
+        this.LoadUpsequence(this.widgetID, admin_access);
         this.handleSSEConnection();
         this.DOMLoaded = true;
       }
