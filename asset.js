@@ -353,8 +353,9 @@ export const styles = `
 /**
 * Get the visitor info once it loads up
 */
-export const LoadUpsequence = async(widget_id) => {
+export const LoadUpsequence = async(widget_id, admin_access) => {
     try{
+        console.log("admin access", admin_access);
         if (sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
             return
         }

@@ -1,0 +1,15 @@
+{
+  "asset.js": {
+    "file": "assets/assets-d2a28672.js",
+    "isEntry": true,
+    "src": "asset.js"
+  },
+  "main.js": {
+    "file": "assets/main-93968346.js",
+    "imports": [
+      "asset.js"
+    ],
+    "isEntry": true,
+    "src": "main.js"
+  }
+}
