@@ -103,12 +103,10 @@ class SalezyWidget {
     this.widgetContainer.classList.add("content__hidden");
     document.addEventListener("DOMContentLoaded", () => {
       if(!this.DOMLoaded) {
-        window.onload = () => {
-          const urlParams = new URLSearchParams(window.location.search);
-          const admin_access = urlParams.get('id');
-          console.log('ad ac', admin_access)
-          this.LoadUpsequence(this.widgetID, admin_access);
-        }
+        const urlParams = new URLSearchParams(window.location.search);
+        const admin_access = urlParams.get('id');
+        console.log('ad ac', admin_access)
+        this.LoadUpsequence(this.widgetID, admin_access);
         this.handleSSEConnection();
         this.DOMLoaded = true;
       }
