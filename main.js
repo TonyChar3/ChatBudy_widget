@@ -106,6 +106,7 @@ class SalezyWidget {
         window.onload = () => {
           const urlParams = new URLSearchParams(window.location.search);
           const admin_access = urlParams.get('id');
+          console.log('ad ac', admin_access)
           this.LoadUpsequence(this.widgetID, admin_access);
         }
         this.handleSSEConnection();
