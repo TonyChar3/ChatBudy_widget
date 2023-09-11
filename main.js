@@ -56,7 +56,7 @@ class SalezyWidget {
     Object.keys(this.position).forEach(
       (key) => (container.style[key] = this.position[key])
     );
-    document.body.appendChild(container);
+    window.parent.document.body.appendChild(container);
     this.mainWidgetContainer = container;
     /**
      * Button element with the class button__container
