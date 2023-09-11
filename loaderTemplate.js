@@ -145,5 +145,5 @@ function initializeLoader(){
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    addIframe();
+    initializeLoader();
 });
