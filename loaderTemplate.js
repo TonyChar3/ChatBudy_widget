@@ -91,7 +91,7 @@ const LoadUpsequence = async(widget_id) => {
         const new_chat = await initiateChat(widget_id)
         if(new_chat && new_visitor){
             sessionStorage.setItem('widgetLoaded', true);
-            sessionStorage.setItem('chatbudy_state', {access_id: `${widget_id}`})
+            sessionStorage.setItem('chatbudy_state', `{access_id: ${widget_id}}`)
         }
     } catch(err){
         console.log('Load up sequence ERROR: ', err)
