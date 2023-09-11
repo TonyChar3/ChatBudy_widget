@@ -103,11 +103,8 @@ class SalezyWidget {
     this.widgetContainer.classList.add("content__hidden");
     document.addEventListener("DOMContentLoaded", () => {
       if(!this.DOMLoaded) {
-        const currentScriptUrl = new URL(import.meta.url);
-        const urlParams = new URLSearchParams(currentScriptUrl);
-        const admin_access = urlParams.get('id');
         console.log('ad ac', document)
-        this.LoadUpsequence(this.widgetID, admin_access);
+        this.LoadUpsequence(this.widgetID);
         this.handleSSEConnection();
         this.DOMLoaded = true;
       }
@@ -209,29 +206,12 @@ class SalezyWidget {
     this.chat_room_input.classList.add("widget__hidden")
   }
   /**
-   * Add the style of the widget
-   */
-  injectStyles(){
-    const script = document.createElement('script');
-    script.src = 'https://kit.fontawesome.com/76351f6769.js';
-    script.crossOrigin = "anonymous";
-    const link1 = document.createElement('link');
-    link1.rel = 'preconnect';
-    link1.href = "https://fonts.googleapis.com";
-    const link2 = document.createElement('link');
-    link2.rel = 'preconnect';
-    link2.href = "https://fonts.gstatic.com";
-    link2.crossOrigin = 'crossorigin'
-    const link3 = document.createElement('link');
-    link3.href = "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap";
-    link3.rel = 'stylesheet';
+  * Add the style of the widget
+  */
+  injectWidgetStyles(){
     const styleTag = document.createElement("style");
     styleTag.innerHTML = styles.replace(/^\s+|\n/gm, "");
-    document.head.appendChild(script);
     document.head.appendChild(styleTag);
-    document.head.appendChild(link1);
-    document.head.appendChild(link2);
-    document.head.appendChild(link3);
   }
   /**
    * Handle the type of chat
