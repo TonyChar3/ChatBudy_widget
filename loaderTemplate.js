@@ -36,88 +36,6 @@
 //         this.LoadUpsequence(this.widgetID)
 //     }
 
-//     /**
-//     * Get the visitor info once it loads up
-//     */
-//     LoadUpsequence = async(widget_id) => {
-//         try{
-//             if (sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
-//                 return
-//             }
-//             const response = await fetch(`http://localhost:8080/visitor/visitor-info`,{
-//                 method: 'get',
-//                 headers: {
-//                     'Content-Type': 'application/json'
-//                 }
-//             });
-//             const data = await response.json();
-
-//             const new_visitor = await setNewVisitor(data, widget_id)
-//             const new_chat = await initiateChat(widget_id)
-//             if(new_chat && new_visitor){
-//                 sessionStorage.setItem('widgetLoaded', true);
-//             }
-//         } catch(err){
-//             console.log('Load up sequence ERROR: ', err)
-//         }
-//     };
-//     /**
-//     * Set up a new visitor
-//     */
-//     setNewVisitor = async(visitor_data, widget_id) => {
-//         try{
-//             const newVisitor = {
-//                 isoCode: visitor_data.info.country.iso_code,
-//                 browser: navigator.userAgent
-//             }
-//             const visitor = await fetch(`http://localhost:8080/visitor/new-visitor-${widget_id}`,{
-//                 method: 'post',
-//                 headers: {
-//                     'Content-Type': 'application/json'
-//                 },
-//                 body: JSON.stringify(newVisitor)
-//             });
-
-//             const data = await visitor.json()
-//             setCookie('visitor_jwt', data.visitorToken.jwtToken)
-//             return true
-//         } catch(err){
-//             console.log(err)
-//             return false
-//         }
-
-//     };
-//     /**
-//     * Create a new chat room - Salesman
-//     */
-//     initiateChat = async(widget_id) => {
-//         try{
-//         const chat = {
-//             u_hash: widget_id
-//         }
-//         const token = getCookie('visitor_jwt');
-//         if(token){
-//             const start_chat = await fetch('http://localhost:8080/chat/new-room',{
-//                 method: 'post',
-//                 headers: {
-//                 'Content-Type': 'application/json',
-//                 'Authorization': 'Bearer ' + token
-//                 },
-//                 body: JSON.stringify(chat)
-//             });
-
-//             if (!start_chat) {
-//                 console.log('No chatrooms found...reset everything')
-//             }
-
-//             return true
-//         }
-
-//         } catch(err){
-//         console.log(err);
-//         return false
-//         }
-//     };
 // }
 
 // export const initializeWidgetLoader = () => {
@@ -126,10 +44,91 @@
 //   }
   
 //   initializeWidgetLoader();
+/**
+* Set up a new visitor
+*/
+const setNewVisitor = async(visitor_data, widget_id) => {
+    try{
+        const newVisitor = {
+            isoCode: visitor_data.info.country.iso_code,
+            browser: navigator.userAgent
+        }
+        const visitor = await fetch(`http://localhost:8080/visitor/new-visitor-${widget_id}`,{
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newVisitor)
+        });
 
+        const data = await visitor.json()
+        setCookie('visitor_jwt', data.visitorToken.jwtToken)
+        return true
+    } catch(err){
+        console.log(err)
+        return false
+    }
+
+};
+/**
+* Create a new chat room - Salesman
+*/
+const initiateChat = async(widget_id) => {
+    try{
+        const chat = {
+            u_hash: widget_id
+        }
+        const token = getCookie('visitor_jwt');
+        if(token){
+            const start_chat = await fetch('http://localhost:8080/chat/new-room',{
+                method: 'post',
+                headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+                },
+                body: JSON.stringify(chat)
+            });
+
+            if (!start_chat) {
+                console.log('No chatrooms found...reset everything')
+            }
+
+            return true
+        }
+
+    } catch(err){
+        console.log(err);
+        return false
+    }
+};
+/**
+* Get the visitor info once it loads up
+*/
+const LoadUpsequence = async(widget_id) => {
+    try{
+        if (sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
+            return
+        }
+        const response = await fetch(`http://localhost:8080/visitor/visitor-info`,{
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+
+        const new_visitor = await setNewVisitor(data, widget_id)
+        const new_chat = await initiateChat(widget_id)
+        if(new_chat && new_visitor){
+            sessionStorage.setItem('widgetLoaded', true);
+        }
+    } catch(err){
+        console.log('Load up sequence ERROR: ', err)
+    }
+};
 function initializeLoader(){
         let useraccess = '{{USER_HASH}}'
-        console.log(useraccess)
+        LoadUpsequence(useraccess)
         // set up a new html document
         const newHTMLDoc = `
         <!DOCTYPE html>
