@@ -103,8 +103,7 @@ class SalezyWidget {
     this.widgetContainer.classList.add("content__hidden");
     document.addEventListener("DOMContentLoaded", () => {
       if(!this.DOMLoaded) {
-        console.log('ad ac', document)
-        this.LoadUpsequence(this.widgetID);
+        console.log('ad ac', sessionStorage.getItem('chatbudy_state'))
         this.handleSSEConnection();
         this.DOMLoaded = true;
       }
