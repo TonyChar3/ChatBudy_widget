@@ -13,7 +13,7 @@ class SalezyWidget {
     this.unreadChatCount = 0;// Initialize the unread chat count to zero
     this.SSElink = null;// Initialize the sse link variable
     this.initialize();// To invoke and display the UI for our widget in the DOM
-    this.injectStyles();// To invoke and add the styling
+    this.injectWidgetStyles();// To invoke and add the styling
     this.LoadUpsequence = LoadUpsequence;
     this.LoadUpsequence();
     this.openChat = openChat;
