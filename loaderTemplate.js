@@ -130,6 +130,20 @@
 function initializeLoader(){
         let useraccess = '{{USER_HASH}}'
         console.log(useraccess)
+        // set up a new html document
+        const newHTMLDoc = `
+        <!DOCTYPE html>
+            <head>
+                <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
+            </head>
+            <body>
+                <script type="module" src="https://chat-buddy-widget.vercel.app/chatBudy.js" async></script>
+            </body>
+        </html>
+        `;
         // set up the Iframe
         let Iframe = document.createElement('iframe');
         Iframe.style.display = "none";
