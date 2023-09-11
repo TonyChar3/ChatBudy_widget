@@ -1,49 +1,19 @@
-
-// class Loader {
-//     constructor() {
-//         this.widgetID = '{{USER_HASH}}';
-
-//     }
-
-//     async initializeLoader() {
-//         // set up a new html document
-//         const newHTMLDoc = `
-//         <!DOCTYPE html>
-//             <head>
-//                 <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
-//                 <link rel="preconnect" href="https://fonts.googleapis.com">
-//                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-//                 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
-//             </head>
-//             <body>
-//                 <script type="module" src="https://chat-buddy-widget.vercel.app/chatBudy.js" async></script>
-//             </body>
-//         </html>
-//         `;
-//         // set up the Iframe
-//         this.Iframe = document.createElement('iframe');
-//         this.Iframe.style.display = "none";
-//         this.Iframe.title = "ChatBudy chat widget code"
-//         this.Iframe.onload = () => {
-//             const IframeDocument = this.Iframe.contentDocument;
-//             IframeDocument.open();
-//             IframeDocument.write(newHTMLDoc);
-//             IframeDocument.close();
-//         }
-//         // append both of them together
-//         document.body.appendChild(this.Iframe)
-//         // execute the loadupsequence
-//         this.LoadUpsequence(this.widgetID)
-//     }
-
-// }
-
-// export const initializeWidgetLoader = () => {
-//     const LoaderInstance = new Loader()
-//     return LoaderInstance
-//   }
-  
-//   initializeWidgetLoader();
+//TODO: Temporary functions
+function getCookie(name) {
+    const cookieString = window.parent.document.cookie
+    const cookies = cookieString.split('; ');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].split('=');
+      if (cookie[0] === name) {
+        return cookie[1];
+      }
+    }
+    return null;
+}
+function setCookie(name, value) {
+    const cookieString = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
+    window.parent.document.cookie = cookieString;
+}
 /**
 * Set up a new visitor
 */

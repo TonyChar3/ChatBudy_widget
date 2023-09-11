@@ -499,10 +499,6 @@ export const SetupSSEconnection = async(widget_id) => {
 /**
  * Dev env set a cookie
  */
-function setCookie(name, value) {
-    const cookieString = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
-    document.cookie = cookieString;
-}
 
 function getCookie(name) {
     const cookieString = document.cookie
