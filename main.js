@@ -211,7 +211,7 @@ class SalezyWidget {
   injectWidgetStyles(){
     const styleTag = document.createElement("style");
     styleTag.innerHTML = styles.replace(/^\s+|\n/gm, "");
-    document.head.appendChild(styleTag);
+    window.parent.document.head.appendChild(styleTag);
   }
   /**
    * Handle the type of chat
