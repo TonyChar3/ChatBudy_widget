@@ -211,8 +211,6 @@ function initializeLoader(){
                 iframeDocument.head.appendChild(iframe_link1)
                 iframeDocument.head.appendChild(iframe_link2)
                 iframeDocument.body.appendChild(iframe_script)
-                // Example: Modify the title of the iframe's document
-                iframeDocument.title = "New Title";
             }
         }
 }
