@@ -105,9 +105,14 @@ const LoadUpsequence = async(widget_id) => {
 function initializeLoader(){
         let useraccess = '{{USER_HASH}}'
         LoadUpsequence(useraccess)
-        // set up a new html document
-        const newHTMLDoc = `
+        // Create the iframe element with srcdoc
+        const Iframe = document.createElement('iframe');
+        Iframe.style.display = "none";
+        Iframe.title = "ChatBudy chat widget code";
+        // Define the initial HTML content
+        const initialHTML = `
             <!DOCTYPE html>
+            <html>
                 <head>
                     <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
                     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -119,38 +124,19 @@ function initializeLoader(){
                 </body>
             </html>
         `;
-        // set up the Iframe
-        let Iframe = document.createElement('iframe');
-        Iframe.style.display = "none";
-        Iframe.title = "ChatBudy chat widget code"
-        // append both of them together
-        document.body.appendChild(Iframe)
+
+        // Set the srcdoc attribute to the initial HTML content
+        Iframe.setAttribute('srcdoc', initialHTML);
+        // Append the iframe to the body
+        document.body.appendChild(Iframe);
         // Create a new document within the iframe
         Iframe.onload = async () => {
+            // You can now manipulate the content of the iframe if needed
             const iframeDocument = Iframe.contentDocument;
 
             if (iframeDocument) {
-                // Create a new HTML document with the desired structure
-                const newHTMLDoc = iframeDocument.implementation.createHTMLDocument("New Document");
-                newHTMLDoc.documentElement.innerHTML = `
-                    <!DOCTYPE html>
-                    <html>
-                        <head>
-                            <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
-                            <link rel="preconnect" href="https://fonts.googleapis.com">
-                            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
-                        </head>
-                        <body>
-                            <script type="module" src="https://chat-buddy-widget.vercel.app/chatBudy.js" async></script>
-                        </body>
-                    </html>
-                `;
-        
-                // Replace the entire content of the iframe's document
-                iframeDocument.open();
-                iframeDocument.documentElement.replaceWith(newHTMLDoc.documentElement);
-                iframeDocument.close();
+                // Example: Modify the title of the iframe's document
+                iframeDocument.title = "New Title";
             }
         }
 }
