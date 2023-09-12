@@ -168,14 +168,10 @@ function initializeLoader(){
             <!DOCTYPE html>
             <html>
                 <head>
-                    <link rel="preload" href="https://kit.fontawesome.com/76351f6769.js" as="script" crossorigin="anonymous">
-                    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap" as="style">
-                    <link rel="preconnect" href="https://fonts.googleapis.com">
-                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                    <link rel="preload" href="https://chat-buddy-widget.vercel.app/chatBudy.js" as="script">
                 </head>
             </html>
         `;
-
         // Set the srcdoc attribute to the initial HTML content
         Iframe.setAttribute('srcdoc', initialHTML);
         // Append the iframe to the body
@@ -185,21 +181,34 @@ function initializeLoader(){
             // You can now manipulate the content of the iframe if needed
             const iframeDocument = Iframe.contentDocument;
             if (iframeDocument) {
-                // You can access and manipulate the preloaded links here
-                const fontAwesomeScript = iframeDocument.createElement("script");
-                fontAwesomeScript.src = "https://kit.fontawesome.com/76351f6769.js";
-                fontAwesomeScript.crossOrigin = "anonymous";
-                iframeDocument.head.appendChild(fontAwesomeScript);
+                /**
+                 * Setting up Google Fonts & Font awesome for the widget
+                 */
+                // <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
+                const iframe_head_script = iframeDocument.createElement("script")
+                iframe_head_script.src = "https://kit.fontawesome.com/76351f6769.js";
+                iframe_head_script.crossOrigin = "anonymous";
+                // <link rel="preconnect" href="https://fonts.googleapis.com">
+                const iframe_link1 = iframeDocument.createElement("link")
+                iframe_link1.rel = "preconnect";
+                iframe_link1.href = "https://fonts.googleapis.com";
+                // <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                const iframe_link2 = iframeDocument.createElement("link")
+                iframe_link2.rel = "preconnect";
+                iframe_link2.href = "https://fonts.gstatic.com";
+                iframe_link2.crossOrigin = true;
+                // <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
+                const iframe_stylesheet = iframeDocument.createElement("link")
+                iframe_stylesheet.rel = "stylesheet";
+                iframe_stylesheet.href = "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap";
 
-                const googleFontsLink = iframeDocument.createElement("link");
-                googleFontsLink.rel = "stylesheet";
-                googleFontsLink.href = "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap";
-                googleFontsLink.crossOrigin = "anonymous";
-                iframeDocument.head.appendChild(googleFontsLink);
                 const iframe_script = iframeDocument.createElement("script")
                 iframe_script.src = "https://chat-buddy-widget.vercel.app/chatBudy.js"
                 iframe_script.type = "module"
                 iframe_script.async = true
+                iframeDocument.head.appendChild(iframe_head_script)
+                iframeDocument.head.appendChild(iframe_link1)
+                iframeDocument.head.appendChild(iframe_link2)
                 iframeDocument.body.appendChild(iframe_script)
                 // Example: Modify the title of the iframe's document
                 iframeDocument.title = "New Title";
