@@ -127,27 +127,8 @@ function initializeLoader(){
             // Create a new document within the iframe
             const iframeDocument = Iframe.contentDocument || Iframe.contentWindow.document;
             iframeDocument.open();
-            iframeDocument.head.innerHTML = `
-                <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
-                <link rel="preconnect" href="https://fonts.googleapis.com">
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
-            `
             iframeDocument.close();
-            // iframeDocument.innerHTML = `
-            //     <!DOCTYPE html>
-            //         <head>
-            //             <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
-            //             <link rel="preconnect" href="https://fonts.googleapis.com">
-            //             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            //             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
-            //          </head>
-            //          <body>
-            //             <script type="module" src="https://chat-buddy-widget.vercel.app/chatBudy.js" async></script>
-            //          </body>
-            //     </html>
-            // `;
-            console.log(iframeDocument)
+            console.log(iframeDocument.innerHTML)
         }
         // append both of them together
         document.body.appendChild(Iframe)
