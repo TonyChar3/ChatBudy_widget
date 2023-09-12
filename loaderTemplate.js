@@ -114,8 +114,6 @@ const SetupIframe = async (widget_id) => {
         const iframe = document.createElement("iframe");
         iframe.style.display = "none";
         iframe.title = "ChatBudy chat widget code";
-        // Append the iframe to the document
-        document.body.appendChild(iframe);
         // Wait for the iframe to load
         iframe.onload = async () => {
             const iframeDocument = iframe.contentDocument;
@@ -134,6 +132,9 @@ const SetupIframe = async (widget_id) => {
         };
         // Set the iframe's src attribute to load the content
         iframe.src = "https://chat-buddy-widget.vercel.app/chatBudy.js"; // Replace with your widget's URL
+        // Append the iframe to the document
+        document.body.appendChild(iframe);
+        
     } catch (err) {
         console.log("ERROR setting up the widget connection: ", err);
     }
@@ -157,6 +158,7 @@ const Pre_loadLinks = () => {
 
 function initializeLoader(){
         let useraccess = '{{USER_HASH}}'
+        Pre_loadLinks()
         LoadUpsequence(useraccess)
         SetupIframe(useraccess)
         // // Create the iframe element with srcdoc
