@@ -106,7 +106,7 @@ function initializeLoader(){
         let useraccess = '{{USER_HASH}}'
         // set up a new html document
         const newHTMLDoc = `
-            <html>
+            <!DOCTYPE html>
                 <head>
                     <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
                     <link rel="preconnect" href="https://fonts.googleapis.com">
