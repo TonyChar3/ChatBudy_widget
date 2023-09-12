@@ -389,7 +389,7 @@ export const openChat = async(widget_id, sse_connection) => {
     } catch(err){
         console.log('ERROR opening the chat: ', err)
     }
-};s
+};
 /**
  * Function to send the socket link to the frontend
  */
