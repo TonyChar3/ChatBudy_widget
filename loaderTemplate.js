@@ -164,7 +164,7 @@ function initializeLoader(){
         Iframe.style.display = "none";
         Iframe.title = "ChatBudy chat widget code";
         // Define the initial HTML content
-        const initialHTML = `<!DOCTYPE html></html>`;
+        const initialHTML = `<!DOCTYPE html><head></head></html>`;
         // Set the srcdoc attribute to the initial HTML content
         Iframe.setAttribute('srcdoc', initialHTML);
         // Preload the widget script
