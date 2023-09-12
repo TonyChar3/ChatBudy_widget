@@ -133,6 +133,7 @@ function initializeLoader(){
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
             `;
+            iframeDocument.appendChild(iframe_head)
             console.log(iframe_head)
             console.log(iframeDocument)
         }
