@@ -126,26 +126,32 @@ function initializeLoader(){
         // append both of them together
         document.body.appendChild(Iframe)
         // Create a new document within the iframe
-        Iframe.onload = () => {
-            const iframeDocument = Iframe.contentWindow.document;
-            const iframe_head = iframeDocument.querySelector('head')
-            iframeDocument.open();
-            iframe_head.innerHTML = `
-                <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
-                <link rel="preconnect" href="https://fonts.googleapis.com">
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
-            `;
-            const iframe_body = iframeDocument.querySelector('body')
-            iframe_body.innerHTML = `
-                <script type="module" src="https://chat-buddy-widget.vercel.app/chatBudy.js" async></script>
-            `;
-            console.log(iframeDocument)
-            console.log(iframe_head)
-            console.log(iframe_body)
-            iframeDocument.appendChild(iframe_head)
-            iframeDocument.appendChild(iframe_body)
-            iframeDocument.close();
+        Iframe.onload = async () => {
+            const iframeDocument = Iframe.contentDocument;
+
+            if (iframeDocument) {
+                // Create a new HTML document with the desired structure
+                const newHTMLDoc = iframeDocument.implementation.createHTMLDocument("New Document");
+                newHTMLDoc.documentElement.innerHTML = `
+                    <!DOCTYPE html>
+                    <html>
+                        <head>
+                            <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
+                            <link rel="preconnect" href="https://fonts.googleapis.com">
+                            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
+                        </head>
+                        <body>
+                            <script type="module" src="https://chat-buddy-widget.vercel.app/chatBudy.js" async></script>
+                        </body>
+                    </html>
+                `;
+        
+                // Replace the entire content of the iframe's document
+                iframeDocument.open();
+                iframeDocument.documentElement.replaceWith(newHTMLDoc.documentElement);
+                iframeDocument.close();
+            }
         }
 }
 
