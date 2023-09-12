@@ -129,11 +129,11 @@ function initializeLoader(){
             const iframe_element = document.querySelector('iframe');
             // Create a new document within the iframe
             const iframeDocument = iframe_element.contentWindow.document;
-            // iframeDocument.open();
-            // iframeDocument.body.innerHTML = `<script type="module" src="https://chat-buddy-widget.vercel.app/chatBudy.js" async></script>`
-            // iframeDocument.close();
+            iframeDocument.open();
             console.log(iframeDocument.querySelector('body'))
             console.log(iframeDocument.querySelector('head'))
+            // iframeDocument.body.innerHTML = `<script type="module" src="https://chat-buddy-widget.vercel.app/chatBudy.js" async></script>`
+            iframeDocument.close();
         }
 }
 
