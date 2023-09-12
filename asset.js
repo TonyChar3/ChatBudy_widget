@@ -355,7 +355,6 @@ export const styles = `
  */
 export const openChat = async(widget_id, sse_connection) => {
     try{
-        console.log('open', widget_id)
         if(widget_id){
             if(!sessionStorage.getItem('convoClosed') && sessionStorage.getItem('widgetLoaded')){
                 // will send the user_hash and the httpOnly cookie jwt 
@@ -390,8 +389,7 @@ export const openChat = async(widget_id, sse_connection) => {
     } catch(err){
         console.log('ERROR opening the chat: ', err)
     }
-};
-
+};s
 /**
  * Function to send the socket link to the frontend
  */
@@ -400,7 +398,6 @@ export const getWSlink = (widget_id) => {
         return socket;
     }
 };
-
 /**
  * Close the Chat
  */

@@ -126,7 +126,7 @@ function initializeLoader(){
         Iframe.onload = () => {
             const IframeDocument = Iframe.contentDocument;
             IframeDocument.open();
-            IframeDocument.write(newHTMLDoc);
+            IframeDocument.append(newHTMLDoc);
             IframeDocument.close();
         }
         // append both of them together
