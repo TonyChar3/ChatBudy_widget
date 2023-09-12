@@ -126,7 +126,6 @@ function initializeLoader(){
         Iframe.onload = () => {
             // Create a new document within the iframe
             const iframeDocument = Iframe.contentDocument || Iframe.contentWindow.document;
-            console.log(iframeDocument)
             const iframe_head = iframeDocument.getElementsByTagName('head')
             iframe_head.innerHTML = `
                 <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
@@ -135,6 +134,7 @@ function initializeLoader(){
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
             `;
             console.log(iframe_head)
+            console.log(iframeDocument)
         }
         // append both of them together
         document.body.appendChild(Iframe)
