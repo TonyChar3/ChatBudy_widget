@@ -127,6 +127,7 @@ function initializeLoader(){
             // Create a new document within the iframe
             const iframeDocument = Iframe.contentDocument || Iframe.contentWindow.document;
             iframeDocument.open();
+            iframeDocument.close();
             iframeDocument.innerHTML = `
                 <!DOCTYPE html>
                     <head>
@@ -141,7 +142,6 @@ function initializeLoader(){
                 </html>
             `;
             console.log(iframeDocument)
-            iframeDocument.close();
         }
         // append both of them together
         document.body.appendChild(Iframe)
