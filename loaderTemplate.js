@@ -127,7 +127,7 @@ function initializeLoader(){
             // Create a new document within the iframe
             const iframeDocument = Iframe.contentWindow.document;
             iframeDocument.open();
-            iframeDocument.write(newHTMLDoc)
+            console.log(iframeDocument)
             iframeDocument.close();
         }
         // append both of them together
