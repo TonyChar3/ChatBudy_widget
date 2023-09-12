@@ -127,22 +127,24 @@ function initializeLoader(){
         document.body.appendChild(Iframe)
         // Create a new document within the iframe
         const iframeDocument = Iframe.contentWindow.document;
-        const iframe_head = iframeDocument.querySelector('head')
-        iframe_head.innerHTML = `
-            <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
-        `;
-        const iframe_body = iframeDocument.querySelector('body')
-        iframe_body.innerHTML = `
-            <script type="module" src="https://chat-buddy-widget.vercel.app/chatBudy.js" async></script>
-        `;
-        console.log(iframeDocument)
-        console.log(iframe_head)
-        console.log(iframe_body)
-        iframeDocument.appendChild(iframe_head)
-        iframeDocument.appendChild(iframe_body)
+        Iframe.onload = () => {
+            const iframe_head = iframeDocument.querySelector('head')
+            iframe_head.innerHTML = `
+                <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
+            `;
+            const iframe_body = iframeDocument.querySelector('body')
+            iframe_body.innerHTML = `
+                <script type="module" src="https://chat-buddy-widget.vercel.app/chatBudy.js" async></script>
+            `;
+            console.log(iframeDocument)
+            console.log(iframe_head)
+            console.log(iframe_body)
+            iframeDocument.appendChild(iframe_head)
+            iframeDocument.appendChild(iframe_body)
+        }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
