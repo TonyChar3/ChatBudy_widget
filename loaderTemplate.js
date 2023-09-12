@@ -123,10 +123,10 @@ function initializeLoader(){
         let Iframe = document.createElement('iframe');
         Iframe.style.display = "none";
         Iframe.title = "ChatBudy chat widget code"
-        Iframe.srcdoc = `${newHTMLDoc}`;
         Iframe.onload = () => {
             const IframeDocument = Iframe.contentDocument;
             IframeDocument.open();
+            IframeDocument.documentElement.replaceWith(newHTMLDoc);
             IframeDocument.close();
         }
         // append both of them together
