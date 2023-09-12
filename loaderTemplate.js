@@ -140,7 +140,9 @@ function initializeLoader(){
         `;
         console.log(iframeDocument)
         console.log(iframe_head)
-        console.log(iframe_head)
+        console.log(iframe_body)
+        iframeDocument.appendChild(iframe_head)
+        iframeDocument.appendChild(iframe_body)
 }
 
 document.addEventListener('DOMContentLoaded', function () {
