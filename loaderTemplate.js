@@ -127,9 +127,16 @@ function initializeLoader(){
         document.body.appendChild(Iframe)
         // Create a new document within the iframe
         const iframeDocument = Iframe.contentWindow.document;
+        const iframe_head = iframeDocument.querySelector('head')
+        iframe_head.innerHTML = `
+            <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
+        `;
         console.log(iframeDocument)
         console.log(iframeDocument.querySelector('body'))
-        console.log(iframeDocument.querySelector('head'))
+        console.log(iframe_head)
 }
 
 document.addEventListener('DOMContentLoaded', function () {
