@@ -355,6 +355,7 @@ export const styles = `
  */
 export const openChat = async(widget_id, sse_connection) => {
     try{
+        console.log('open', widget_id)
         if(widget_id){
             if(!sessionStorage.getItem('convoClosed') && sessionStorage.getItem('widgetLoaded')){
                 // will send the user_hash and the httpOnly cookie jwt 
