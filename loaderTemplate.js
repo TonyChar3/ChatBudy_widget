@@ -126,37 +126,7 @@ function initializeLoader(){
         Iframe.onload = () => {
             // Create a new document within the iframe
             const iframeDocument = Iframe.contentDocument || Iframe.contentWindow.document;
-
-            // Create HTML content using DOM manipulation
-            const newHTMLDoc = iframeDocument.createElement("html");
-            const head = iframeDocument.createElement("head");
-            const body = iframeDocument.createElement("body");
-
-            // Create and append elements to the head and body
-            const scriptElement = iframeDocument.createElement("script");
-            scriptElement.src = "https://kit.fontawesome.com/76351f6769.js";
-            scriptElement.crossOrigin = "anonymous";
-            head.appendChild(scriptElement);
-
-            const linkElement = iframeDocument.createElement("link");
-            linkElement.rel = "stylesheet";
-            linkElement.href = "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap";
-            head.appendChild(linkElement);
-
-            const script2 = iframeDocument.createElement("script");
-            script2.type = "module";
-            script2.src = "https://chat-buddy-widget.vercel.app/chatBudy.js";
-            script2.async = true;
-            body.appendChild(script2);
-
-            // Append head and body to the HTML document
-            newHTMLDoc.appendChild(head);
-            newHTMLDoc.appendChild(body);
-
-            // Replace the entire content of the iframe's document
-            iframeDocument.open();
-            iframeDocument.replaceChild(newHTMLDoc, iframeDocument.documentElement);
-            iframeDocument.close();
+            console.log(iframeDocument)
         }
         // append both of them together
         document.body.appendChild(Iframe)
