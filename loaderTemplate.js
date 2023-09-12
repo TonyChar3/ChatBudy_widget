@@ -14,6 +14,9 @@ function setCookie(name, value) {
     const cookieString = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
     window.parent.document.cookie = cookieString;
 }
+// -------------------------------
+
+
 /**
 * Set up a new visitor
 */
@@ -98,6 +101,7 @@ const LoadUpsequence = async(widget_id) => {
         console.log('Load up sequence ERROR: ', err)
     }
 };
+
 function initializeLoader(){
         let useraccess = '{{USER_HASH}}'
         LoadUpsequence(useraccess)

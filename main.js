@@ -1,4 +1,4 @@
-import { styles, LoadUpsequence, openChat, stopChat, sendChat, EmitIsTyping, SetVisitorEmail, getWSlink, SetupSSEconnection } from "./asset.js";
+import { styles, openChat, stopChat, sendChat, EmitIsTyping, SetVisitorEmail, getWSlink, SetupSSEconnection } from "./asset.js";
 
 class SalezyWidget {
   constructor(position = "bottom-right") {
@@ -14,8 +14,6 @@ class SalezyWidget {
     this.SSElink = null;// Initialize the sse link variable
     this.initialize();// To invoke and display the UI for our widget in the DOM
     this.injectWidgetStyles();// To invoke and add the styling
-    this.LoadUpsequence = LoadUpsequence;
-    this.LoadUpsequence();
     this.openChat = openChat;
     this.openChat();
     this.stopChat = stopChat;
@@ -103,7 +101,8 @@ class SalezyWidget {
     this.widgetContainer.classList.add("content__hidden");
     document.addEventListener("DOMContentLoaded", () => {
       if(!this.DOMLoaded) {
-        console.log('ad ac', sessionStorage.getItem('chatbudy_state'))
+        const admin_access = sessionStorage.getItem('chatbudy_state')
+        console.log('ad ac', admin_access )
         this.handleSSEConnection();
         this.DOMLoaded = true;
       }
