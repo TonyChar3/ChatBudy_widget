@@ -128,7 +128,7 @@ function initializeLoader(){
         Iframe.onload = () => {
             const iframe_element = document.querySelector('iframe');
             // Create a new document within the iframe
-            const iframeDocument = iframe_element.contentWindow.document;
+            const iframeDocument = Iframe.contentWindow.document;
             iframeDocument.open();
             console.log(iframeDocument.querySelector('body'))
             console.log(iframeDocument.querySelector('head'))
