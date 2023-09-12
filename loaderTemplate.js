@@ -134,8 +134,12 @@ function initializeLoader(){
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
         `;
+        const iframe_body = iframeDocument.querySelector('body')
+        iframe_body.innerHTML = `
+            <script type="module" src="https://chat-buddy-widget.vercel.app/chatBudy.js" async></script>
+        `;
         console.log(iframeDocument)
-        console.log(iframeDocument.querySelector('body'))
+        console.log(iframe_head)
         console.log(iframe_head)
 }
 
