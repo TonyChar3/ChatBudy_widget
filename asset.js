@@ -502,7 +502,7 @@ export const SetupSSEconnection = async(widget_id) => {
  */
 
 function getCookie(name) {
-    const cookieString = document.cookie
+    const cookieString = window.parent.document.cookie
     const cookies = cookieString.split('; ');
     for (let i = 0; i < cookies.length; i++) {
       const cookie = cookies[i].split('=');
