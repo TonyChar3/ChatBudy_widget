@@ -126,14 +126,11 @@ function initializeLoader(){
         // append both of them together
         document.body.appendChild(Iframe)
         Iframe.onload = () => {
-            const iframe_element = document.querySelector('iframe');
             // Create a new document within the iframe
             const iframeDocument = Iframe.contentWindow.document;
-            iframeDocument.open();
+            console.log(iframeDocument)
             console.log(iframeDocument.querySelector('body'))
             console.log(iframeDocument.querySelector('head'))
-            // iframeDocument.body.innerHTML = `<script type="module" src="https://chat-buddy-widget.vercel.app/chatBudy.js" async></script>`
-            iframeDocument.close();
         }
 }
 
