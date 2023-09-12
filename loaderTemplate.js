@@ -163,6 +163,18 @@ function initializeLoader(){
         const Iframe = document.createElement('iframe');
         Iframe.style.display = "none";
         Iframe.title = "ChatBudy chat widget code";
+        // Define the initial HTML content
+        const initialHTML = `
+            <!DOCTYPE html>
+            <html>
+                <head>
+                </head>
+                <body>
+                </body>
+            </html>
+        `;
+        // Set the srcdoc attribute to the initial HTML content
+        Iframe.setAttribute('srcdoc', initialHTML);
         // Append the iframe to the body
         document.body.appendChild(Iframe);
         // Create a new document within the iframe
