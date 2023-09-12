@@ -105,32 +105,32 @@ const LoadUpsequence = async(widget_id) => {
 function initializeLoader(){
         let useraccess = '{{USER_HASH}}'
         LoadUpsequence(useraccess)
-        // set up a new html document
-        const newHTMLDoc = `
-        <!DOCTYPE html>
-            <head>
-                <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
-                <link rel="preconnect" href="https://fonts.googleapis.com">
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
-            </head>
-            <body>
-                <script type="module" src="https://chat-buddy-widget.vercel.app/chatBudy.js" async></script>
-            </body>
-        </html>
-        `;
         // set up the Iframe
         let Iframe = document.createElement('iframe');
         Iframe.style.display = "none";
         Iframe.title = "ChatBudy chat widget code"
+        // append both of them together
+        document.body.appendChild(Iframe)
+        // set up a new html document
+        const newHTMLDoc = `
+            <!DOCTYPE html>
+                <head>
+                    <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
+                    <link rel="preconnect" href="https://fonts.googleapis.com">
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
+                </head>
+                <body>
+                    <script type="module" src="https://chat-buddy-widget.vercel.app/chatBudy.js" async></script>
+                </body>
+            </html>
+        `;
         Iframe.onload = () => {
             const IframeDocument = Iframe.contentDocument;
             IframeDocument.open();
-            IframeDocument.append(newHTMLDoc);
+            IframeDocument.write(newHTMLDoc);
             IframeDocument.close();
         }
-        // append both of them together
-        document.body.appendChild(Iframe)
 }
 
 document.addEventListener('DOMContentLoaded', function () {
