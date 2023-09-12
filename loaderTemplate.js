@@ -128,6 +128,12 @@ function initializeLoader(){
             const iframeDocument = Iframe.contentDocument || Iframe.contentWindow.document;
             console.log(iframeDocument)
             const iframe_head = iframeDocument.getElementsByTagName('head')
+            iframe_head.innerHTML = `
+                <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
+            `;
             console.log(iframe_head)
         }
         // append both of them together
