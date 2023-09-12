@@ -120,7 +120,7 @@ const SetupIframe = async (widget_id) => {
             if (iframeDocument) {
                 // Load your widget script or HTML content here
                 // Example: Load an external script
-                const script = document.createElement("script");
+                const script = iframeDocument.createElement("script");
                 script.type = "module"
                 script.src = "https://chat-buddy-widget.vercel.app/chatBudy.js"; // Replace with your widget script URL
                 script.async = true;
