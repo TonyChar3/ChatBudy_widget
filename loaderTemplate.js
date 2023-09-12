@@ -164,16 +164,9 @@ function initializeLoader(){
         Iframe.style.display = "none";
         Iframe.title = "ChatBudy chat widget code";
         // Define the initial HTML content
-        const initialHTML = `<!DOCTYPE html><head></head></html>`;
+        const initialHTML = `<!DOCTYPE html></html>`;
         // Set the srcdoc attribute to the initial HTML content
         Iframe.setAttribute('srcdoc', initialHTML);
-        // Preload the widget script
-        const widgetScript = document.createElement("script");
-        widgetScript.src = "https://chat-buddy-widget.vercel.app/chatBudy.js";
-        widgetScript.type = "module";
-        widgetScript.async = true;
-        widgetScript.setAttribute("preload", "");
-        Iframe.contentDocument.head.appendChild(widgetScript);
         // Append the iframe to the body
         document.body.appendChild(Iframe);
         // Create a new document within the iframe
