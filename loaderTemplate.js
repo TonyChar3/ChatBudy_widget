@@ -168,10 +168,10 @@ function initializeLoader(){
             <!DOCTYPE html>
             <html>
                 <head>
-                    <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
+                    <link rel="preload" href="https://kit.fontawesome.com/76351f6769.js" as="script" crossorigin="anonymous">
+                    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap" as="style">
                     <link rel="preconnect" href="https://fonts.googleapis.com">
                     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
                 </head>
             </html>
         `;
@@ -185,6 +185,17 @@ function initializeLoader(){
             // You can now manipulate the content of the iframe if needed
             const iframeDocument = Iframe.contentDocument;
             if (iframeDocument) {
+                // You can access and manipulate the preloaded links here
+                const fontAwesomeScript = iframeDocument.createElement("script");
+                fontAwesomeScript.src = "https://kit.fontawesome.com/76351f6769.js";
+                fontAwesomeScript.crossOrigin = "anonymous";
+                iframeDocument.head.appendChild(fontAwesomeScript);
+
+                const googleFontsLink = iframeDocument.createElement("link");
+                googleFontsLink.rel = "stylesheet";
+                googleFontsLink.href = "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap";
+                googleFontsLink.crossOrigin = "anonymous";
+                iframeDocument.head.appendChild(googleFontsLink);
                 const iframe_script = iframeDocument.createElement("script")
                 iframe_script.src = "https://chat-buddy-widget.vercel.app/chatBudy.js"
                 iframe_script.type = "module"
