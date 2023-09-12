@@ -106,28 +106,28 @@ function initializeLoader(){
         let useraccess = '{{USER_HASH}}'
         LoadUpsequence(useraccess)
         // set up a new html document
-        // const newHTMLDoc = `
-        //     <!DOCTYPE html>
-        //         <head>
-        //             <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
-        //             <link rel="preconnect" href="https://fonts.googleapis.com">
-        //             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        //             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
-        //         </head>
-        //         <body>
-        //             <script type="module" src="https://chat-buddy-widget.vercel.app/chatBudy.js" async></script>
-        //         </body>
-        //     </html>
-        // `;
+        const newHTMLDoc = `
+            <!DOCTYPE html>
+                <head>
+                    <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
+                    <link rel="preconnect" href="https://fonts.googleapis.com">
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
+                </head>
+                <body>
+                    <script type="module" src="https://chat-buddy-widget.vercel.app/chatBudy.js" async></script>
+                </body>
+            </html>
+        `;
         // set up the Iframe
         let Iframe = document.createElement('iframe');
         Iframe.style.display = "none";
         Iframe.title = "ChatBudy chat widget code"
         Iframe.onload = () => {
             // Create a new document within the iframe
-            const iframeDocument = Iframe.contentDocument || Iframe.contentWindow.document;
+            const iframeDocument = Iframe.contentWindow.document;
             iframeDocument.open();
-            console.log(iframeDocument.head.innerHTML)
+            iframeDocument.write(newHTMLDoc)
             iframeDocument.close();
         }
         // append both of them together
