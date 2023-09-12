@@ -125,13 +125,11 @@ function initializeLoader(){
         Iframe.title = "ChatBudy chat widget code"
         // append both of them together
         document.body.appendChild(Iframe)
-        Iframe.onload = () => {
-            // Create a new document within the iframe
-            const iframeDocument = Iframe.contentWindow.document;
-            console.log(iframeDocument)
-            console.log(iframeDocument.querySelector('body'))
-            console.log(iframeDocument.querySelector('head'))
-        }
+        // Create a new document within the iframe
+        const iframeDocument = Iframe.contentWindow.document;
+        console.log(iframeDocument)
+        console.log(iframeDocument.querySelector('body'))
+        console.log(iframeDocument.querySelector('head'))
 }
 
 document.addEventListener('DOMContentLoaded', function () {
