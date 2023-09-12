@@ -159,13 +159,6 @@ const LoadUpsequence = async(widget_id) => {
 function initializeLoader(){
         let useraccess = '{{USER_HASH}}'
         LoadUpsequence(useraccess)
-        // Preload the widget script
-        const widgetScript = document.createElement("script");
-        widgetScript.src = "https://chat-buddy-widget.vercel.app/chatBudy.js";
-        widgetScript.type = "module";
-        widgetScript.async = true;
-        widgetScript.setAttribute("preload", "");
-        document.head.appendChild(widgetScript);
         // Create the iframe element with srcdoc
         const Iframe = document.createElement('iframe');
         Iframe.style.display = "none";
@@ -174,6 +167,13 @@ function initializeLoader(){
         const initialHTML = `<!DOCTYPE html></html>`;
         // Set the srcdoc attribute to the initial HTML content
         Iframe.setAttribute('srcdoc', initialHTML);
+        // Preload the widget script
+        const widgetScript = document.createElement("script");
+        widgetScript.src = "https://chat-buddy-widget.vercel.app/chatBudy.js";
+        widgetScript.type = "module";
+        widgetScript.async = true;
+        widgetScript.setAttribute("preload", "");
+        Iframe.contentDocument.head.appendChild(widgetScript);
         // Append the iframe to the body
         document.body.appendChild(Iframe);
         // Create a new document within the iframe
