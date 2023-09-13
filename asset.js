@@ -178,6 +178,8 @@ export const styles = `
     .closed__convo_msg-container {
         width: auto;
         height: auto;
+        display: flex;
+        flex-direction: column;
     }
     .chatroom__chat {
         display: inline-block;
