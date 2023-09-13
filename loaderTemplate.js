@@ -149,8 +149,8 @@ const SetupIframe = async (Iframe_element) => {
                 iframeDocument.head.appendChild(iframe_link1)
                 iframeDocument.head.appendChild(iframe_link2)
                 iframeDocument.body.appendChild(iframe_script)
-                Iframe_element.setAttribute('srcdoc', '');
             }
+            Iframe_element.setAttribute('srcdoc', '');
         };
     } catch (err) {
         console.log("ERROR setting up the widget connection: ", err);
