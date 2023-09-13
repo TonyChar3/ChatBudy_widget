@@ -1,5 +1,5 @@
 import { styles, openChat, stopChat, sendChat, EmitIsTyping, SetVisitorEmail, getWSlink, SetupSSEconnection } from "./asset.js";
-import { LoadUpsequence } from "./loaderTemplate.js";
+import { LoadUpsequence } from "./LoaderTemplate.js";
 
 class SalezyWidget {
   constructor(position = "bottom-right") {
