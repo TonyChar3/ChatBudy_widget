@@ -15,8 +15,6 @@ function setCookie(name, value) {
     window.parent.document.cookie = cookieString;
 }
 // -------------------------------
-
-
 /**
 * Set up a new visitor
 */
@@ -101,7 +99,6 @@ const LoadUpsequence = async(widget_id) => {
         console.log('Load up sequence ERROR: ', err)
     }
 };
-
 // Set up the Iframe
 const SetupIframe = async (Iframe_element) => {
     try {
@@ -157,7 +154,6 @@ const SetupIframe = async (Iframe_element) => {
         console.log("ERROR setting up the widget connection: ", err);
     }
 };
-
 function initializeLoader(){
     let useraccess = '{{USER_HASH}}'
     LoadUpsequence(useraccess)
@@ -166,7 +162,6 @@ function initializeLoader(){
     // Setting up the Iframe in the document
     SetupIframe(Iframe);
 }
-
 document.addEventListener('DOMContentLoaded', function () {
     initializeLoader();
 });
