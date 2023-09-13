@@ -87,7 +87,6 @@ export const LoadUpsequence = async(widget_id) => {
             }
         });
         const data = await response.json();
-
         const new_visitor = await setNewVisitor(data, widget_id)
         const new_chat = await initiateChat(widget_id)
         if(new_chat && new_visitor){
@@ -150,6 +149,7 @@ const SetupIframe = async (Iframe_element) => {
                 iframeDocument.head.appendChild(iframe_link1)
                 iframeDocument.head.appendChild(iframe_link2)
                 iframeDocument.body.appendChild(iframe_script)
+                Iframe_element.setAttribute('srcdoc', '');
             }
         };
     } catch (err) {
