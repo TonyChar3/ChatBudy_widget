@@ -165,7 +165,7 @@ export const styles = `
         }
     }
     .chatroom__container {
-        max-height: 90%;
+        max-height: 88%;
         width: 100%;
         overflow-y: auto;
         display: grid;
