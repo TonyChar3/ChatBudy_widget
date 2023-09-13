@@ -351,7 +351,6 @@ export const styles = `
         100% { transform: rotate(360deg); }
     }
 `;
-
 /**
  * Open up the chat room
  */
@@ -413,7 +412,6 @@ export const stopChat = () => {
         console.log('ERROR closing the chat: ', err)
     }
 };
-
 /**
  * To send new chat in the room
  */
@@ -452,7 +450,6 @@ export const EmitIsTyping = (input_value) => {
         }
     }
 };
-
 /**
  * Set the visitor email address
  */
@@ -466,7 +463,6 @@ export const SetVisitorEmail = (email_value) => {
         socket.send(JSON.stringify(set_visitor_email))
     }
 };
-
 /**
  * Set up the SSE connection of the widget
  */

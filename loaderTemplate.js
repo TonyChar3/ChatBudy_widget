@@ -18,7 +18,7 @@ function setCookie(name, value) {
 /**
 * Set up a new visitor
 */
-const setNewVisitor = async(visitor_data, widget_id) => {
+export const setNewVisitor = async(visitor_data, widget_id) => {
     try{
         const newVisitor = {
             isoCode: visitor_data.info.country.iso_code,
@@ -44,7 +44,7 @@ const setNewVisitor = async(visitor_data, widget_id) => {
 /**
 * Create a new chat room - Salesman
 */
-const initiateChat = async(widget_id) => {
+export const initiateChat = async(widget_id) => {
     try{
         const chat = {
             u_hash: widget_id
@@ -75,7 +75,7 @@ const initiateChat = async(widget_id) => {
 /**
 * Get the visitor info once it loads up
 */
-const LoadUpsequence = async(widget_id) => {
+export const LoadUpsequence = async(widget_id) => {
     try{
         if (sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
             return
@@ -93,7 +93,9 @@ const LoadUpsequence = async(widget_id) => {
         if(new_chat && new_visitor){
             sessionStorage.setItem('widgetLoaded', true);
             const state_obj = JSON.stringify({access_id: widget_id})
-            sessionStorage.setItem('chatbudy_state', state_obj)
+            if(!sessionStorage.getItem('chatbudy_state')){
+                sessionStorage.setItem('chatbudy_state', state_obj)
+            }
         }
     } catch(err){
         console.log('Load up sequence ERROR: ', err)
