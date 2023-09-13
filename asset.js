@@ -468,6 +468,7 @@ export const SetVisitorEmail = (email_value) => {
  */
 export const SetupSSEconnection = async(widget_id) => {
     try{
+        console.log('Set up sse', widget_id);
         // will send the user_hash and the httpOnly cookie jwt 
         //TODO: credentials: 'include' once in production to send the httpOnly cookie
         const token = getCookie('visitor_jwt');
