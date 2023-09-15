@@ -2,9 +2,9 @@ import { styles, openChat, stopChat, sendChat, EmitIsTyping, SetVisitorEmail, ge
 import { LoadUpsequence } from "./LoaderTemplate.js";
 
 class SalezyWidget {
-  constructor(position = "bottom-right") {
+  constructor(position = `${JSON.parse(localStorage.getItem('chatbudy_style')).position}`) {
     this.position = this.getPosition(position);// save the position of the widget
-    this.ask_email_copy = "Hi! Want to know about our special offer 👀?";
+    this.ask_email_copy = JSON.parse(localStorage.getItem('chatbudy_style')).greeting_message;
     this.ask_email_page = true;// show the input for the email and the buttons & hide the chat input
     this.widgetID = JSON.parse(localStorage.getItem('chatbudy_state')).access_id// To identify the widget for each request he makes
     this.adminStatus = false;// To set the Online - Offline status of the admin in the widget header
@@ -65,6 +65,16 @@ class SalezyWidget {
     const buttonContainer = document.createElement("button");
     buttonContainer.classList.add("widget-button__container");
     buttonContainer.style.backgroundColor = `${JSON.parse(localStorage.getItem('chatbudy_style')).main_color}`;
+    switch (JSON.parse(localStorage.getItem('chatbudy_style')).shape){
+      case "square":
+        buttonContainer.style.borderRadius = "15px";
+        break;
+      case "circular":
+        buttonContainer.style.borderRadius = "50%";
+        break;
+      default:
+        break;
+    }
     this.buttonContainer = buttonContainer;
     /**
      * Span element for the Icon
@@ -137,7 +147,7 @@ class SalezyWidget {
           </span>
         </div>
         <div id="chatbot__status">
-          <h3 id="chatroom__title">Name of the Chatbot</h3>
+          <h3 id="chatroom__title">${JSON.parse(localStorage.getItem('chatbudy_style')).admin_name}</h3>
           <p><i class="fa-solid fa-circle status-circle__icon ${this.adminStatus? "status__online" : "status__offline"}"></i>${this.adminStatus? "Online" : "Offline"}</p>
         </div>
       </div>

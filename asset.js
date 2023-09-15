@@ -35,9 +35,7 @@ export const styles = `
         border: none;
         width: 65px;
         height: 65px;
-        border-radius: 15px;
         cursor: pointer;
-        background-color: white;
         box-shadow: -3px 0px 19px -3px rgba(0,0,0,0.4);
     }
     .widget-button__container:hover {
