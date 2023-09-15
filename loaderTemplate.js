@@ -164,7 +164,11 @@ const GetWidgetStyle = async(widget_id) => {
     try{
         // TODO: to be removed for production
         // get the jwt token
-        const token = getCookie('visitor_jwt')
+        const token = getCookie("visitor_jwt")
+        console.log('tokennn', token);
+        if(!token){
+            return;
+        }
         // TODO: add credentials: true for PROD
         // make a request using the widget_id (user hash)
         const style_request = await fetch(`http://localhost:8080/code/style-${widget_id}`,{
