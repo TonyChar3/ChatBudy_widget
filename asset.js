@@ -376,6 +376,8 @@ export const openChat = async(widget_id, sse_connection) => {
                     sse_connection.close()
                     // Remove widgetLoaded from session storage
                     sessionStorage.removeItem('widgetLoaded');
+                    // remove the state and access id of the widget
+                    localStorage.removeItem('chatbudy_state');
                     // Remove visitor_jwt cookie
                     document.cookie = 'visitor_jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
                     // Open the closed conversation message

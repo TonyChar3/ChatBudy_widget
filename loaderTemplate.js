@@ -1,4 +1,4 @@
-//TODO: Temporary functions
+//TODO: DEV env functions
 function getCookie(name) {
     const cookieString = window.parent.document.cookie
     const cookies = cookieString.split('; ');
@@ -92,8 +92,8 @@ export const LoadUpsequence = async(widget_id) => {
         if(new_chat && new_visitor){
             sessionStorage.setItem('widgetLoaded', true);
             const state_obj = JSON.stringify({access_id: widget_id})
-            if(!sessionStorage.getItem('chatbudy_state')){
-                sessionStorage.setItem('chatbudy_state', state_obj)
+            if(!localStorage.getItem('chatbudy_state')){
+                localStorage.setItem('chatbudy_state', state_obj)
             }
         }
     } catch(err){
@@ -155,7 +155,8 @@ const SetupIframe = async (Iframe_element) => {
         console.log("ERROR setting up the widget connection: ", err);
     }
 };
-function initializeLoader(){
+// Initialize the Loader of the widget
+const initializeLoader = () => {
     let useraccess = '{{USER_HASH}}'
     LoadUpsequence(useraccess)
     // Create the iframe element with srcdoc
@@ -163,6 +164,20 @@ function initializeLoader(){
     // Setting up the Iframe in the document
     SetupIframe(Iframe);
 }
-document.addEventListener('DOMContentLoaded', function () {
+/**
+ * Set up the widget style state
+ */
+const SetWidgetCustomStyle = async() => {
+    try{
+        // get the widget_id
+        let user_access = '{{USER_HASH}}'
+        // send the request to fetch the widget style
+        // set it in the session storage
+    } catch(err){
+        console.log('ERROR setting widget state: ', err)
+    }
+}
+document.addEventListener('DOMContentLoaded', () => {
+    SetWidgetCustomStyle();
     initializeLoader();
 });
