@@ -162,26 +162,29 @@ const SetupIframe = async (Iframe_element) => {
  */
 const GetWidgetStyle = async(widget_id) => {
     try{
-        // TODO: to be removed for production
-        // get the jwt token
-        const token = getCookie("visitor_jwt")
-        if(!token){
-            return;
-        }
-        // TODO: add credentials: true for PROD
-        // make a request using the widget_id (user hash)
-        const style_request = await fetch(`http://localhost:8080/code/style-${widget_id}`,{
-            method: 'get',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+        if(!localStorage.getItem('chatbudy_style')){
+            // TODO: to be removed for production
+            // get the jwt token
+            const token = getCookie("visitor_jwt")
+            if(!token){
+                return;
             }
-        });
-        const style_data = await style_request.json();
-        if(style_data){
-            console.log('styling request: ', style_data.widget_style);
+            // TODO: add credentials: true for PROD
+            // make a request using the widget_id (user hash)
+            const style_request = await fetch(`http://localhost:8080/code/style-${widget_id}`,{
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            const style_data = await style_request.json();
+            if(style_data){
+                // set the styling in the localstorage
+                localStorage.setItem('chatbudy_style', JSON.stringify(style_data.widget_style));
+            }
+            // successful?? -> set the returned object in the local storage
         }
-        // successful?? -> set the returned object in the local storage
     } catch(err){
         console.log('ERROR setting up the widget style: ', err);
     }
