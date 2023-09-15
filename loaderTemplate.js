@@ -165,7 +165,6 @@ const GetWidgetStyle = async(widget_id) => {
         // TODO: to be removed for production
         // get the jwt token
         const token = getCookie("visitor_jwt")
-        console.log('tokennn', token);
         if(!token){
             return;
         }
