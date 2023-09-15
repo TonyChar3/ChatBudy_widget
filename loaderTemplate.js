@@ -100,7 +100,9 @@ export const LoadUpsequence = async(widget_id) => {
         console.log('Load up sequence ERROR: ', err)
     }
 };
-// Set up the Iframe
+/**
+ * Set up the widget Iframe
+ */
 const SetupIframe = async (Iframe_element) => {
     try {
         // Define the initial HTML content
@@ -155,10 +157,39 @@ const SetupIframe = async (Iframe_element) => {
         console.log("ERROR setting up the widget connection: ", err);
     }
 };
+/**
+ * Get the widget style to set it in the local storage
+ */
+const GetWidgetStyle = async(widget_id) => {
+    try{
+        // TODO: to be removed for production
+        // get the jwt token
+        const token = getCookie('visitor_jwt')
+        // TODO: add credentials: true for PROD
+        // make a request using the widget_id (user hash)
+        const style_request = await fetch(`http://localhost:8080/code/style-${widget_id}`,{
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        const style_data = await style_request.json();
+        if(style_data){
+            console.log('styling request: ', style_data);
+        }
+        // successful?? -> set the returned object in the local storage
+    } catch(err){
+        console.log('ERROR setting up the widget style: ', err);
+    }
+}
 // Initialize the Loader of the widget
 const initializeLoader = () => {
-    let useraccess = '{{USER_HASH}}'
-    LoadUpsequence(useraccess)
+    let useraccess = '{{USER_HASH}}';
+    // load visitor chat session + his info
+    LoadUpsequence(useraccess);
+    // load the style of the widget
+    GetWidgetStyle(useraccess);
     // Create the iframe element with srcdoc
     const Iframe = document.createElement('iframe');
     // Setting up the Iframe in the document
