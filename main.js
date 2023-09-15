@@ -64,6 +64,7 @@ class SalezyWidget {
      */
     const buttonContainer = document.createElement("button");
     buttonContainer.classList.add("widget-button__container");
+    buttonContainer.style.backgroundColor = `${JSON.parse(localStorage.getItem('chatbudy_style')).main_color}`;
     this.buttonContainer = buttonContainer;
     /**
      * Span element for the Icon
