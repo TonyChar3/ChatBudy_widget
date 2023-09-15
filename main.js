@@ -6,7 +6,7 @@ class SalezyWidget {
     this.position = this.getPosition(position);// save the position of the widget
     this.ask_email_copy = "Hi! Want to know about our special offer 👀?";
     this.ask_email_page = true;// show the input for the email and the buttons & hide the chat input
-    this.widgetID = JSON.parse(sessionStorage.getItem('chatbudy_state')).access_id// To identify the widget for each request he makes
+    this.widgetID = JSON.parse(localStorage.getItem('chatbudy_state')).access_id// To identify the widget for each request he makes
     this.adminStatus = false;// To set the Online - Offline status of the admin in the widget header
     this.DOMLoaded = false;
     this.open = false;// the state of the widget Open/Close
