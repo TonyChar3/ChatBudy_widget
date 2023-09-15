@@ -37,7 +37,7 @@ export const styles = `
         height: 65px;
         border-radius: 15px;
         cursor: pointer;
-        background-color: #0c64f2;
+        background-color: ${JSON.parse(localStorage.getItem('chatbudy_style').main_color)};
         box-shadow: -3px 0px 19px -3px rgba(0,0,0,0.4);
     }
     .widget-button__container:hover {
