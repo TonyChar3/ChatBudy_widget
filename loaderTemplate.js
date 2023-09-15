@@ -179,7 +179,7 @@ const GetWidgetStyle = async(widget_id) => {
         });
         const style_data = await style_request.json();
         if(style_data){
-            console.log('styling request: ', style_data);
+            console.log('styling request: ', style_data.widget_style);
         }
         // successful?? -> set the returned object in the local storage
     } catch(err){
