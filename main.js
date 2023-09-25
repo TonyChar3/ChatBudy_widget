@@ -37,9 +37,7 @@ class SalezyWidget {
   widgetContent = null;
 
   getPosition(position) {
-    // const [vertical, horizontal] = position.split("-");
-    let vertical;
-    let horizontal;
+    const [vertical, horizontal] = position
     if(position === 'right'){
       return {
         [vertical]: "28px",
