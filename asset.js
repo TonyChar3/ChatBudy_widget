@@ -34,6 +34,10 @@ export const styles = `
         bottom: 28px;
         right: 40px;
     }
+    .widget-open__left {
+        bottom: 28px;
+        right: 40px;
+    }
     @media (min-width: 1024px){
         .widget-open__left {
             bottom: 28px;
