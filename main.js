@@ -469,7 +469,7 @@ class SalezyWidget {
       if(this.position === 'left'){
         this.mainWidgetContainer.classList.remove('widget-position__left');
         this.mainWidgetContainer.classList.add('widget-open__left');
-        // this.buttonContainer.classList.add('widget-button__open');
+        this.buttonContainer.classList.add('widget-button__open');
       }
       this.widgetContainer.style.zIndex = 30
       this.buttonContainer.style.zIndex = 50
@@ -485,7 +485,7 @@ class SalezyWidget {
       if(this.position === 'left'){
         this.mainWidgetContainer.classList.remove('widget-open__left');
         this.mainWidgetContainer.classList.add('widget-position__left');
-        // this.buttonContainer.classList.remove('widget-button__open');
+        this.buttonContainer.classList.remove('widget-button__open');
       }
       this.widgetContainer.style.removeProperty('z-index');
       this.buttonContainer.style.removeProperty('z-index');
