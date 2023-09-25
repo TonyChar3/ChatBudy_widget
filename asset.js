@@ -30,6 +30,24 @@ export const styles = `
     .content__hidden {
         transform: scale(0);
     }
+    .widget-position__left {
+        bottom: 28px;
+        left: 10px;
+    }
+    .widget-open__left {
+        bottom: 28px;
+        right: 40px;
+    }
+    @media (min-width: 1024px){
+        .widget-open__left {
+            bottom: 28px;
+            left: 80px;
+        }
+    }
+    .widget-position__right {
+        bottom: 28px;
+        right: 40px;
+    }
     .widget-button__container {
         position: relative;
         border: none;
@@ -116,7 +134,7 @@ export const styles = `
         scrollbar-color: #c9c8c5 transparent;
     }
     @media (min-width: 1024px) {
-        .widget__content {
+        .widget__content-right {
             position: absolute;
             width: 390px;
             height: auto;
@@ -124,6 +142,17 @@ export const styles = `
             top: auto;
             left: auto;
             right: -26px;
+            bottom: 40px;
+            border-radius: 15px;
+        }
+        .widget__content-left {
+            position: absolute;
+            width: 390px;
+            height: auto;
+            max-width: 400px;
+            top: auto;
+            right: auto;
+            left: -26px;
             bottom: 40px;
             border-radius: 15px;
         }
