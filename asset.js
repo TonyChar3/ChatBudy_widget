@@ -233,7 +233,7 @@ export const styles = `
     }
     @media (min-width: 1024px) {
         .chatroom__chat {
-            font-size: 1.05rem;
+            font-size: 1rem;
         }
     }
     .chatroom__email-input-div,
@@ -329,7 +329,7 @@ export const styles = `
         .chat__input {
             max-width: 100%;
             height: 30%;
-            font-size: 1.05rem;
+            font-size: 1rem;
         }
     }
     .chat__footer {
