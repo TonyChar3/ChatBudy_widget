@@ -64,6 +64,7 @@ class SalezyWidget {
     container.classList.add("main__container");
     container.style.position = "fixed";
     container.style.zIndex = "20";
+    console.log('Setting position: ', this.position)
     Object.keys(this.position).forEach(
       (key) => (container.style[key] = this.position[key])
     );
