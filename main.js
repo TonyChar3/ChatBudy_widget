@@ -58,7 +58,6 @@ class SalezyWidget {
      */
     const buttonContainer = document.createElement("button");
     buttonContainer.classList.add("widget-button__container");
-    buttonContainer.style.color = `${JSON.parse(localStorage.getItem('chatbudy_style')).font_color === 'light'? 'white' : '#3f3f46'}`
     buttonContainer.style.backgroundColor = `${JSON.parse(localStorage.getItem('chatbudy_style')).main_color}`;
     switch (JSON.parse(localStorage.getItem('chatbudy_style')).shape){
       case "square":
@@ -77,6 +76,7 @@ class SalezyWidget {
     const widgetIconElement = document.createElement("div");
     widgetIconElement.innerHTML = `<i class="fa-regular fa-messages-question"></i>`;
     widgetIconElement.classList.add("widget__icon");
+    widgetIconElement.style.color = `${JSON.parse(localStorage.getItem('chatbudy_style')).font_color === 'light'? 'white' : '#3f3f46'}`
     widgetIconElement.addEventListener("click", this.toggleOpen.bind(this));
     this.widgetIcon = widgetIconElement;
     /**
@@ -85,6 +85,7 @@ class SalezyWidget {
     const sendIconElement = document.createElement("div");
     sendIconElement.innerHTML = `<i class="fa-sharp fa-light fa-paper-plane-top"></i>`;
     sendIconElement.classList.add("widget__icon", "widget__hidden");
+    sendIconElement.style.color = `${JSON.parse(localStorage.getItem('chatbudy_style')).font_color === 'light'? 'white' : '#3f3f46'}`
     sendIconElement.addEventListener('click', () => {
       this.sendChat(this.chat_room_input)
       this.chat_room_input.value = '';
