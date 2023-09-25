@@ -313,7 +313,7 @@ export const styles = `
         overflow-y: auto;
         padding: 1em;
         color: #gray-500;
-        font-size: 1rem;
+        font-size: 1.1rem;
         border: none;
         outline: none;
         resize: none;
