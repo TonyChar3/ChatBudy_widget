@@ -59,6 +59,7 @@ export const styles = `
     }
     @media (min-width: 1024px) {
         .widget-position-open__left {
+            right: 0;
             left: 500px;
         }
     }
