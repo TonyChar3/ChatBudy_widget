@@ -278,6 +278,7 @@ class SalezyWidget {
     ask_emailBubbleDIV.classList.add("chatroom__chat");
     ask_emailBubbleDIV.classList.add("left");
     ask_emailBubbleDIV.style.backgroundColor = '#d6d6d6';
+    ask_emailBubbleDIV.style.color = this.style.font_color === 'light'? 'white' : '#3f3f46'
     chatTextSpan.innerText = `${this.ask_email_copy}`
     ask_emailBubbleDIV.appendChild(chatTextSpan);
     // generate the email input and the buttons
