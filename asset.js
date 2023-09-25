@@ -60,6 +60,9 @@ export const styles = `
         cursor: pointer;
         box-shadow: -3px 0px 19px -3px rgba(0,0,0,0.4);
     }
+    .widget-button__open {
+        left: auto;
+    }
     .widget-button__container:hover {
         transform: scale(1.1);
         transition-duration: .2s;
