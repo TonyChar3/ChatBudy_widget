@@ -236,8 +236,11 @@ class SalezyWidget {
       chatBubbleDIV.appendChild(chatTextSpan);
     } else if(chat_type && chat_text) {
       chatBubbleDIV.classList.add(chat_type === "agent"? "left" : 'right');
-      chatBubbleDIV.style.backgroundColor = chat_type === "agent"? '#b1b0b0' : `${this.style.main_color}`;
-      chatBubbleDIV.style.color = this.style.font_color === 'light'? 'white' : '#3f3f46'
+      chatBubbleDIV.style.backgroundColor = chat_type === "agent"? '#d1d1d1' : `${this.style.main_color}`;
+      chat_type === 'agent'? 
+      chatBubbleDIV.style.color = this.style.font_color === 'light'? 'white' : '#3f3f46' 
+      : 
+      chatBubbleDIV.style.color = '#3f3f46';
       chatTextSpan.innerText = `${chat_text}`
       chatBubbleDIV.appendChild(chatTextSpan);
     }
@@ -277,8 +280,8 @@ class SalezyWidget {
     const chatTextSpan = document.createElement('span');
     ask_emailBubbleDIV.classList.add("chatroom__chat");
     ask_emailBubbleDIV.classList.add("left");
-    ask_emailBubbleDIV.style.backgroundColor = '#b1b0b0';
-    ask_emailBubbleDIV.style.color = this.style.font_color === 'light'? 'white' : '#3f3f46'
+    ask_emailBubbleDIV.style.backgroundColor = '#d1d1d1';
+    ask_emailBubbleDIV.style.color = '#3f3f46';
     chatTextSpan.innerText = `${this.ask_email_copy}`
     ask_emailBubbleDIV.appendChild(chatTextSpan);
     // generate the email input and the buttons
