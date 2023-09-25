@@ -231,6 +231,11 @@ export const styles = `
         border-radius: 0 0 10px 10px;
         font-size: 1.1rem;
     }
+    @media (min-width: 1024px) {
+        .chatroom__chat {
+            font-size: 1.05rem;
+        }
+    }
     .chatroom__email-input-div,
     .closed__convo_btn-div {
         display: inline-block;
@@ -324,6 +329,7 @@ export const styles = `
         .chat__input {
             max-width: 100%;
             height: 30%;
+            font-size: 1.05rem;
         }
     }
     .chat__footer {
