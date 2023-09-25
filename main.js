@@ -37,25 +37,20 @@ class SalezyWidget {
   widgetContent = null;
 
   getPosition(position) {
-    const [vertical, horizontal] = "bottom-right".split('-')
-    console.log('Will return this: ', { [vertical]: "28px", [horizontal]: '40px' })
-    return {
-      [vertical]: "28px",
-      [horizontal]: "40px",
+    const [vertical, horizontal] = `bottom-${position}`.split('-')
+    if(position === 'right'){
+      console.log('Will return this: ', { [vertical]: "28px", [horizontal]: '40px' })
+      return {
+        [vertical]: "28px",
+        [horizontal]: "40px",
+      }
+    } else if (position === 'left'){
+      console.log('Will return this: ', { [vertical]: "28px", [horizontal]: '10px' })
+      return {
+        [vertical]: "28px",
+        [horizontal]: "10px",
+      }
     }
-    // if(position === 'right'){
-    //   console.log('Will return this: ', { [vertical]: "28px", [horizontal]: '40px' })
-    //   return {
-    //     [vertical]: "28px",
-    //     [horizontal]: "40px",
-    //   }
-    // } else if (position === 'left'){
-    //   console.log('Will return this: ', { [vertical]: "28px", [horizontal]: '10px' })
-    //   return {
-    //     [vertical]: "28px",
-    //     [horizontal]: "10px",
-    //   }
-    // }
   }
   /**
    * Initialize the button and the div for the widget content
