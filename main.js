@@ -38,6 +38,7 @@ class SalezyWidget {
 
   getPosition(position) {
     const [vertical, horizontal] = position
+    console.log('Position: ', position)
     if(position === 'right'){
       return {
         [vertical]: "28px",
