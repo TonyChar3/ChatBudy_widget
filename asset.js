@@ -30,13 +30,14 @@ export const styles = `
     .content__hidden {
         transform: scale(0);
     }
-    .widget-position__left {
-        bottom: 28px;
-        left: 10px;
-    }
+    .widget-position__right,
     .widget-open__left {
         bottom: 28px;
         right: 40px;
+    }
+    .widget-position__left {
+        bottom: 28px;
+        left: 10px;
     }
     @media (min-width: 1024px){
         .widget-open__left {
@@ -47,6 +48,19 @@ export const styles = `
     .widget-position__right {
         bottom: 28px;
         right: 40px;
+    }
+    .widget-position__left {
+        bottom: 28px;
+        left: 10px;
+    }
+    .widget-position-open__left {
+        left: 0;
+        right: 40px;
+    }
+    @media (min-width: 1024px) {
+        .widget-position-open__left {
+            left: 80px;
+        }
     }
     .widget-button__container {
         position: relative;
@@ -133,8 +147,19 @@ export const styles = `
         scrollbar-width: thin;
         scrollbar-color: #c9c8c5 transparent;
     }
+    .widget__content-left {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0px;
+        transition: transform .2s ease-in-out;
+        box-shadow: -3px 0px 19px -3px rgba(0,0,0,0.4);
+        scrollbar-width: thin;
+        scrollbar-color: #c9c8c5 transparent;
+    }
     @media (min-width: 1024px) {
-        .widget__content-right {
+        .widget__content {
             position: absolute;
             width: 390px;
             height: auto;

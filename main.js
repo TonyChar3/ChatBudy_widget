@@ -3,7 +3,7 @@ import { LoadUpsequence } from "./LoaderTemplate.js";
 
 class SalezyWidget {
   constructor(position = `${JSON.parse(localStorage.getItem('chatbudy_style')).position}`) {
-    this.position = this.getPosition(position);// save the position of the widget
+    this.position = position// save the position of the widget
     this.ask_email_copy = JSON.parse(localStorage.getItem('chatbudy_style')).greeting_message;
     this.ask_email_page = true;// show the input for the email and the buttons & hide the chat input
     this.widgetID = JSON.parse(localStorage.getItem('chatbudy_state')).access_id// To identify the widget for each request he makes
@@ -36,20 +36,20 @@ class SalezyWidget {
   info = false;
   widgetContent = null;
 
-  getPosition(position) {
-    const [vertical, horizontal] = `bottom-${position}`.split('-')
-    if(position === 'right'){
-      return {
-        [vertical]: "28px",
-        [horizontal]: "40px",
-      }
-    } else if (position === 'left'){
-      return {
-        [vertical]: "28px",
-        [horizontal]: "40px",
-      }
-    }
-  }
+  // getPosition(position) {
+  //   const [vertical, horizontal] = `bottom-${position}`.split('-')
+  //   if(position === 'right'){
+  //     return {
+  //       [vertical]: "28px",
+  //       [horizontal]: "40px",
+  //     }
+  //   } else if (position === 'left'){
+  //     return {
+  //       [vertical]: "28px",
+  //       [horizontal]: "40px",
+  //     }
+  //   }
+  // }
   /**
    * Initialize the button and the div for the widget content
    */
@@ -61,9 +61,10 @@ class SalezyWidget {
     container.classList.add("main__container");
     container.style.position = "fixed";
     container.style.zIndex = "20";
-    Object.keys(this.position).forEach(
-      (key) => (container.style[key] = this.position[key])
-    );
+    this.position === 'right'? container.classList.add('widget-position__right') : container.classList.add('widget-position__left')
+    // Object.keys(this.position).forEach(
+    //   (key) => (container.style[key] = this.position[key])
+    // );
     window.parent.document.body.appendChild(container);
     this.mainWidgetContainer = container;
     /**
@@ -465,9 +466,9 @@ class SalezyWidget {
   toggleOpen(){
     this.open = !this.open;
     if(this.open) {
-      if(this.position.left){
-        this.mainWidgetContainer.style.left = '';
-        this.mainWidgetContainer.style.right = "40px";
+      if(this.position === 'left'){
+        this.mainWidgetContainer.classList.remove('widget-position__left');
+        this.mainWidgetContainer.classList.add('widget-open__left');
       }
       this.widgetContainer.style.zIndex = 30
       this.buttonContainer.style.zIndex = 50
@@ -480,9 +481,9 @@ class SalezyWidget {
     } else {
       this.createWidgetContent();
       this.handleSSEConnection();
-      if(this.position.left){
-        this.mainWidgetContainer.style.left = '40px';
-        this.mainWidgetContainer.style.right = '';
+      if(this.position === 'left'){
+        this.mainWidgetContainer.classList.remove('widget-open__left');
+        this.mainWidgetContainer.classList.add('widget-position__left');
       }
       this.widgetContainer.style.removeProperty('z-index');
       this.buttonContainer.style.removeProperty('z-index');
