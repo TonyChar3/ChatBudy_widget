@@ -132,7 +132,7 @@ class SalezyWidget {
     */
     // TODO: Add a space to add the company logo, put it on left side of the header along with the close button to the right
     this.widgetContainer.innerHTML = `
-      <div style="background-color: ${JSON.parse(localStorage.getItem('chatbudy_style')).main_color}; color: ${JSON.parse(localStorage.getItem('chatbudy_style')).font_color};" class="widget__header">
+      <div style="background-color: ${JSON.parse(localStorage.getItem('chatbudy_style')).main_color}; color: ${JSON.parse(localStorage.getItem('chatbudy_style')).font_color === 'light'? 'white' : '#3f3f46'};" class="widget__header">
         <div class="header-icons__container">
           <span class="close-icon">
             <i class="fa-solid fa-arrow-right-from-arc"></i>
