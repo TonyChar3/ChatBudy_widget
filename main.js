@@ -46,7 +46,7 @@ class SalezyWidget {
     } else if (position === 'left'){
       return {
         [vertical]: "28px",
-        [horizontal]: "10px",
+        [horizontal]: "40px",
       }
     }
   }
@@ -467,7 +467,7 @@ class SalezyWidget {
     if(this.open) {
       if(this.position.left){
         this.mainWidgetContainer.style.left = '';
-        this.mainWidgetContainer.style.right = "48px";
+        this.mainWidgetContainer.style.right = "40px";
       }
       this.widgetContainer.style.zIndex = 30
       this.buttonContainer.style.zIndex = 50
@@ -481,7 +481,7 @@ class SalezyWidget {
       this.createWidgetContent();
       this.handleSSEConnection();
       if(this.position.left){
-        this.mainWidgetContainer.style.left = '10px';
+        this.mainWidgetContainer.style.left = '40px';
         this.mainWidgetContainer.style.right = '';
       }
       this.widgetContainer.style.removeProperty('z-index');
