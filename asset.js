@@ -361,7 +361,6 @@ export const styles = `
         height: 60px;
         margin: 0 auto;
         border: 3px solid rgba(157, 158, 157, 0.3);
-        border-top-color: #0c64f2;
         border-radius: 50%;
         animation: spin 1s linear infinite;
     }

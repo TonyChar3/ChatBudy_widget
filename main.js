@@ -193,6 +193,7 @@ class SalezyWidget {
 
     const animationSpinnerDIV = document.createElement("div");
     animationSpinnerDIV.classList.add("spinner");
+    animationSpinnerDIV.style.borderTopColor = this.style.main_color;
 
     loadingAnimationDIV.appendChild(animationSpinnerDIV);
     this.loadingAnimationDIV = loadingAnimationDIV;
