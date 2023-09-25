@@ -4,6 +4,7 @@ import { LoadUpsequence } from "./LoaderTemplate.js";
 class SalezyWidget {
   constructor(position = `${JSON.parse(localStorage.getItem('chatbudy_style')).position}`) {
     this.position = position// save the position of the widget
+    this.style = JSON.parse(localStorage.getItem('chatbudy_style'));
     this.ask_email_copy = JSON.parse(localStorage.getItem('chatbudy_style')).greeting_message;
     this.ask_email_page = true;// show the input for the email and the buttons & hide the chat input
     this.widgetID = JSON.parse(localStorage.getItem('chatbudy_state')).access_id// To identify the widget for each request he makes
@@ -58,8 +59,8 @@ class SalezyWidget {
      */
     const buttonContainer = document.createElement("button");
     buttonContainer.classList.add("widget-button__container");
-    buttonContainer.style.backgroundColor = `${JSON.parse(localStorage.getItem('chatbudy_style')).main_color}`;
-    switch (JSON.parse(localStorage.getItem('chatbudy_style')).shape){
+    buttonContainer.style.backgroundColor = `${this.style.main_color}`;
+    switch (this.style.shape){
       case "square":
         buttonContainer.style.borderRadius = "15px";
         break;
@@ -76,7 +77,7 @@ class SalezyWidget {
     const widgetIconElement = document.createElement("div");
     widgetIconElement.innerHTML = `<i class="fa-regular fa-messages-question"></i>`;
     widgetIconElement.classList.add("widget__icon");
-    widgetIconElement.style.color = `${JSON.parse(localStorage.getItem('chatbudy_style')).font_color === 'light'? 'white' : '#3f3f46'}`
+    widgetIconElement.style.color = `${this.style.font_color === 'light'? 'white' : '#3f3f46'}`
     widgetIconElement.addEventListener("click", this.toggleOpen.bind(this));
     this.widgetIcon = widgetIconElement;
     /**
@@ -85,7 +86,7 @@ class SalezyWidget {
     const sendIconElement = document.createElement("div");
     sendIconElement.innerHTML = `<i class="fa-sharp fa-light fa-paper-plane-top"></i>`;
     sendIconElement.classList.add("widget__icon", "widget__hidden");
-    sendIconElement.style.color = `${JSON.parse(localStorage.getItem('chatbudy_style')).font_color === 'light'? 'white' : '#3f3f46'}`
+    sendIconElement.style.color = `${this.style.font_color === 'light'? 'white' : '#3f3f46'}`
     sendIconElement.addEventListener('click', () => {
       this.sendChat(this.chat_room_input)
       this.chat_room_input.value = '';
@@ -134,14 +135,14 @@ class SalezyWidget {
     */
     // TODO: Add a space to add the company logo, put it on left side of the header along with the close button to the right
     this.widgetContainer.innerHTML = `
-      <div style="background-color: ${JSON.parse(localStorage.getItem('chatbudy_style')).main_color}; color: ${JSON.parse(localStorage.getItem('chatbudy_style')).font_color === 'light'? 'white' : '#3f3f46'};" class="widget__header">
+      <div style="background-color: ${this.style.main_color}; color: ${this.style.font_color === 'light'? 'white' : '#3f3f46'};" class="widget__header">
         <div class="header-icons__container">
           <span class="close-icon">
             <i class="fa-solid fa-arrow-right-from-arc"></i>
           </span>
         </div>
         <div id="chatbot__status">
-          <h3 id="chatroom__title">${JSON.parse(localStorage.getItem('chatbudy_style')).admin_name}</h3>
+          <h3 id="chatroom__title">${this.style.admin_name}</h3>
           <p><i class="fa-solid fa-circle status-circle__icon ${this.adminStatus? "status__online" : "status__offline"}"></i>${this.adminStatus? "Online" : "Offline"}</p>
         </div>
       </div>
@@ -234,8 +235,8 @@ class SalezyWidget {
       chatBubbleDIV.appendChild(chatTextSpan);
     } else if(chat_type && chat_text) {
       chatBubbleDIV.classList.add(chat_type === "agent"? "left" : 'right');
-      chatBubbleDIV.style.backgroundColor = chat_type === "agent"? '#d6d6d6' : `${JSON.parse(localStorage.getItem('chatbudy_style')).main_color}`;
-      chatBubbleDIV.style.color = `${JSON.parse(localStorage.getItem('chatbudy_style')).font_color}` === 'light'? 'white' : '#3f3f46'
+      chatBubbleDIV.style.backgroundColor = chat_type === "agent"? '#d6d6d6' : `${this.style.main_color}`;
+      chatBubbleDIV.style.color = `${this.style.font_color}` === 'light'? 'white' : '#3f3f46'
       chatTextSpan.innerText = `${chat_text}`
       chatBubbleDIV.appendChild(chatTextSpan);
     }
