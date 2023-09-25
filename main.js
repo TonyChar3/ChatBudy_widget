@@ -39,13 +39,11 @@ class SalezyWidget {
   getPosition(position) {
     const [vertical, horizontal] = `bottom-${position}`.split('-')
     if(position === 'right'){
-      console.log('Will return this: ', { [vertical]: "28px", [horizontal]: '40px' })
       return {
         [vertical]: "28px",
         [horizontal]: "40px",
       }
     } else if (position === 'left'){
-      console.log('Will return this: ', { [vertical]: "28px", [horizontal]: '10px' })
       return {
         [vertical]: "28px",
         [horizontal]: "10px",
@@ -63,7 +61,6 @@ class SalezyWidget {
     container.classList.add("main__container");
     container.style.position = "fixed";
     container.style.zIndex = "20";
-    console.log('Setting position: ', this.position)
     Object.keys(this.position).forEach(
       (key) => (container.style[key] = this.position[key])
     );
@@ -125,8 +122,6 @@ class SalezyWidget {
     this.widgetContainer.classList.add("content__hidden");
     document.addEventListener("DOMContentLoaded", () => {
       if(!this.DOMLoaded) {
-        const admin_access = sessionStorage.getItem('chatbudy_state')
-        console.log('ad ac', admin_access )
         this.handleSSEConnection();
         this.DOMLoaded = true;
       }
@@ -470,6 +465,7 @@ class SalezyWidget {
   toggleOpen(){
     this.open = !this.open;
     if(this.open) {
+      this.position = 'left'? this.mainWidgetContainer.style.right = '48px' : ''
       this.widgetContainer.style.zIndex = 30
       this.buttonContainer.style.zIndex = 50
       this.SSElink ? this.SSElink.close() : '';// Shut off the SSE connection for the notifications
