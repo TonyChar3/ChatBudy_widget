@@ -119,7 +119,7 @@ class SalezyWidget {
      * Create a container for the widget and add classes
      */
     this.widgetContainer = document.createElement('div');
-    this.widgetContainer.classList.add("widget__content");
+    this.position === 'right'? this.widgetContainer.classList.add("widget__content") : this.widgetContainer.classList.add('widget__content-left')
     this.widgetContainer.classList.add("content__hidden");
     document.addEventListener("DOMContentLoaded", () => {
       if(!this.DOMLoaded) {
