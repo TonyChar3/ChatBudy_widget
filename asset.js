@@ -42,7 +42,7 @@ export const styles = `
     @media (min-width: 1024px){
         .widget-open__left {
             bottom: 28px;
-            left: 80px;
+            left: 500px;
         }
     }
     .widget-position__right {
@@ -60,7 +60,7 @@ export const styles = `
     @media (min-width: 1024px) {
         .widget-position-open__left {
             right: 0;
-            left: 500px;
+            left: 80px;
         }
     }
     .widget-button__container {
