@@ -229,6 +229,7 @@ export const styles = `
         height: auto;
         margin: 1.01em;
         border-radius: 0 0 10px 10px;
+        font-size: 1.1rem;
     }
     .chatroom__email-input-div,
     .closed__convo_btn-div {
