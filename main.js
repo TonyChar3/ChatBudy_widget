@@ -5,7 +5,7 @@ class SalezyWidget {
   constructor(position = `${JSON.parse(localStorage.getItem('chatbudy_style')).position}`) {
     this.position = position// save the position of the widget
     this.style = JSON.parse(localStorage.getItem('chatbudy_style'));
-    this.ask_email_copy = JSON.parse(localStorage.getItem('chatbudy_style')).greeting_message;
+    this.ask_email_copy = this.style.greeting_message;
     this.ask_email_page = true;// show the input for the email and the buttons & hide the chat input
     this.widgetID = JSON.parse(localStorage.getItem('chatbudy_state')).access_id// To identify the widget for each request he makes
     this.adminStatus = false;// To set the Online - Offline status of the admin in the widget header
