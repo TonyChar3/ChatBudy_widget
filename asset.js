@@ -279,13 +279,11 @@ export const styles = `
         transition: 0.2s all ease-in-out;
     }
     .chatroom__chat.left {
-        background-color: #d6d6d6;
         border-radius: 10px 10px 10px 0;
         align-self: flex-start;
         justify-self: flex-start;
     }
     .chatroom__chat.right {
-        background-color: #0c64f2;
         color: white;
         border-radius: 10px 10px 0 10px;
         align-self: flex-end;

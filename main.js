@@ -233,6 +233,7 @@ class SalezyWidget {
     } else if(chat_type && chat_text) {
       chatBubbleDIV.classList.add(chat_type === "agent"? "left" : 'right');
       chatBubbleDIV.style.backgroundColor = chat_type === "agent"? '#d6d6d6' : `${JSON.parse(localStorage.getItem('chatbudy_style')).main_color}`;
+      chatBubbleDIV.style.color = `${JSON.parse(localStorage.getItem('chatbudy_style').font_color)}` === 'light'? 'white' : '#3f3f46'
       chatTextSpan.innerText = `${chat_text}`
       chatBubbleDIV.appendChild(chatTextSpan);
     }
