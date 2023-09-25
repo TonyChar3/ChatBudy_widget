@@ -59,7 +59,7 @@ export const styles = `
     }
     @media (min-width: 1024px) {
         .widget-position-open__left {
-            left: 180px;
+            left: 500px;
         }
     }
     .widget-button__container {
