@@ -132,7 +132,7 @@ class SalezyWidget {
     */
     // TODO: Add a space to add the company logo, put it on left side of the header along with the close button to the right
     this.widgetContainer.innerHTML = `
-      <div class="widget__header">
+      <div style="background-color: ${JSON.parse(localStorage.getItem('chatbudy_style')).main_color}" class="widget__header">
         <div class="header-icons__container">
           <span class="close-icon">
             <i class="fa-solid fa-arrow-right-from-arc"></i>
@@ -204,10 +204,10 @@ class SalezyWidget {
     this.chat_input_divider = chatRoomInputDivider;
     this.close_button = closeButton;
 
-    this.chat_room_input.addEventListener('input', (event) => this.EmitIsTyping(event.target.value))
+    this.chat_room_input.addEventListener('input', (event) => this.EmitIsTyping(event.target.value));
     this.close_button.addEventListener("click", this.toggleOpen.bind(this));
-    this.chat_input_divider.classList.add("widget__hidden")
-    this.chat_room_input.classList.add("widget__hidden")
+    this.chat_input_divider.classList.add("widget__hidden");
+    this.chat_room_input.classList.add("widget__hidden");
   }
   /**
   * Add the style of the widget
@@ -232,6 +232,7 @@ class SalezyWidget {
       chatBubbleDIV.appendChild(chatTextSpan);
     } else if(chat_type && chat_text) {
       chatBubbleDIV.classList.add(chat_type === "agent"? "left" : 'right');
+      chatBubbleDIV.style.backgroundColor = chat_type === "agent"? '#d6d6d6' : `${JSON.parse(localStorage.getItem('chatbudy_style')).main_color}`;
       chatTextSpan.innerText = `${chat_text}`
       chatBubbleDIV.appendChild(chatTextSpan);
     }
