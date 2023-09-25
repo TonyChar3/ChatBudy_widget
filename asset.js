@@ -86,6 +86,7 @@ export const styles = `
           height: 70px;
         }
         .widget-button__open {
+            top: 0;
             bottom: 28px;
             left: 250px;
         }
