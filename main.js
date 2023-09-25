@@ -37,11 +37,20 @@ class SalezyWidget {
   widgetContent = null;
 
   getPosition(position) {
-    const [vertical, horizontal] = position.split("-");
-    return {
-      [vertical]: "28px",
-      [horizontal]: "40px",
-    };
+    // const [vertical, horizontal] = position.split("-");
+    let vertical;
+    let horizontal;
+    if(position === 'right'){
+      return {
+        [vertical]: "28px",
+        [horizontal]: "40px",
+      };
+    } else if (position === 'left'){
+      return {
+        [vertical]: "28px",
+        [horizontal]: "10px",
+      };
+    }
   }
   /**
    * Initialize the button and the div for the widget content
