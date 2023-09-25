@@ -328,7 +328,7 @@ export const styles = `
     @media (min-width: 1024px) {
         .chat__input {
             max-width: 100%;
-            height: 30%;
+            max-height: 30%;
             font-size: 1rem;
         }
     }
