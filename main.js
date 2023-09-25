@@ -465,7 +465,7 @@ class SalezyWidget {
   toggleOpen(){
     this.open = !this.open;
     if(this.open) {
-      this.position === 'bottom-left'? this.mainWidgetContainer.style.right = "48px" : ''
+      console.log('Widget current position: ', this.position)
       this.widgetContainer.style.zIndex = 30
       this.buttonContainer.style.zIndex = 50
       this.SSElink ? this.SSElink.close() : '';// Shut off the SSE connection for the notifications
