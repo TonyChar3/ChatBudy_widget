@@ -36,20 +36,6 @@ class SalezyWidget {
   info = false;
   widgetContent = null;
 
-  // getPosition(position) {
-  //   const [vertical, horizontal] = `bottom-${position}`.split('-')
-  //   if(position === 'right'){
-  //     return {
-  //       [vertical]: "28px",
-  //       [horizontal]: "40px",
-  //     }
-  //   } else if (position === 'left'){
-  //     return {
-  //       [vertical]: "28px",
-  //       [horizontal]: "40px",
-  //     }
-  //   }
-  // }
   /**
    * Initialize the button and the div for the widget content
    */
@@ -77,7 +63,7 @@ class SalezyWidget {
       case "square":
         buttonContainer.style.borderRadius = "15px";
         break;
-      case "circular":
+      case "circle":
         buttonContainer.style.borderRadius = "50%";
         break;
       default:
