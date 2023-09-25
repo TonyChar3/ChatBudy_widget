@@ -59,7 +59,7 @@ export const styles = `
     }
     @media (min-width: 1024px) {
         .widget-position-open__left {
-            left: 80px;
+            left: 180px;
         }
     }
     .widget-button__container {
@@ -136,23 +136,13 @@ export const styles = `
         justify-content: start;
         align-items: start;
     }
-    .widget__content {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        transition: transform .2s ease-in-out;
-        box-shadow: -3px 0px 19px -3px rgba(0,0,0,0.4);
-        scrollbar-width: thin;
-        scrollbar-color: #c9c8c5 transparent;
-    }
+    .widget__content,
     .widget__content-left {
         position: fixed;
         width: 100%;
         height: 100%;
         top: 0;
-        left: 0px;
+        left: 0;
         transition: transform .2s ease-in-out;
         box-shadow: -3px 0px 19px -3px rgba(0,0,0,0.4);
         scrollbar-width: thin;
