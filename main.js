@@ -465,7 +465,7 @@ class SalezyWidget {
   toggleOpen(){
     this.open = !this.open;
     if(this.open) {
-      this.position = 'left'? this.mainWidgetContainer.style.right = '48px' : ''
+      this.position = 'left'? this.mainWidgetContainer.style.left = '48px' : ''
       this.widgetContainer.style.zIndex = 30
       this.buttonContainer.style.zIndex = 50
       this.SSElink ? this.SSElink.close() : '';// Shut off the SSE connection for the notifications
@@ -477,6 +477,7 @@ class SalezyWidget {
     } else {
       this.createWidgetContent();
       this.handleSSEConnection();
+      this.position = 'left'? this.mainWidgetContainer.style.left = '10px' : ''
       this.widgetContainer.style.removeProperty('z-index');
       this.buttonContainer.style.removeProperty('z-index');
       this.widgetIcon.classList.remove("widget__hidden");
