@@ -40,15 +40,17 @@ class SalezyWidget {
     const [vertical, horizontal] = position
     console.log('Position: ', position)
     if(position === 'right'){
+      console.log('Will return this: ', { [vertical]: "28px", [horizontal]: '40px' })
       return {
         [vertical]: "28px",
         [horizontal]: "40px",
-      };
+      }
     } else if (position === 'left'){
+      console.log('Will return this: ', { [vertical]: "28px", [horizontal]: '10px' })
       return {
         [vertical]: "28px",
         [horizontal]: "10px",
-      };
+      }
     }
   }
   /**
