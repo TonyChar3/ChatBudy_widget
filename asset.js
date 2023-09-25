@@ -42,7 +42,7 @@ export const styles = `
     @media (min-width: 1024px){
         .widget-open__left {
             bottom: 28px;
-            left: 500px;
+            left: 40px;
         }
     }
     .widget-position__right {
@@ -60,7 +60,7 @@ export const styles = `
     @media (min-width: 1024px) {
         .widget-position-open__left {
             right: 0;
-            left: 80px;
+            left: 40px;
         }
     }
     .widget-button__container {
@@ -88,6 +88,7 @@ export const styles = `
         .widget-button__container {
           width: 70px;
           height: 70px;
+          left: 180px;
         }
     }
     .chatroom__wrapper.hidden {
