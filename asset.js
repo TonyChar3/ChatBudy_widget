@@ -30,14 +30,9 @@ export const styles = `
     .content__hidden {
         transform: scale(0);
     }
-    .widget-position__right,
-    .widget-open__left {
+    .widget-position__right {
         bottom: 28px;
         right: 40px;
-    }
-    .widget-position__left {
-        bottom: 28px;
-        left: 10px;
     }
     @media (min-width: 1024px){
         .widget-open__left {
@@ -56,12 +51,6 @@ export const styles = `
     .widget-position-open__left {
         left: 0;
         right: 40px;
-    }
-    @media (min-width: 1024px) {
-        .widget-position-open__left {
-            right: 0;
-            left: 40px;
-        }
     }
     .widget-button__container {
         position: relative;
@@ -88,7 +77,9 @@ export const styles = `
         .widget-button__container {
           width: 70px;
           height: 70px;
-          left: 180px;
+        }
+        .widget-button__open {
+            left: 300px;
         }
     }
     .chatroom__wrapper.hidden {
