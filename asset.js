@@ -86,7 +86,8 @@ export const styles = `
           height: 70px;
         }
         .widget-button__open {
-            left: 300px;
+            bottom: 28px
+            left: 250px;
         }
     }
     .chatroom__wrapper.hidden {
