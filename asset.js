@@ -50,7 +50,7 @@ export const styles = `
     }
     .widget-position__left {
         bottom: 28px;
-        left: 10px;
+        left: 40px;
     }
     .widget-position-open__left {
         left: 0;
