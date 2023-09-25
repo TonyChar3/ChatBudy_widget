@@ -58,6 +58,7 @@ class SalezyWidget {
      */
     const buttonContainer = document.createElement("button");
     buttonContainer.classList.add("widget-button__container");
+    buttonContainer.style.color = `${JSON.parse(localStorage.getItem('chatbudy_style')).font_color === 'light'? 'white' : '#3f3f46'}`
     buttonContainer.style.backgroundColor = `${JSON.parse(localStorage.getItem('chatbudy_style')).main_color}`;
     switch (JSON.parse(localStorage.getItem('chatbudy_style')).shape){
       case "square":
