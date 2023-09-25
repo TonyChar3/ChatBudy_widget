@@ -96,8 +96,6 @@ export const styles = `
     }
     .widget__header {
         padding: 1em;
-        color: #fff;
-        background-color: #0c64f2;
         box-shadow: inset 0px -26px 31px -30px rgba(255,255,255,0.9);
         border-bottom: 1px;
         boder-color: transparent;
