@@ -135,9 +135,15 @@ const SetupIframe = async (Iframe_element) => {
                  * Setting up Google Fonts & Font awesome for the widget
                  */
                 // <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
-                // const iframe_head_script = iframeDocument.createElement("script")
-                // iframe_head_script.src = "https://kit.fontawesome.com/76351f6769.js";
-                // iframe_head_script.crossOrigin = "anonymous";
+                const parentScriptExists = Array.from(document.head.getElementsByTagName('script')).some((script) => {
+                    return script.src === 'https://kit.fontawesome.com/76351f6769.js';
+                });
+                if(!parentScriptExists){
+                    const iframe_head_script = iframeDocument.createElement("script")
+                    iframe_head_script.src = "https://kit.fontawesome.com/76351f6769.js";
+                    iframe_head_script.crossOrigin = "anonymous";
+                    iframeDocument.head.appendChild(iframe_head_script)
+                }
                 // <link rel="preconnect" href="https://fonts.googleapis.com">
                 const iframe_link1 = iframeDocument.createElement("link")
                 iframe_link1.rel = "preconnect";
@@ -156,7 +162,6 @@ const SetupIframe = async (Iframe_element) => {
                 iframe_script.src = "https://chat-buddy-widget.vercel.app/chatBudy.js"
                 iframe_script.type = "module"
                 iframe_script.async = true
-                // iframeDocument.head.appendChild(iframe_head_script)
                 iframeDocument.head.appendChild(iframe_link1)
                 iframeDocument.head.appendChild(iframe_link2)
                 iframeDocument.body.appendChild(iframe_script)
