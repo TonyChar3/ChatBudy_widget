@@ -34,12 +34,12 @@ const SetupIframe = async (Iframe_element) => {
         document.body.appendChild(Iframe_element);
         const parentScriptExists = Array.from(document.head.getElementsByTagName('script')).some((script) => {
             if(script.src === 'https://kit.fontawesome.com/76351f6769.js'){
-                return true;
+                console.log('existe', parentScriptExists)
+                return
             } else {
-                return false;
+                return
             }
         });
-        console.log('existe', parentScriptExists)
         // Wait for the iframe to load
         Iframe_element.onload = async () => {
             // You can now manipulate the content of the iframe if needed
