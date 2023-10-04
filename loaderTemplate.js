@@ -20,64 +20,66 @@ function setCookie(name, value) {
  */
 const SetupIframe = async (Iframe_element) => {
     try {
-        // Define the initial HTML content
-        const initialHTML = `<!DOCTYPE html></html>`;
-        const token = getCookie("visitor_jwt");
-        if (!token) {
-            return;
-        }
-        Iframe_element.style.display = "none";
-        Iframe_element.title = "ChatBudy chat widget code";
-        // Set the srcdoc attribute to the initial HTML content
-        Iframe_element.setAttribute('srcdoc', initialHTML);
-        // Append the iframe to the body
-        document.body.appendChild(Iframe_element);
-        // Wait for the iframe to load
-        Iframe_element.onload = async () => {
-            // You can now manipulate the content of the iframe if needed
-            const iframeDocument = Iframe_element.contentDocument;
-            if (iframeDocument) {
-                /**
-                 * Setting up Google Fonts & Font awesome for the widget
-                 */
-                // <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
-                    // const iframe_head_script = iframeDocument.createElement("script")
-                    // iframe_head_script.src = "https://kit.fontawesome.com/76351f6769.js";
-                    // iframe_head_script.crossOrigin = "anonymous";
-                    // iframeDocument.head.appendChild(iframe_head_script)
-                // <link rel="preconnect" href="https://fonts.googleapis.com">
-                const verify_header = Array.from(document.head.getElementsByTagName('script')).some((script) => {
-                    if(script.src === 'https://kit.fontawesome.com/76351f6769.js'){
-                        return true;
-                    } else {
-                        return false;
-                    }
-                });
-                if(!verify_header) {
-                    console.log('installing....')
-                }
-                const iframe_link1 = iframeDocument.createElement("link")
-                iframe_link1.rel = "preconnect";
-                iframe_link1.href = "https://fonts.googleapis.com";
-                // <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                const iframe_link2 = iframeDocument.createElement("link")
-                iframe_link2.rel = "preconnect";
-                iframe_link2.href = "https://fonts.gstatic.com";
-                iframe_link2.crossOrigin = true;
-                // <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
-                const iframe_stylesheet = iframeDocument.createElement("link")
-                iframe_stylesheet.rel = "stylesheet";
-                iframe_stylesheet.href = "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap";
-
-                const iframe_script = iframeDocument.createElement("script")
-                iframe_script.src = "https://chat-buddy-widget.vercel.app/chatBudy.js"
-                iframe_script.type = "module"
-                iframe_script.async = true
-                iframeDocument.head.appendChild(iframe_link1)
-                iframeDocument.head.appendChild(iframe_link2)
-                iframeDocument.body.appendChild(iframe_script)
+        if(Iframe_element){
+            // Define the initial HTML content
+            const initialHTML = `<!DOCTYPE html></html>`;
+            const token = getCookie("visitor_jwt");
+            if (!token) {
+                return;
             }
-        };
+            Iframe_element.style.display = "none";
+            Iframe_element.title = "ChatBudy chat widget code";
+            // Set the srcdoc attribute to the initial HTML content
+            Iframe_element.setAttribute('srcdoc', initialHTML);
+            // Append the iframe to the body
+            document.body.appendChild(Iframe_element);
+            // Wait for the iframe to load
+            Iframe_element.onload = async () => {
+                // You can now manipulate the content of the iframe if needed
+                const iframeDocument = Iframe_element.contentDocument;
+                if (iframeDocument) {
+                    /**
+                     * Setting up Google Fonts & Font awesome for the widget
+                     */
+                    // <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
+                        // const iframe_head_script = iframeDocument.createElement("script")
+                        // iframe_head_script.src = "https://kit.fontawesome.com/76351f6769.js";
+                        // iframe_head_script.crossOrigin = "anonymous";
+                        // iframeDocument.head.appendChild(iframe_head_script)
+                    // <link rel="preconnect" href="https://fonts.googleapis.com">
+                    const verify_header = Array.from(document.head.getElementsByTagName('script')).some((script) => {
+                        if(script.src === 'https://kit.fontawesome.com/76351f6769.js'){
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    });
+                    if(!verify_header) {
+                        console.log('installing....')
+                    }
+                    const iframe_link1 = iframeDocument.createElement("link")
+                    iframe_link1.rel = "preconnect";
+                    iframe_link1.href = "https://fonts.googleapis.com";
+                    // <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                    const iframe_link2 = iframeDocument.createElement("link")
+                    iframe_link2.rel = "preconnect";
+                    iframe_link2.href = "https://fonts.gstatic.com";
+                    iframe_link2.crossOrigin = true;
+                    // <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
+                    const iframe_stylesheet = iframeDocument.createElement("link")
+                    iframe_stylesheet.rel = "stylesheet";
+                    iframe_stylesheet.href = "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap";
+
+                    const iframe_script = iframeDocument.createElement("script")
+                    iframe_script.src = "https://chat-buddy-widget.vercel.app/chatBudy.js"
+                    iframe_script.type = "module"
+                    iframe_script.async = true
+                    iframeDocument.head.appendChild(iframe_link1)
+                    iframeDocument.head.appendChild(iframe_link2)
+                    iframeDocument.body.appendChild(iframe_script)
+                }
+            };
+        }
     } catch (err) {
         console.log("ERROR setting up the widget connection: ", err);
     }
