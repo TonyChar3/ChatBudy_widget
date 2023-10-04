@@ -47,17 +47,6 @@ const SetupIframe = async (Iframe_element) => {
                         // iframe_head_script.crossOrigin = "anonymous";
                         // iframeDocument.head.appendChild(iframe_head_script)
                     // <link rel="preconnect" href="https://fonts.googleapis.com">
-                    const verify_header = Array.from(document.head.getElementsByTagName('script')).some((script) => {
-                        if(script.src === 'https://kit.fontawesome.com/76351f6769.js'){
-                            return true;
-                        } else {
-                            console.log('falseyyy')
-                            return false;
-                        }
-                    });
-                    if(verify_header) {
-                        console.log(verify_header)
-                    }
                     const iframe_link1 = iframeDocument.createElement("link")
                     iframe_link1.rel = "preconnect";
                     iframe_link1.href = "https://fonts.googleapis.com";
