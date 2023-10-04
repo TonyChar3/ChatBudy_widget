@@ -195,13 +195,11 @@ const initializeLoader = async() => {
     // load visitor chat session + his info
     LoadUpsequence(useraccess);
     // load the style of the widget
-    const styling = await GetWidgetStyle(useraccess);
-    if(styling){
-        // Create the iframe element with srcdoc
-        const Iframe = document.createElement('iframe');
-        // Setting up the Iframe in the document
-        SetupIframe(Iframe);
-    }
+    GetWidgetStyle(useraccess);
+    // Create the iframe element with srcdoc
+    const Iframe = document.createElement('iframe');
+    // Setting up the Iframe in the document
+    SetupIframe(Iframe);
 
 }
 document.addEventListener('DOMContentLoaded', () => {
