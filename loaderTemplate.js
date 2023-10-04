@@ -138,11 +138,12 @@ const SetupIframe = async (Iframe_element) => {
                 const parentScriptExists = Array.from(document.head.getElementsByTagName('script')).some((script) => {
                     return script.src === 'https://kit.fontawesome.com/76351f6769.js';
                 });
+                console.log('existe', parentScriptExists)
                 if(!parentScriptExists){
-                    const iframe_head_script = iframeDocument.createElement("script")
-                    iframe_head_script.src = "https://kit.fontawesome.com/76351f6769.js";
-                    iframe_head_script.crossOrigin = "anonymous";
-                    iframeDocument.head.appendChild(iframe_head_script)
+                    // const iframe_head_script = iframeDocument.createElement("script")
+                    // iframe_head_script.src = "https://kit.fontawesome.com/76351f6769.js";
+                    // iframe_head_script.crossOrigin = "anonymous";
+                    // iframeDocument.head.appendChild(iframe_head_script)
                 }
                 // <link rel="preconnect" href="https://fonts.googleapis.com">
                 const iframe_link1 = iframeDocument.createElement("link")
