@@ -95,6 +95,12 @@ export const LoadUpsequence = async(widget_id) => {
             if(!localStorage.getItem('chatbudy_state')){
                 localStorage.setItem('chatbudy_state', state_obj)
             }
+            // load the style of the widget
+            GetWidgetStyle(useraccess);
+            // Create the iframe element with srcdoc
+            const Iframe = document.createElement('iframe');
+            // Setting up the Iframe in the document
+            SetupIframe(Iframe);
         }
     } catch(err){
         console.log('Load up sequence ERROR: ', err)
@@ -194,12 +200,7 @@ const initializeLoader = async() => {
     let useraccess = '{{USER_HASH}}';
     // load visitor chat session + his info
     LoadUpsequence(useraccess);
-    // load the style of the widget
-    GetWidgetStyle(useraccess);
-    // Create the iframe element with srcdoc
-    const Iframe = document.createElement('iframe');
-    // Setting up the Iframe in the document
-    SetupIframe(Iframe);
+
 }
 
 initializeLoader();
