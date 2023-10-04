@@ -180,10 +180,6 @@ export const initiateChat = async(widget_id) => {
 export const LoadUpsequence = async(widget_id) => {
     try{
         if (sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
-            // Create the iframe element with srcdoc
-            const Iframe = document.createElement('iframe');
-            // Setting up the Iframe in the document
-            SetupIframe(Iframe);
             return
         }
         const response = await fetch(`http://localhost:8080/visitor/visitor-info`,{
@@ -202,10 +198,6 @@ export const LoadUpsequence = async(widget_id) => {
                 localStorage.setItem('chatbudy_state', state_obj)
             }
             await GetWidgetStyle(widget_id);
-            // Create the iframe element with srcdoc
-            const Iframe = document.createElement('iframe');
-            // Setting up the Iframe in the document
-            SetupIframe(Iframe);
         }
     } catch(err){
         console.log('Load up sequence ERROR: ', err)
@@ -218,6 +210,10 @@ const initializeLoader = async() => {
     LoadUpsequence(useraccess);
 }
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('That was not working')
     initializeLoader();
+    console.log('That was not working')
+    // Create the iframe element with srcdoc
+    const Iframe = document.createElement('iframe');
+    // Setting up the Iframe in the document
+    SetupIframe(Iframe);
 });
