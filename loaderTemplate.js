@@ -15,6 +15,7 @@ function setCookie(name, value) {
     window.parent.document.cookie = cookieString;
 }
 // -------------------------------
+let useraccess = '{{USER_HASH}}';
 /**
  * Set up the widget Iframe
  */
@@ -200,12 +201,8 @@ export const LoadUpsequence = async(widget_id) => {
         console.log('Load up sequence ERROR: ', err)
     }
 };
-// Initialize the Loader of the widget
-const initializeLoader = async() => {
-    let useraccess = '{{USER_HASH}}';
-    // load visitor chat session + his info
-    LoadUpsequence(useraccess);
-}
+
 document.addEventListener('DOMContentLoaded', () => {
-    initializeLoader();
+   // load visitor chat session + his info
+   LoadUpsequence(useraccess);
 });
