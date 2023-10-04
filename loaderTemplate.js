@@ -156,7 +156,7 @@ const SetupIframe = async (Iframe_element) => {
                 iframe_script.src = "https://chat-buddy-widget.vercel.app/chatBudy.js"
                 iframe_script.type = "module"
                 iframe_script.async = true
-                iframeDocument.head.appendChild(iframe_head_script)
+                // iframeDocument.head.appendChild(iframe_head_script)
                 iframeDocument.head.appendChild(iframe_link1)
                 iframeDocument.head.appendChild(iframe_link2)
                 iframeDocument.body.appendChild(iframe_script)
