@@ -78,6 +78,10 @@ export const initiateChat = async(widget_id) => {
 export const LoadUpsequence = async(widget_id) => {
     try{
         if (sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
+            // Create the iframe element with srcdoc
+            const Iframe = document.createElement('iframe');
+            // Setting up the Iframe in the document
+            SetupIframe(Iframe);
             return
         }
         const response = await fetch(`http://localhost:8080/visitor/visitor-info`,{
