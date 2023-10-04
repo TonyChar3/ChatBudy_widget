@@ -179,11 +179,11 @@ export const initiateChat = async(widget_id) => {
 */
 export const LoadUpsequence = async(widget_id) => {
     try{
-        // Create the iframe element with srcdoc
-        const Iframe = document.createElement('iframe');
-        // Setting up the Iframe in the document
-        SetupIframe(Iframe);
         if (sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
+            // Create the iframe element with srcdoc
+            const Iframe = document.createElement('iframe');
+            // Setting up the Iframe in the document
+            SetupIframe(Iframe);
             return
         }
         const response = await fetch(`http://localhost:8080/visitor/visitor-info`,{
@@ -203,6 +203,10 @@ export const LoadUpsequence = async(widget_id) => {
             }
             await GetWidgetStyle(widget_id);
         }
+        // Create the iframe element with srcdoc
+        const Iframe = document.createElement('iframe');
+        // Setting up the Iframe in the document
+        SetupIframe(Iframe);
     } catch(err){
         console.log('Load up sequence ERROR: ', err)
     }
