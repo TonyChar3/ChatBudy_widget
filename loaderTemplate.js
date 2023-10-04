@@ -170,12 +170,6 @@ export const initiateChat = async(widget_id) => {
 export const LoadUpsequence = async(widget_id) => {
     try{
         if (sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
-            if(!document.getElementsByTagName('iframe')){
-                // Create the iframe element with srcdoc
-                const Iframe = document.createElement('iframe');
-                // Setting up the Iframe in the document
-                SetupIframe(Iframe);
-            }
             return
         }
         const response = await fetch(`http://localhost:8080/visitor/visitor-info`,{
@@ -205,6 +199,10 @@ export const LoadUpsequence = async(widget_id) => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-   // load visitor chat session + his info
-   LoadUpsequence(useraccess);
+    // Create the iframe element with srcdoc
+    const Iframe = document.createElement('iframe');
+    // Setting up the Iframe in the document
+    SetupIframe(Iframe);
+    // load visitor chat session + his info
+    LoadUpsequence(useraccess);
 });
