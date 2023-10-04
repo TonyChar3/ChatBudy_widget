@@ -16,100 +16,6 @@ function setCookie(name, value) {
 }
 // -------------------------------
 /**
-* Set up a new visitor
-*/
-export const setNewVisitor = async(visitor_data, widget_id) => {
-    try{
-        const newVisitor = {
-            isoCode: visitor_data.info.country.iso_code,
-            browser: navigator.userAgent
-        }
-        const visitor = await fetch(`http://localhost:8080/visitor/new-visitor-${widget_id}`,{
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newVisitor)
-        });
-
-        const data = await visitor.json()
-        setCookie('visitor_jwt', data.visitorToken.jwtToken)
-        return true
-    } catch(err){
-        console.log(err)
-        return false
-    }
-
-};
-/**
-* Create a new chat room - Salesman
-*/
-export const initiateChat = async(widget_id) => {
-    try{
-        const chat = {
-            u_hash: widget_id
-        }
-        const token = getCookie('visitor_jwt');
-        if(token){
-            const start_chat = await fetch('http://localhost:8080/chat/new-room',{
-                method: 'post',
-                headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token
-                },
-                body: JSON.stringify(chat)
-            });
-
-            if (!start_chat) {
-                console.log('No chatrooms found...reset everything')
-            }
-
-            return true
-        }
-
-    } catch(err){
-        console.log(err);
-        return false
-    }
-};
-/**
-* Get the visitor info once it loads up
-*/
-export const LoadUpsequence = async(widget_id) => {
-    try{
-        if (sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
-            // Create the iframe element with srcdoc
-            const Iframe = document.createElement('iframe');
-            // Setting up the Iframe in the document
-            SetupIframe(Iframe);
-            return
-        }
-        const response = await fetch(`http://localhost:8080/visitor/visitor-info`,{
-            method: 'get',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        const data = await response.json();
-        const new_visitor = await setNewVisitor(data, widget_id)
-        const new_chat = await initiateChat(widget_id)
-        if(new_chat && new_visitor){
-            sessionStorage.setItem('widgetLoaded', true);
-            const state_obj = JSON.stringify({access_id: widget_id})
-            if(!localStorage.getItem('chatbudy_state')){
-                localStorage.setItem('chatbudy_state', state_obj)
-            }
-            await GetWidgetStyle(widget_id);
-            // Create the iframe element with srcdoc
-            const Iframe = document.createElement('iframe');
-            // Setting up the Iframe in the document
-            SetupIframe(Iframe);
-        }
-    } catch(err){
-        console.log('Load up sequence ERROR: ', err)
-    }
-};
-/**
  * Set up the widget Iframe
  */
 const SetupIframe = async (Iframe_element) => {
@@ -206,6 +112,100 @@ const GetWidgetStyle = async(widget_id) => {
         console.log('ERROR setting up the widget style: ', err);
     }
 }
+/**
+* Set up a new visitor
+*/
+export const setNewVisitor = async(visitor_data, widget_id) => {
+    try{
+        const newVisitor = {
+            isoCode: visitor_data.info.country.iso_code,
+            browser: navigator.userAgent
+        }
+        const visitor = await fetch(`http://localhost:8080/visitor/new-visitor-${widget_id}`,{
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newVisitor)
+        });
+
+        const data = await visitor.json()
+        setCookie('visitor_jwt', data.visitorToken.jwtToken)
+        return true
+    } catch(err){
+        console.log(err)
+        return false
+    }
+
+};
+/**
+* Create a new chat room - Salesman
+*/
+export const initiateChat = async(widget_id) => {
+    try{
+        const chat = {
+            u_hash: widget_id
+        }
+        const token = getCookie('visitor_jwt');
+        if(token){
+            const start_chat = await fetch('http://localhost:8080/chat/new-room',{
+                method: 'post',
+                headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+                },
+                body: JSON.stringify(chat)
+            });
+
+            if (!start_chat) {
+                console.log('No chatrooms found...reset everything')
+            }
+
+            return true
+        }
+
+    } catch(err){
+        console.log(err);
+        return false
+    }
+};
+/**
+* Get the visitor info once it loads up
+*/
+export const LoadUpsequence = async(widget_id) => {
+    try{
+        if (sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
+            // Create the iframe element with srcdoc
+            const Iframe = document.createElement('iframe');
+            // Setting up the Iframe in the document
+            SetupIframe(Iframe);
+            return
+        }
+        const response = await fetch(`http://localhost:8080/visitor/visitor-info`,{
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        const new_visitor = await setNewVisitor(data, widget_id)
+        const new_chat = await initiateChat(widget_id)
+        if(new_chat && new_visitor){
+            sessionStorage.setItem('widgetLoaded', true);
+            const state_obj = JSON.stringify({access_id: widget_id})
+            if(!localStorage.getItem('chatbudy_state')){
+                localStorage.setItem('chatbudy_state', state_obj)
+            }
+            await GetWidgetStyle(widget_id);
+            // Create the iframe element with srcdoc
+            const Iframe = document.createElement('iframe');
+            // Setting up the Iframe in the document
+            SetupIframe(Iframe);
+        }
+    } catch(err){
+        console.log('Load up sequence ERROR: ', err)
+    }
+};
 // Initialize the Loader of the widget
 const initializeLoader = async() => {
     let useraccess = '{{USER_HASH}}';
