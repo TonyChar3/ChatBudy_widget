@@ -55,8 +55,8 @@ const SetupIframe = async (Iframe_element) => {
                             return false;
                         }
                     });
-                    if(!verify_header) {
-                        console.log('installing....')
+                    if(verify_header) {
+                        console.log(verify_header)
                         return
                     }
                     const iframe_link1 = iframeDocument.createElement("link")
