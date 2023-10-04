@@ -193,15 +193,13 @@ const GetWidgetStyle = async(widget_id) => {
 const initializeLoader = async() => {
     let useraccess = '{{USER_HASH}}';
     // load visitor chat session + his info
-    const loadup = await LoadUpsequence(useraccess);
-    if(loadup){
-        // load the style of the widget
-        GetWidgetStyle(useraccess);
-        // Create the iframe element with srcdoc
-        const Iframe = document.createElement('iframe');
-        // Setting up the Iframe in the document
-        SetupIframe(Iframe);
-    }
+    LoadUpsequence(useraccess);
+    // load the style of the widget
+    GetWidgetStyle(useraccess);
+    // Create the iframe element with srcdoc
+    const Iframe = document.createElement('iframe');
+    // Setting up the Iframe in the document
+    SetupIframe(Iframe);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
