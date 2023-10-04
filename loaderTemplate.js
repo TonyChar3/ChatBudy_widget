@@ -179,6 +179,10 @@ export const initiateChat = async(widget_id) => {
 */
 export const LoadUpsequence = async(widget_id) => {
     try{
+        // Create the iframe element with srcdoc
+        const Iframe = document.createElement('iframe');
+        // Setting up the Iframe in the document
+        SetupIframe(Iframe);
         if (sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
             return
         }
@@ -211,9 +215,4 @@ const initializeLoader = async() => {
 }
 document.addEventListener('DOMContentLoaded', () => {
     initializeLoader();
-    console.log('That was not working')
-    // Create the iframe element with srcdoc
-    const Iframe = document.createElement('iframe');
-    // Setting up the Iframe in the document
-    SetupIframe(Iframe);
 });
