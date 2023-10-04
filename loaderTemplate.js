@@ -51,6 +51,7 @@ const SetupIframe = async (Iframe_element) => {
                         if(script.src === 'https://kit.fontawesome.com/76351f6769.js'){
                             return true;
                         } else {
+                            console.log('falseyyy')
                             return false;
                         }
                     });
