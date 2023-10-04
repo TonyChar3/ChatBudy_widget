@@ -48,9 +48,10 @@ const SetupIframe = async (Iframe_element) => {
                 // <link rel="preconnect" href="https://fonts.googleapis.com">
                 const parentScriptExists = Array.from(document.head.getElementsByTagName('script')).some((script) => {
                     if(script.src === 'https://kit.fontawesome.com/76351f6769.js'){
-                        console.log('existe', parentScriptExists)
+                        console.log('true')
                         return
                     } else {
+                        console.log('false')
                         return
                     }
                 });
