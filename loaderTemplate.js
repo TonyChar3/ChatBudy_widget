@@ -127,7 +127,11 @@ const SetupIframe = async (Iframe_element) => {
         // Append the iframe to the body
         document.body.appendChild(Iframe_element);
         const parentScriptExists = Array.from(document.head.getElementsByTagName('script')).some((script) => {
-            return script.src === 'https://kit.fontawesome.com/76351f6769.js';
+            if(script.src === 'https://kit.fontawesome.com/76351f6769.js'){
+                return true;
+            } else {
+                return false;
+            }
         });
         console.log('existe', parentScriptExists)
         // Wait for the iframe to load
