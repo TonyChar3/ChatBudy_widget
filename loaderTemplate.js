@@ -135,9 +135,9 @@ const SetupIframe = async (Iframe_element) => {
                  * Setting up Google Fonts & Font awesome for the widget
                  */
                 // <script src="https://kit.fontawesome.com/76351f6769.js" crossorigin="anonymous"></script>
-                const iframe_head_script = iframeDocument.createElement("script")
-                iframe_head_script.src = "https://kit.fontawesome.com/76351f6769.js";
-                iframe_head_script.crossOrigin = "anonymous";
+                // const iframe_head_script = iframeDocument.createElement("script")
+                // iframe_head_script.src = "https://kit.fontawesome.com/76351f6769.js";
+                // iframe_head_script.crossOrigin = "anonymous";
                 // <link rel="preconnect" href="https://fonts.googleapis.com">
                 const iframe_link1 = iframeDocument.createElement("link")
                 iframe_link1.rel = "preconnect";
