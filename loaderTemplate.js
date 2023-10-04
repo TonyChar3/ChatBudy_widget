@@ -192,7 +192,6 @@ const GetWidgetStyle = async(widget_id) => {
 // Initialize the Loader of the widget
 const initializeLoader = async() => {
     let useraccess = '{{USER_HASH}}';
-    console.log('Loading...')
     // load visitor chat session + his info
     LoadUpsequence(useraccess);
     // load the style of the widget
