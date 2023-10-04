@@ -56,6 +56,7 @@ const SetupIframe = async (Iframe_element) => {
                     });
                     if(!verify_header) {
                         console.log('installing....')
+                        return
                     }
                     const iframe_link1 = iframeDocument.createElement("link")
                     iframe_link1.rel = "preconnect";
