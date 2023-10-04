@@ -197,12 +197,12 @@ const initializeLoader = async() => {
     LoadUpsequence(useraccess);
     // load the style of the widget
     GetWidgetStyle(useraccess);
-    // Create the iframe element with srcdoc
-    const Iframe = document.createElement('iframe');
-    // Setting up the Iframe in the document
-    SetupIframe(Iframe);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     initializeLoader();
+    // Create the iframe element with srcdoc
+    const Iframe = document.createElement('iframe');
+    // Setting up the Iframe in the document
+    SetupIframe(Iframe);
 });
