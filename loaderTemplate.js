@@ -203,8 +203,7 @@ const initializeLoader = async() => {
 
 }
 
-initializeLoader();
-
 document.addEventListener('DOMContentLoaded', () => {
     console.log('That was not working')
+    initializeLoader();
 });
