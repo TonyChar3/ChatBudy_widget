@@ -419,7 +419,7 @@ export const openChat = async(widget_id, sse_connection) => {
                 const data = await ws_auth_fetch.json();
                 if(data.visitor_not_found){
                     // close the SSE connection
-                    sse_connection.close()
+                    sse_connection.close();
                     // Remove widgetLoaded from session storage
                     sessionStorage.removeItem('widgetLoaded');
                     // remove the state and access id of the widget
@@ -482,7 +482,6 @@ export const sendChat = (input) => {
         }
     }
 };
-
 /**
  * To send the isTyping action
  */
@@ -543,7 +542,6 @@ export const SetupSSEconnection = async(widget_id) => {
 /**
  * Dev env set a cookie
  */
-
 function getCookie(name) {
     const cookieString = window.parent.document.cookie
     const cookies = cookieString.split('; ');

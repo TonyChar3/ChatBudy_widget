@@ -1,5 +1,5 @@
 import { styles, openChat, stopChat, sendChat, EmitIsTyping, SetVisitorEmail, getWSlink, SetupSSEconnection } from "./asset.js";
-import { LoadUpsequence } from "./LoaderTemplate.js";
+import { LoadUpsequence } from "./loaderTemplate.js";
 
 class SalezyWidget {
   constructor(position = `${JSON.parse(localStorage.getItem('chatbudy_style')).position}`) {
@@ -16,7 +16,7 @@ class SalezyWidget {
     this.SSElink = null;// Initialize the sse link variable
     this.initialize();// To invoke and display the UI for our widget in the DOM
     this.injectWidgetStyles();// To invoke and add the styling
-    this.LoadUpsequence = LoadUpsequence
+    this.LoadUpsequence = LoadUpsequence;
     this.LoadUpsequence();
     this.openChat = openChat;
     this.openChat();

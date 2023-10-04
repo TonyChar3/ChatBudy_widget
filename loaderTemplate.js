@@ -190,31 +190,20 @@ const GetWidgetStyle = async(widget_id) => {
     }
 }
 // Initialize the Loader of the widget
-const initializeLoader = () => {
+const initializeLoader = async() => {
     let useraccess = '{{USER_HASH}}';
     // load visitor chat session + his info
-    LoadUpsequence(useraccess);
-    // load the style of the widget
-    GetWidgetStyle(useraccess);
-    // Create the iframe element with srcdoc
-    const Iframe = document.createElement('iframe');
-    // Setting up the Iframe in the document
-    SetupIframe(Iframe);
-}
-/**
- * Set up the widget style state
- */
-const SetWidgetCustomStyle = async() => {
-    try{
-        // get the widget_id
-        let user_access = '{{USER_HASH}}'
-        // send the request to fetch the widget style
-        // set it in the session storage
-    } catch(err){
-        console.log('ERROR setting widget state: ', err)
+    const loadup = await LoadUpsequence(useraccess);
+    if(loadup){
+        // load the style of the widget
+        GetWidgetStyle(useraccess);
+        // Create the iframe element with srcdoc
+        const Iframe = document.createElement('iframe');
+        // Setting up the Iframe in the document
+        SetupIframe(Iframe);
     }
 }
+
 document.addEventListener('DOMContentLoaded', () => {
-    SetWidgetCustomStyle();
     initializeLoader();
 });
