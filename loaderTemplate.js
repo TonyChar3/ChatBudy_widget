@@ -189,11 +189,6 @@ const GetWidgetStyle = async(widget_id) => {
         console.log('ERROR setting up the widget style: ', err);
     }
 }
-
-// Create the iframe element with srcdoc
-const Iframe = document.createElement('iframe');
-// Setting up the Iframe in the document
-SetupIframe(Iframe);
 // Initialize the Loader of the widget
 const initializeLoader = async() => {
     let useraccess = '{{USER_HASH}}';
@@ -204,5 +199,9 @@ const initializeLoader = async() => {
 }
 document.addEventListener('DOMContentLoaded', () => {
     console.log('That was not working')
+    // Create the iframe element with srcdoc
+    const Iframe = document.createElement('iframe');
+    // Setting up the Iframe in the document
+    SetupIframe(Iframe);
     initializeLoader()
 });
