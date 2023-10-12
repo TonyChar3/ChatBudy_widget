@@ -139,7 +139,7 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
 export const initiateChat = async(widget_id) => {
     try{
         const chat = {
-            u_hash: widget_id
+            user_hash: widget_id
         }
         const token = getCookie('visitor_jwt');
         if(token){
