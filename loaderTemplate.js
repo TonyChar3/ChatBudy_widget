@@ -125,6 +125,7 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
         });
 
         const data = await visitor.json()
+        console.log(data);
         setCookie('visitor_jwt', data.visitorToken.jwtToken)
         return true
     } catch(err){
