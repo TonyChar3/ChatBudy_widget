@@ -189,7 +189,7 @@ export const styles = `
     .mute-notification-icon {
         position: absolute;
         margin: .2em;
-        right: .12em;
+        right: 10%;
         cursor: pointer;
     }
     .close-icon {
