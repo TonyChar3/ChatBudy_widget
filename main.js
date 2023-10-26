@@ -10,6 +10,7 @@ class SalezyWidget {
     this.widgetID = JSON.parse(localStorage.getItem('chatbudy_state')).access_id// To identify the widget for each request he makes
     this.adminStatus = false;// To set the Online - Offline status of the admin in the widget header
     this.DOMLoaded = false;
+    this.mute_sound = false;// to mute the notification sound if the user want to
     this.open = false;// the state of the widget Open/Close
     this.visitor = {};// state for the visitor of the website
     this.unreadChatCount = 0;// Initialize the unread chat count to zero
@@ -452,8 +453,11 @@ class SalezyWidget {
     this.SSElink.addEventListener('message', (event) => {
       const number_unreadchat = JSON.parse(event.data)
       if(number_unreadchat > 0){
+        if(!this.mute_sound){
+          this.notification_sound.play();
+        }
         this.unreadChatCountSpan.textContent = number_unreadchat
-        this.buttonContainer.appendChild(this.unreadChatCountSpan)
+        this.buttonContainer.appendChild(this.unreadChatCountSpan);
       } else {
         this.buttonContainer.contains(this.unreadChatCountSpan)? this.buttonContainer.removeChild(this.unreadChatCountSpan) : '';
       }
@@ -470,7 +474,6 @@ class SalezyWidget {
   toggleOpen(){
     this.open = !this.open;
     if(this.open) {
-      this.notification_sound.play();
       if(this.position === 'left'){
         this.mainWidgetContainer.classList.remove('widget-position__left');
         this.mainWidgetContainer.classList.add('widget-open__left');
