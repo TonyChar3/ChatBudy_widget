@@ -5,7 +5,6 @@ export const styles = `
     .main__container * {
         box-sizing: border-box;
         scroll-behavior: smooth;
-        font-family: 'Fira Sans', sans-serif;
     } 
     .widget__content h3, p, input {
         margin: 0;
@@ -110,6 +109,7 @@ export const styles = `
         align-items: center;
     }
     #chatroom__title {
+        font-family: 'Noto Sans', sans-serif;
         font-size: 1.9rem;
         font-weight: 400;
         margin-bottom: .2em;
