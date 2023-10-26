@@ -221,7 +221,7 @@ class SalezyWidget {
 
     this.chat_room_input.addEventListener('input', (event) => this.EmitIsTyping(event.target.value));
     this.close_button.addEventListener("click", this.toggleOpen.bind(this));
-    console.log(this.mute_button);
+    console.log(this.mute_sound);
     this.mute_button.addEventListener("click", () => this.mute_sound? this.mute_sound = false : this.mute_sound = true); 
     this.chat_input_divider.classList.add("widget__hidden");
     this.chat_room_input.classList.add("widget__hidden");
