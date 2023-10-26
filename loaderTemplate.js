@@ -59,7 +59,7 @@ const SetupIframe = async (Iframe_element) => {
                     // <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
                     const iframe_stylesheet = iframeDocument.createElement("link")
                     iframe_stylesheet.rel = "stylesheet";
-                    iframe_stylesheet.href = "https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;600&display=swap";
+                    iframe_stylesheet.href = "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap";
 
                     const iframe_script = iframeDocument.createElement("script")
                     iframe_script.src = "https://chat-buddy-widget.vercel.app/chatBudy.js"
