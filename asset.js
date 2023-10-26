@@ -233,6 +233,7 @@ export const styles = `
         margin: 1.01em;
         border-radius: 0 0 10px 10px;
         font-size: 1.1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.05);
     }
     @media (min-width: 1024px) {
         .chatroom__chat {
