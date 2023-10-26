@@ -302,8 +302,8 @@ class SalezyWidget {
     emailInput.classList.add("chatroom__email-input");
     emailInput.addEventListener('focus', () => {
       emailInput.style.borderBottomColor = `${this.style.main_color}`
-    })
-    chatBubbleDIV.appendChild(emailInput)
+    });
+    chatBubbleDIV.appendChild(emailInput);
     // Sure - Nope buttons and div
     const submitButtonDiv = document.createElement("div");
     submitButtonDiv.classList.add("chatroom__submit-btn-div");
@@ -312,7 +312,11 @@ class SalezyWidget {
     submitButton.innerText = "sure 👍"
     refuseButton.innerText = "nope 👎"
     submitButton.classList.add("chatroom__email-buttons");
+    submitButton.style.border = `1px solid ${this.style.main_color}`;
+    submitButton.style.color = `${this.style.main_color}`;
     refuseButton.classList.add("chatroom__email-buttons");
+    refuseButton.style.border = `1px solid ${this.style.main_color}`;
+    refuseButton.style.color = `${this.style.main_color}`;
     submitButtonDiv.appendChild(submitButton);
     submitButtonDiv.appendChild(refuseButton);
     this.chatroom__sure_btn = submitButton;
@@ -325,11 +329,11 @@ class SalezyWidget {
     this.emailFormContainer.appendChild(ask_emailBubbleDIV);
     this.emailFormContainer.appendChild(chatBubbleDIV);
     this.emailFormContainer.appendChild(submitButtonDiv);
-    this.chatRoomContainer.appendChild(this.emailFormContainer)
+    this.chatRoomContainer.appendChild(this.emailFormContainer);
     // If click submit
-    this.chatroom__sure_btn.addEventListener("click", this.handleEmailSubmit.bind(this))
+    this.chatroom__sure_btn.addEventListener("click", this.handleEmailSubmit.bind(this));
     // if click no
-    this.chatroom__nope_btn.addEventListener("click", this.handleNopeSubmitEmail.bind(this))
+    this.chatroom__nope_btn.addEventListener("click", this.handleNopeSubmitEmail.bind(this));
     requestAnimationFrame(() => {
       this.chatRoomContainer.scrollTop = this.chatRoomContainer.scrollHeight;
     });
