@@ -265,7 +265,6 @@ export const styles = `
         margin: .5em 1.01em 0 1.01em;
         padding: .5em; 
         border-radius: 10px 10px 10px 0;
-        font-size: 1.2rem;
     }
     .chatroom__email-input {
         width: 100%;
