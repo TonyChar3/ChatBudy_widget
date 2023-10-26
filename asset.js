@@ -110,14 +110,14 @@ export const styles = `
     }
     #chatroom__title {
         font-family: 'Noto Sans', sans-serif;
-        font-size: 1.5rem;
+        font-size: 1.9rem;
         font-weight: 400;
         margin-bottom: .2em;
     }
     #chatbot__status {
         font-size: 0.90rem;
     }
-    #chatbot__status {
+    #chatbot__status p {
         font-size: 1.05rem;
     }
     .status-circle__icon {
