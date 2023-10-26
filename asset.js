@@ -114,6 +114,11 @@ export const styles = `
         font-weight: 400;
         margin-bottom: .2em;
     }
+    @media (min-width: 1024px) {
+        #chatroom__title {
+            font-size: 1.6rem;
+        }
+    }
     #chatbot__status {
         font-size: 0.90rem;
     }
