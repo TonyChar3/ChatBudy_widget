@@ -114,16 +114,19 @@ export const styles = `
         font-weight: 400;
         margin-bottom: .2em;
     }
-    @media (min-width: 1024px) {
-        #chatroom__title {
-            font-size: 1.6rem;
-        }
-    }
     #chatbot__status {
         font-size: 0.90rem;
     }
     #chatbot__status p {
         font-size: 1.05rem;
+    }
+    @media (min-width: 1024px) {
+        #chatroom__title {
+            font-size: 1.6rem;
+        }
+        #chatbot__status p {
+            font-size: 1.01rem;
+        }
     }
     .status-circle__icon {
         margin-right: .4em;
