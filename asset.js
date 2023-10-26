@@ -198,7 +198,10 @@ export const styles = `
         flex-direction: column;
         justify-content: flex-end;
         transition: transform .2s ease;
-        background-color: white;
+        background: url(https://res.cloudinary.com/dskpbps9l/image/upload/v1698324746/ChatBudy.io/Increase_Your_Sales_25_yqxvac.png);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
     @media (min-width: 1024px) {
         .chatroom__wrapper {
