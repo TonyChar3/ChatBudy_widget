@@ -295,6 +295,7 @@ class SalezyWidget {
     // generate the email input and the buttons
     const chatBubbleDIV = document.createElement("div");
     chatBubbleDIV.classList.add("chatroom__email-input-div");
+    chatBubbleDIV.style.border = `2px solid ${this.style.main_color}`;
     const emailInput = document.createElement("input");
     emailInput.setAttribute("type", "text");
     emailInput.setAttribute("placeholder", "email@adress.com");

@@ -256,8 +256,7 @@ export const styles = `
         max-width: 50%;
         height: auto;
         margin: 1.01em 1.01em 0 1.01em;
-        padding: .5em;
-        border: 2px solid #0c64f2; 
+        padding: .5em; 
         border-radius: 10px 10px 10px 0;
     }
     .chatroom__email-input {
