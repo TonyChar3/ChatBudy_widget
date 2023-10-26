@@ -55,7 +55,7 @@ const SetupIframe = async (Iframe_element) => {
                     const iframe_link2 = iframeDocument.createElement("link")
                     iframe_link2.rel = "preconnect";
                     iframe_link2.href = "https://fonts.gstatic.com";
-                    iframe_link2.crossOrigin
+                    iframe_link2.crossOrigin = true;
                     // <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
                     const iframe_stylesheet = iframeDocument.createElement("link")
                     iframe_stylesheet.href = "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap";
