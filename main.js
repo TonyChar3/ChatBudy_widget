@@ -159,11 +159,6 @@ class SalezyWidget {
       </div>
     `;
     /**
-     * Mute button eventListener
-     */
-    const muteBtn = document.getElementsByClassName('mute-notification-icon');
-    this.mute_button = muteBtn;
-    /**
     * The chat room page
     */
     const chatRoomPage = document.createElement("div");
@@ -216,10 +211,12 @@ class SalezyWidget {
     this.loadingAnimationDIV.style.display = 'none';
     this.chatRoomContainer.appendChild(loadingAnimationDIV);
     this.widgetContainer.appendChild(chatRoomPage);// append to the widget
+    const muteButton = this.widgetContainer.querySelector('.fa-solid fa-bell' || '.fa-solid fa-bell-slash');
     const closeButton = this.widgetContainer.querySelector('.fa-arrow-right-from-arc');// close the widget
     const chat_room_input = this.widgetContainer.querySelector('#chat-room__input');
     this.chat_room_input = chat_room_input;
     this.chat_input_divider = chatRoomInputDivider;
+    this.mute_button = muteButton;
     this.close_button = closeButton;
 
     this.chat_room_input.addEventListener('input', (event) => this.EmitIsTyping(event.target.value));
