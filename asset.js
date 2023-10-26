@@ -117,6 +117,9 @@ export const styles = `
     #chatbot__status {
         font-size: 0.90rem;
     }
+    #chatbot__status {
+        font-size: 1.05rem;
+    }
     .status-circle__icon {
         margin-right: .4em;
         font-size: 0.65rem;
