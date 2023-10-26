@@ -58,8 +58,8 @@ const SetupIframe = async (Iframe_element) => {
                     iframe_link2.crossOrigin = true;
                     // <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap">
                     const iframe_stylesheet = iframeDocument.createElement("link")
-                    iframe_stylesheet.rel = "stylesheet";
                     iframe_stylesheet.href = "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap";
+                    iframe_stylesheet.rel = "stylesheet";
 
                     const iframe_script = iframeDocument.createElement("script")
                     iframe_script.src = "https://chat-buddy-widget.vercel.app/chatBudy.js"
@@ -67,6 +67,7 @@ const SetupIframe = async (Iframe_element) => {
                     iframe_script.async = true
                     iframeDocument.head.appendChild(iframe_link1)
                     iframeDocument.head.appendChild(iframe_link2)
+                    iframeDocument.head.appendChild(iframe_stylesheet)
                     iframeDocument.body.appendChild(iframe_script)
                 }
             };
