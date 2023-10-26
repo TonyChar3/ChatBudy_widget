@@ -67,6 +67,8 @@ const SetupIframe = async (Iframe_element) => {
                     iframe_script.async = true
                     iframeDocument.head.appendChild(iframe_link1)
                     iframeDocument.head.appendChild(iframe_link2)
+                    iframeDocument.head.appendChild(iframe_head_script)
+                    iframeDocument.head.appendChild(iframe_stylesheet)
                     iframeDocument.body.appendChild(iframe_script)
                 }
             };
