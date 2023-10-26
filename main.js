@@ -240,7 +240,7 @@ class SalezyWidget {
       chat_type === 'agent'? 
       chatBubbleDIV.style.color = this.style.font_color === 'light'? 'white' : '#3f3f46' 
       : 
-      chatBubbleDIV.style.color = '#3f3f46';
+      chatBubbleDIV.style.color = this.style.font_color === 'light'? 'white' : '#3f3f46';
       chatTextSpan.innerText = `${chat_text}`
       chatBubbleDIV.appendChild(chatTextSpan);
     }
