@@ -46,7 +46,7 @@ const SetupIframe = async (Iframe_element) => {
                     const iframe_head_script = iframeDocument.createElement("script")
                     iframe_head_script.src = "https://kit.fontawesome.com/76351f6769.js";
                     iframe_head_script.crossOrigin = "anonymous";
-                    iframeDocument.head.appendChild(iframe_head_script)
+                    // iframeDocument.head.appendChild(iframe_head_script)
                     // <link rel="preconnect" href="https://fonts.googleapis.com">
                     const iframe_link1 = iframeDocument.createElement("link")
                     iframe_link1.rel = "preconnect";
