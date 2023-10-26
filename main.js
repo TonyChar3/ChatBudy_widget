@@ -59,7 +59,7 @@ class SalezyWidget {
      */
     const notification_sound = document.createElement('audio');
     notification_sound.setAttribute('id', 'notification_sound');
-    notification_sound.setAttribute('src', 'https://res.cloudinary.com/dskpbps9l/video/upload/v1698329696/ChatBudy.io/notifications-sound-127856_mk3aeg.mp3')
+    notification_sound.setAttribute('src', 'https://res.cloudinary.com/dskpbps9l/video/upload/v1698331731/ChatBudy.io/notifications-sound-chatbudy1_w5vh0i.mp3')
     this.notification_sound = notification_sound;
     /**
      * Button element with the class button__container
