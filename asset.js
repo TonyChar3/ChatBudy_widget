@@ -226,7 +226,6 @@ export const styles = `
         overflow-y: auto;
         display: grid;
         grid-template-columns: 1fr;
-        background-color: rgba(255,255,255,0.6);
         background-attachment: fixed;
         transition: all 0.3s ease-in-out;
     }
