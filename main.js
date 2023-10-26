@@ -195,22 +195,20 @@ class SalezyWidget {
     /**
      * Loading animation
      */
-    const loadingAnimationDIV = document.createElement("div");
+    const loadingAnimationDIV = document.createElement("div");// container
     loadingAnimationDIV.setAttribute("id", "loading");
     loadingAnimationDIV.style.display = 'block';
 
-    const animationSpinnerDIV = document.createElement("div");
+    const animationSpinnerDIV = document.createElement("div");// spinner
     animationSpinnerDIV.classList.add("spinner");
     animationSpinnerDIV.style.borderTopColor = this.style.main_color;
 
-    loadingAnimationDIV.appendChild(animationSpinnerDIV);
+    loadingAnimationDIV.appendChild(animationSpinnerDIV);// append spinner to the container
     this.loadingAnimationDIV = loadingAnimationDIV;
     this.loadingAnimationDIV.style.display = 'none';
     this.chatRoomContainer.appendChild(loadingAnimationDIV);
-
-    this.widgetContainer.appendChild(chatRoomPage);
-
-    const closeButton = this.widgetContainer.querySelector('.fa-arrow-right-from-arc');
+    this.widgetContainer.appendChild(chatRoomPage);// append to the widget
+    const closeButton = this.widgetContainer.querySelector('.fa-arrow-right-from-arc');// close the widget
     const chat_room_input = this.widgetContainer.querySelector('#chat-room__input');
     this.chat_room_input = chat_room_input;
     this.chat_input_divider = chatRoomInputDivider;
@@ -230,7 +228,7 @@ class SalezyWidget {
     window.parent.document.head.appendChild(styleTag);
   }
   /**
-   * Handle the type of chat
+   * Set the style with the type of chat received
    */
   hanldeChatStyles(chat_type, chat_text){
     const chatBubbleDIV = document.createElement("div");
@@ -258,9 +256,9 @@ class SalezyWidget {
     });
   }
   /**
-   * Submit Email
+   * Submit visitor Email
    */
-  handleEmailSubmit(){
+  VisitorEmailSubmit(){
     const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const sanitized_value = this.chatroom__email_input.value.replace(/[^\w\s@.\-]/gi, '');
     if(email_pattern.test(sanitized_value) && this.chatroom__email_input.value !== ''){
@@ -273,16 +271,16 @@ class SalezyWidget {
     }
   }
   /**
-   * Nope is click
+   * When visitor click on Nope
    */
-  handleNopeSubmitEmail(){
+  NopeSubmitEmail(){
     this.chatroom__email_input.value = ""
     this.SetVisitorEmail('');
   }
   /**
-   * Handle the email form state
+   * Set the email form state
    */
-  handleEmailFormState(){
+  EmailFormState(){
     // the ask email copy chat bubble
     const ask_emailBubbleDIV = document.createElement("div");
     const chatTextSpan = document.createElement('span');
@@ -305,16 +303,19 @@ class SalezyWidget {
     });
     chatBubbleDIV.appendChild(emailInput);
     // Sure - Nope buttons and div
+    // DIV
     const submitButtonDiv = document.createElement("div");
     submitButtonDiv.classList.add("chatroom__submit-btn-div");
+    // Submit button
     const submitButton = document.createElement("button");
-    const refuseButton = document.createElement("button");
-    submitButton.innerText = "sure 👍"
-    refuseButton.innerText = "nope 👎"
+    submitButton.innerText = "sure 👍";
     submitButton.classList.add("chatroom__email-buttons");
     submitButton.style.border = `1px solid ${this.style.main_color}`;
     submitButton.style.color = `${this.style.main_color}`;
+    // Refuse button
+    const refuseButton = document.createElement("button");
     refuseButton.classList.add("chatroom__email-buttons");
+    refuseButton.innerText = "nope 👎";
     refuseButton.style.border = `1px solid ${this.style.main_color}`;
     refuseButton.style.color = `${this.style.main_color}`;
     submitButtonDiv.appendChild(submitButton);
@@ -331,17 +332,17 @@ class SalezyWidget {
     this.emailFormContainer.appendChild(submitButtonDiv);
     this.chatRoomContainer.appendChild(this.emailFormContainer);
     // If click submit
-    this.chatroom__sure_btn.addEventListener("click", this.handleEmailSubmit.bind(this));
+    this.chatroom__sure_btn.addEventListener("click", this.VisitorEmailSubmit.bind(this));
     // if click no
-    this.chatroom__nope_btn.addEventListener("click", this.handleNopeSubmitEmail.bind(this));
+    this.chatroom__nope_btn.addEventListener("click", this.NopeSubmitEmail.bind(this));
     requestAnimationFrame(() => {
       this.chatRoomContainer.scrollTop = this.chatRoomContainer.scrollHeight;
     });
   }
   /**
-   * admin closed the Conversation message
+   * Inform visitor that the admin deleted the conversation
   */
-  handleConvoClosedMsg(){
+  ConversationClosed(){
     // The conversation was closed by admin chat bubble
     const conversationClosedBubbleDIV = document.createElement("div");
     const conversationClosedTextSpan = document.createElement("span");
@@ -375,7 +376,7 @@ class SalezyWidget {
   /**
    * Manage the chat room state
    */
-  getChat(chat){
+  ManageChatStyle(chat){
     const { text, sender_type, type, status } = chat
     // first check the sender type
     if(type === '...' && status === true){
@@ -400,9 +401,12 @@ class SalezyWidget {
     }
 
   }
-  async handleChatRoomState(widget_id){
+  /*
+  * Handle the WebSocket connection (Info comming in)
+  */
+  async WebSocketHandler(widget_id){
     if(widget_id){
-      const socket = await openChat(this.widgetID, this.SSElink)
+      const socket = await openChat(this.widgetID, this.SSElink);
       if(socket){
         socket.addEventListener('open', () => {});
         socket.addEventListener('message', (event) => {
@@ -412,19 +416,19 @@ class SalezyWidget {
               if(this.emailFormContainer){
                 this.emailFormContainer.style.display = 'none';
               }
-              this.chat_input_divider.classList.remove("widget__hidden")
-              this.chat_room_input.classList.remove("widget__hidden")
+              this.chat_input_divider.classList.remove("widget__hidden");
+              this.chat_room_input.classList.remove("widget__hidden");
               chat.forEach(chats => {
-                this.getChat(chats)
+                this.ManageChatStyle(chats);
               })
             } else if(chat.type === 'ask-email'){
               this.loadingAnimationDIV.style.display = 'none';
-              this.handleEmailFormState()
+              this.EmailFormState();
             } else {
               this.loadingAnimationDIV.style.display = 'none';
-              this.chat_input_divider.classList.remove("widget__hidden")
-              this.chat_room_input.classList.remove("widget__hidden")
-              this.getChat(chat)
+              this.chat_input_divider.classList.remove("widget__hidden");
+              this.chat_room_input.classList.remove("widget__hidden");
+              this.ManageChatStyle(chat);
             }
         });
         socket.addEventListener('error', (error) => {
@@ -435,7 +439,7 @@ class SalezyWidget {
         }
       } else if (!socket){
         this.loadingAnimationDIV.style.display = 'none';
-        this.handleConvoClosedMsg();
+        this.ConversationClosed();
         this.DOMLoaded = false;
       }
 
@@ -451,7 +455,7 @@ class SalezyWidget {
   /**
    * Initialize the SSE connection
    */
-  async handleSSEConnection() {
+  async SSEhandler() {
     // auth for the sse
     const auth_widget = await SetupSSEconnection(this.widgetID)
     if(!auth_widget){
@@ -490,14 +494,14 @@ class SalezyWidget {
       this.widgetContainer.style.zIndex = 30
       this.buttonContainer.style.zIndex = 50
       this.SSElink ? this.SSElink.close() : '';// Shut off the SSE connection for the notifications
-      this.handleChatRoomState(this.widgetID);
+      this.WebSocketHandler(this.widgetID);
       this.widgetIcon.classList.add("widget__hidden");
       this.sendIcon.classList.remove("widget__hidden");
       this.loadingAnimationDIV.style.display = 'block';
       this.widgetContainer.classList.remove("content__hidden");
     } else {
       this.createWidgetContent();
-      this.handleSSEConnection();
+      this.SSEhandler();
       if(this.position === 'left'){
         this.mainWidgetContainer.classList.remove('widget-open__left');
         this.mainWidgetContainer.classList.add('widget-position__left');
