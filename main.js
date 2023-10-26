@@ -296,13 +296,13 @@ class SalezyWidget {
     const chatBubbleDIV = document.createElement("div");
     chatBubbleDIV.classList.add("chatroom__email-input-div");
     chatBubbleDIV.style.border = `2px solid ${this.style.main_color}`;
-    chatBubbleDIV.addEventListener('focus', () => {
-      chatBubbleDIV.style.borderBottomColor = `${this.style.main_color}`
-    })
     const emailInput = document.createElement("input");
     emailInput.setAttribute("type", "text");
     emailInput.setAttribute("placeholder", "email@adress.com");
     emailInput.classList.add("chatroom__email-input");
+    emailInput.addEventListener('focus', () => {
+      emailInput.style.borderBottomColor = `${this.style.main_color}`
+    })
     chatBubbleDIV.appendChild(emailInput)
     // Sure - Nope buttons and div
     const submitButtonDiv = document.createElement("div");
