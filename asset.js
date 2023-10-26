@@ -195,7 +195,7 @@ export const styles = `
     }
     .chatroom__wrapper {
         font-family: 'Noto Sans', sans-serif;
-        height: 88%;
+        height: 87%;
         width: 100%;
         display: flex;
         flex-direction: column;
