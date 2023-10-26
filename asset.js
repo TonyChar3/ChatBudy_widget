@@ -193,6 +193,10 @@ export const styles = `
         font-size: 1.01rem;
         cursor: pointer;
     }
+    .mute-notification-icon:active {
+        transform: scale(0.90);
+        transition: all 0.3s ease;
+    }
     .close-icon {
         position: absolute;
         margin: .2em;
