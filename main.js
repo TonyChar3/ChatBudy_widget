@@ -349,7 +349,6 @@ class SalezyWidget {
     conversationClosedBubbleDIV.classList.add("chatroom__chat");
     conversationClosedBubbleDIV.classList.add("left");
     conversationClosedTextSpan.innerText = 'The conversation was closed by the admin, Thank you for you visit 👋';
-    conversationClosedTextSpan.style.fontSize = '1.2rem';
     conversationClosedBubbleDIV.appendChild(conversationClosedTextSpan);
     // Div button for both the start a new conversation or no
     const buttonDIV = document.createElement("div");
