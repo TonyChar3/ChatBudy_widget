@@ -55,6 +55,13 @@ class SalezyWidget {
     window.parent.document.body.appendChild(container);
     this.mainWidgetContainer = container;
     /**
+     * Create the notification sound element
+     */
+    const notification_sound = document.createElement('audio');
+    notification_sound.setAttribute('id', 'notification_sound');
+    notification_sound.setAttribute('src', 'https://res.cloudinary.com/dskpbps9l/video/upload/v1698329696/ChatBudy.io/notifications-sound-127856_mk3aeg.mp3')
+    this.notification_sound = notification_sound;
+    /**
      * Button element with the class button__container
      */
     const buttonContainer = document.createElement("button");
@@ -463,6 +470,7 @@ class SalezyWidget {
   toggleOpen(){
     this.open = !this.open;
     if(this.open) {
+      this.notification_sound.play();
       if(this.position === 'left'){
         this.mainWidgetContainer.classList.remove('widget-position__left');
         this.mainWidgetContainer.classList.add('widget-open__left');
