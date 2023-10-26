@@ -179,7 +179,7 @@ class SalezyWidget {
     const chatRoomFooterContainer = document.createElement("div");
     const chatRoomFooterLogo = document.createElement("div");
     const chatRoomLogo = document.createElement("h2");
-    chatRoomLogo.textContent = "powered by ChatBüdy :)"
+    chatRoomLogo.textContent = "powered by ChatBüdy 💬"
     chatRoomFooterContainer.classList.add("chat__footer");
     chatRoomFooterLogo.appendChild(chatRoomLogo);
     chatRoomFooterContainer.appendChild(chatRoomFooterLogo);
@@ -248,7 +248,7 @@ class SalezyWidget {
       chat_type === 'agent'? 
       chatBubbleDIV.style.color = this.style.font_color === 'light'? 'white' : '#3f3f46' 
       : 
-      chatBubbleDIV.style.color = this.style.font_color === 'light'? 'white' : '#3f3f46';
+      chatBubbleDIV.style.color = '#3f3f46';
       chatTextSpan.innerText = `${chat_text}`
       chatBubbleDIV.appendChild(chatTextSpan);
     }
