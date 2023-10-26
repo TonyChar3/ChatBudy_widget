@@ -221,7 +221,6 @@ class SalezyWidget {
 
     this.chat_room_input.addEventListener('input', (event) => this.EmitIsTyping(event.target.value));
     this.close_button.addEventListener("click", this.toggleOpen.bind(this));
-    this.mute_button.classList.add(`fa-solid fa-bell${this.mute_sound? '-slash' : ''}`)
     this.mute_button.addEventListener("click", () => {
       this.mute_sound = !this.mute_sound;
 
