@@ -337,7 +337,8 @@ export const styles = `
         outline: none;
         resize: none;
         white-space: pre-wrap;
-        word-wrap: break-word
+        word-wrap: break-word;
+        background: transparent;
     }
     @media (min-width: 1024px) {
         .chat__input {
