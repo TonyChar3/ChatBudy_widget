@@ -186,6 +186,12 @@ export const styles = `
             border-radius: 15px 15px 0 0;
         }
     }
+    .mute-notification-icon {
+        position: absolute;
+        margin: .2em;
+        right: .12em;
+        cursor: pointer;
+    }
     .close-icon {
         position: absolute;
         margin: .2em;

@@ -145,6 +145,9 @@ class SalezyWidget {
     this.widgetContainer.innerHTML = `
       <div style="background-color: ${this.style.main_color}; color: ${this.style.font_color === 'light'? 'white' : '#3f3f46'};" class="widget__header">
         <div class="header-icons__container">
+          <span class="mute-notification-icon">
+            <i class="fa-regular fa-bell${this.mute_sound? '-slash' : ''}"></i>
+          </span>
           <span class="close-icon">
             <i class="fa-solid fa-arrow-right-from-arc"></i>
           </span>
