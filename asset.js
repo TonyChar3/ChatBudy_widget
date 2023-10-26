@@ -250,12 +250,19 @@ export const styles = `
             font-size: 1rem;
         }
     }
-    .chatroom__email-input-div,
-    .closed__convo_btn-div {
+    .chatroom__email-input-div {
         display: inline-block;
         max-width: 50%;
         height: auto;
         margin: 1.01em 1.01em 0 1.01em;
+        padding: .5em; 
+        border-radius: 10px 10px 10px 0;
+    }
+    .closed__convo_btn-div {
+        display: inline-block;
+        max-width: 50%;
+        height: auto;
+        margin: .5em 1.01em 0 1.01em;
         padding: .5em; 
         border-radius: 10px 10px 10px 0;
     }
