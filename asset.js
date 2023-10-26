@@ -208,7 +208,7 @@ export const styles = `
     }
     @media (min-width: 1024px) {
         .chatroom__wrapper {
-            height: 430px;
+            height: 440px;
             border-radius: 0 0 15px 15px;
         }
     }
