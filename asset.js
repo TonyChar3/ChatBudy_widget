@@ -270,7 +270,7 @@ export const styles = `
         width: 100%;
         padding: .4em;
         border-bottom: 1px solid #c9c8c5;
-        font-size: 0.90rem;
+        font-size: 1rem;
         outline: none;
     }
     .set__input-error {
