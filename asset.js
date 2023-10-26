@@ -347,7 +347,7 @@ export const styles = `
         max-height: 20%;
         max-width: 79%;
         overflow-y: auto;
-        padding: 1em;
+        padding: 1.1em;
         color: #gray-500;
         font-size: 1.1rem;
         border: none;
