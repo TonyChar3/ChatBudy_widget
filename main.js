@@ -146,7 +146,7 @@ class SalezyWidget {
       <div style="background-color: ${this.style.main_color}; color: ${this.style.font_color === 'light'? 'white' : '#3f3f46'};" class="widget__header">
         <div class="header-icons__container">
           <span class="mute-notification-icon">
-            <i class=""></i>
+            <i class="fa-solid fa-bell${this.mute_sound? '-slash' : ''}"></i>
           </span>
           <span class="close-icon">
             <i class="fa-solid fa-arrow-right-from-arc"></i>
@@ -224,6 +224,16 @@ class SalezyWidget {
     this.mute_button.classList.add(`fa-solid fa-bell${this.mute_sound? '-slash' : ''}`)
     this.mute_button.addEventListener("click", () => {
       this.mute_sound = !this.mute_sound;
+
+      const iconElement = this.mute_button.querySelector('i');
+
+      if (this.mute_sound) {
+          iconElement.classList.remove('fa-bell');
+          iconElement.classList.add('fa-bell-slash');
+      } else {
+          iconElement.classList.remove('fa-bell-slash');
+          iconElement.classList.add('fa-bell');
+      }
     });
     this.chat_input_divider.classList.add("widget__hidden");
     this.chat_room_input.classList.add("widget__hidden");
