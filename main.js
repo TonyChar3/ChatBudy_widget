@@ -354,7 +354,7 @@ class SalezyWidget {
     const buttonDIV = document.createElement("div");
     buttonDIV.classList.add("closed__convo_btn-div");
     const startNewConversationBtn = document.createElement("button");
-    startNewConversationBtn.innerText = "New conversation 💬";
+    startNewConversationBtn.innerText = "New conversation";
     startNewConversationBtn.style.border = `1px solid ${this.style.main_color}`;
     startNewConversationBtn.style.color = `${this.style.main_color}`;
     startNewConversationBtn.style.fontSize = '1.2rem';
