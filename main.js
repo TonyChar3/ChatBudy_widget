@@ -43,9 +43,6 @@ class SalezyWidget {
     container.style.position = "fixed";
     container.style.zIndex = "20";
     this.position === 'right'? container.classList.add('widget-position__right') : container.classList.add('widget-position__left')
-    // Object.keys(this.position).forEach(
-    //   (key) => (container.style[key] = this.position[key])
-    // );
     window.parent.document.body.appendChild(container);
     this.mainWidgetContainer = container;
     /**
@@ -204,13 +201,13 @@ class SalezyWidget {
     this.loadingAnimationDIV.style.display = 'none';
     this.chatRoomContainer.appendChild(loadingAnimationDIV);
     this.widgetContainer.appendChild(chatRoomPage);// append to the widget
-    const muteButton = this.widgetContainer.querySelector('.mute-notification-icon');
+    const muteButton = this.widgetContainer.querySelector('.mute-notification-icon');// mute notification sound
     const closeButton = this.widgetContainer.querySelector('.fa-arrow-right-from-arc');// close the widget
     const chat_room_input = this.widgetContainer.querySelector('#chat-room__input');
     this.chat_room_input = chat_room_input;
     this.chat_input_divider = chatRoomInputDivider;
-    this.mute_button = muteButton;
-    this.close_button = closeButton;
+    this.mute_button = muteButton;// mute button
+    this.close_button = closeButton;// close widget button
 
     this.chat_room_input.addEventListener('input', (event) => this.EmitIsTyping(event.target.value));
     this.close_button.addEventListener("click", this.toggleOpen.bind(this));
@@ -299,7 +296,7 @@ class SalezyWidget {
     ask_emailBubbleDIV.classList.add("left");
     ask_emailBubbleDIV.style.backgroundColor = '#d1d1d1';
     ask_emailBubbleDIV.style.color = '#3f3f46';
-    chatTextSpan.innerText = `${this.ask_email_copy}`
+    chatTextSpan.innerText = this.adminStatus ? `${this.ask_email_copy}` : 'We are currently unavaible right, please provide your email and we will get back to you as soon as possible 🙃!' 
     ask_emailBubbleDIV.appendChild(chatTextSpan);
     // generate the email input and the buttons
     const chatBubbleDIV = document.createElement("div");
