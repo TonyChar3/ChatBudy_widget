@@ -366,6 +366,8 @@ class SalezyWidget {
     }
     this.emailFormContainer.appendChild(submitButtonDiv);
     this.chatRoomContainer.appendChild(this.emailFormContainer);
+    // If offline cancel click
+    this.chatroom__offline_cancel.addEventListener("click", this.toggleOpen.bind(this));
     // If click submit
     this.chatroom__sure_btn.addEventListener("click", this.VisitorEmailSubmit.bind(this));
     // if click no
