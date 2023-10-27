@@ -316,18 +316,35 @@ class SalezyWidget {
     submitButtonDiv.classList.add("chatroom__submit-btn-div");
     // Submit button
     const submitButton = document.createElement("button");
-    submitButton.innerText = "sure 👍";
+    submitButton.innerText = "submit 👍";
     submitButton.classList.add("chatroom__email-buttons");
     submitButton.style.border = `1px solid ${this.style.main_color}`;
     submitButton.style.color = `${this.style.main_color}`;
     // Refuse button
     const refuseButton = document.createElement("button");
     refuseButton.classList.add("chatroom__email-buttons");
-    refuseButton.innerText = "nope 👎";
+    refuseButton.innerText = "I refuse 👎";
     refuseButton.style.border = `1px solid ${this.style.main_color}`;
     refuseButton.style.color = `${this.style.main_color}`;
-    submitButtonDiv.appendChild(submitButton);
-    submitButtonDiv.appendChild(refuseButton);
+    // Offline email submit button
+    const offlineSubmitButton = document.createElement("button");
+    offlineSubmitButton.classList.add("chatroom__email-buttons");
+    offlineSubmitButton.innerText = "Submit 💬";
+    offlineSubmitButton.style.border = `1px solid ${this.style.main_color}`;
+    offlineSubmitButton.style.color = `${this.style.main_color}`;
+    // Offline cancel button
+    const offlineCancelButton = document.createElement("button");
+    offlineCancelButton.classList.add("chatroom__email-buttons");
+    offlineCancelButton.innerText = "Cancel ❌";
+    offlineCancelButton.style.border = `1px solid ${this.style.main_color}`;
+    offlineCancelButton.style.color = `${this.style.main_color}`;
+    if(this.adminStatus){
+      submitButtonDiv.appendChild(submitButton);
+      submitButtonDiv.appendChild(refuseButton);
+    } else {
+      submitButtonDiv.appendChild(offlineSubmitButton);
+      submitButtonDiv.appendChild(offlineCancelButton);
+    }
     this.chatroom__sure_btn = submitButton;
     this.chatroom__nope_btn = refuseButton;
     this.chatroom__email_input = emailInput;
