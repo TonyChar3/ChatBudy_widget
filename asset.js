@@ -322,18 +322,21 @@ export const styles = `
         transform: scale(0.70);
         transition: 0.2s all ease-in-out;
     }
-    .chatroom__chat.left {
+    .chatroom__chat.left,
+    .greeting-offline__chat.left {
         border-radius: 10px 10px 10px 0;
         align-self: flex-start;
         justify-self: flex-start;
     }
-    .chatroom__chat.right {
+    .chatroom__chat.right,
+    .greeting-offline__chat.right {
         color: white;
         border-radius: 10px 10px 0 10px;
         align-self: flex-end;
         justify-self: flex-end;
     }
-    .chatroom__chat span {
+    .chatroom__chat span,
+    .greeting-offline__chat span {
         word-break: break-word;
         display: inline-block;
         max-width: 100%;
