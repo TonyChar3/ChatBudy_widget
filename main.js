@@ -312,9 +312,6 @@ class SalezyWidget {
     // Offline message input
     const offlineTextArea = document.createElement("textarea");
     offlineTextArea.style.border = `1px solid ${this.style.main_color}`;
-    if(!this.adminStatus){
-      this.emailFormContainer.appendChild(offlineTextArea);
-    }
     chatBubbleDIV.appendChild(emailInput);
     // Sure - Nope buttons and div
     // DIV
@@ -362,6 +359,9 @@ class SalezyWidget {
     this.emailFormContainer = emailFormContainer;
     this.emailFormContainer.appendChild(ask_emailBubbleDIV);
     this.emailFormContainer.appendChild(chatBubbleDIV);
+    if(!this.adminStatus){
+      this.emailFormContainer.appendChild(offlineTextArea);
+    }
     this.emailFormContainer.appendChild(submitButtonDiv);
     this.chatRoomContainer.appendChild(this.emailFormContainer);
     // If click submit
