@@ -17,8 +17,9 @@ class SalezyWidget {
     this.SSElink = null;// Initialize the sse link variable
     this.initialize();// To invoke and display the UI for our widget in the DOM
     this.injectWidgetStyles();// To invoke and add the styling
-    this.LoadUpsequence = LoadUpsequence;
-    this.LoadUpsequence();
+    this.LoadUpsequence = LoadUpsequence.bind(this);
+    // this.LoadUpsequence = LoadUpsequence;
+    // this.LoadUpsequence();
     this.openChat = openChat;
     this.openChat();
     this.stopChat = stopChat;
