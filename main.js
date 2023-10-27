@@ -18,20 +18,12 @@ class SalezyWidget {
     this.initialize();// To invoke and display the UI for our widget in the DOM
     this.injectWidgetStyles();// To invoke and add the styling
     this.LoadUpsequence = LoadUpsequence.bind(this);
-    // this.LoadUpsequence = LoadUpsequence;
-    // this.LoadUpsequence();
-    this.openChat = openChat;
-    this.openChat();
-    this.stopChat = stopChat;
-    this.stopChat();
-    this.sendChat = sendChat;
-    this.sendChat();
-    this.EmitIsTyping = EmitIsTyping;
-    this.EmitIsTyping();
-    this.SetVisitorEmail = SetVisitorEmail;
-    this.SetVisitorEmail();
-    this.getWSlink = getWSlink;
-    this.getWSlink();
+    this.openChat = openChat.bind(this);
+    this.stopChat = stopChat.bind(this);
+    this.sendChat = sendChat.bind(this);
+    this.EmitIsTyping = EmitIsTyping.bind(this);
+    this.SetVisitorEmail = SetVisitorEmail.bind(this);
+    this.getWSlink = getWSlink.bind(this);
   }
   
   position = "";
