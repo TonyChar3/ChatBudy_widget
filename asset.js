@@ -372,6 +372,7 @@ export const styles = `
     .offline__textarea-input {
         height: auto;
         max-width: 79%;
+        padding: .5em;
         margin: 1em;
         border: none;
         outline: none;
@@ -381,6 +382,7 @@ export const styles = `
         white-space: pre-wrap;
         word-wrap: break-word;
         background: transparent;
+        border-radius: 10px 10px 10px 0;
     }
     @media (min-width: 1024px) {
         .chat__input {

@@ -313,7 +313,7 @@ class SalezyWidget {
     const offlineTextArea = document.createElement("textarea");
     offlineTextArea.classList.add('offline__textarea-input');
     offlineTextArea.setAttribute('placeholder', "Your message...")
-    offlineTextArea.style.border = `1px solid ${this.style.main_color}`;
+    offlineTextArea.style.border = `2px solid ${this.style.main_color}`;
     chatBubbleDIV.appendChild(emailInput);
     // Sure - Nope buttons and div
     // DIV
