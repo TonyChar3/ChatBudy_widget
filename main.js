@@ -313,7 +313,7 @@ class SalezyWidget {
     const offlineTextArea = document.createElement("textarea");
     offlineTextArea.style.border = `1px solid ${this.style.main_color}`;
     if(!this.adminStatus){
-      chatBubbleDIV.appendChild(offlineTextArea);
+      this.emailFormContainer.appendChild(offlineTextArea);
     }
     chatBubbleDIV.appendChild(emailInput);
     // Sure - Nope buttons and div
