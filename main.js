@@ -309,6 +309,12 @@ class SalezyWidget {
     emailInput.addEventListener('focus', () => {
       emailInput.style.borderBottomColor = `${this.style.main_color}`
     });
+    // Offline message input
+    const offlineTextArea = document.createElement("textarea");
+    offlineTextArea.style.border = `1px solid ${this.style.main_color}`;
+    if(!this.adminStatus){
+      chatBubbleDIV.appendChild(offlineTextArea);
+    }
     chatBubbleDIV.appendChild(emailInput);
     // Sure - Nope buttons and div
     // DIV
@@ -345,6 +351,8 @@ class SalezyWidget {
       submitButtonDiv.appendChild(offlineSubmitButton);
       submitButtonDiv.appendChild(offlineCancelButton);
     }
+    this.chatroom__offline_submit = offlineSubmitButton;
+    this.chatroom__offline_cancel = offlineCancelButton;
     this.chatroom__sure_btn = submitButton;
     this.chatroom__nope_btn = refuseButton;
     this.chatroom__email_input = emailInput;
