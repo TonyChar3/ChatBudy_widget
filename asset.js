@@ -369,6 +369,18 @@ export const styles = `
         word-wrap: break-word;
         background: transparent;
     }
+    .offline__textarea-input {
+        height: auto;
+        border: none;
+        outline: none;
+        max-width: 79%;
+        overflow-y: auto;
+        color: #gray-500;
+        font-size: 1.1rem;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        background: transparent;
+    }
     @media (min-width: 1024px) {
         .chat__input {
             max-width: 100%;

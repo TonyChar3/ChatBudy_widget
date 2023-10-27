@@ -311,6 +311,7 @@ class SalezyWidget {
     });
     // Offline message input
     const offlineTextArea = document.createElement("textarea");
+    offlineTextArea.classList.add('offline__textarea-input');
     offlineTextArea.style.border = `1px solid ${this.style.main_color}`;
     chatBubbleDIV.appendChild(emailInput);
     // Sure - Nope buttons and div
