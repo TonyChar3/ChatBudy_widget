@@ -371,9 +371,10 @@ export const styles = `
     }
     .offline__textarea-input {
         height: auto;
+        max-width: 79%;
+        margin: 1em;
         border: none;
         outline: none;
-        max-width: 79%;
         overflow-y: auto;
         color: #gray-500;
         font-size: 1.1rem;
