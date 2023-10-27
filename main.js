@@ -292,11 +292,11 @@ class SalezyWidget {
     // the ask email copy chat bubble
     const ask_emailBubbleDIV = document.createElement("div");
     const chatTextSpan = document.createElement('span');
-    ask_emailBubbleDIV.classList.add("chatroom__chat");
+    ask_emailBubbleDIV.classList.add("greeting-offline__chat");
     ask_emailBubbleDIV.classList.add("left");
     ask_emailBubbleDIV.style.backgroundColor = '#d1d1d1';
     ask_emailBubbleDIV.style.color = '#3f3f46';
-    chatTextSpan.innerText = this.adminStatus ? `${this.ask_email_copy}` : 'We are currently unavaible right, please provide your email and we will get back to you as soon as possible 🙃!' 
+    chatTextSpan.innerText = this.adminStatus ? `${this.ask_email_copy}` : 'We are currently unavaible right now, please provide your email and we will get back to you as soon as possible 🙃!' 
     ask_emailBubbleDIV.appendChild(chatTextSpan);
     // generate the email input and the buttons
     const chatBubbleDIV = document.createElement("div");
