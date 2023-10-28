@@ -275,7 +275,22 @@ class SalezyWidget {
       this.chatroom__email_input.value = ""
     } else {
       this.chatroom__email_input.value = ""
-      this.chatroom__email_input.classList.add("set__input-error")
+      this.chatroom__email_input.style.borderBottom = "1px solid #E94E77";
+    }
+  }
+  /**
+   * Offline email submit
+   */
+  OfflineVisitorEmailSubmit(){
+    const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(email_pattern.test(sanitized_value) && this.chatroom__email_input.value !== ''){
+      this.chatroom__email_input.classList.remove("set__input-error")
+      // send to function to make request to the backend
+      this.chatroom__email_input.value = ""
+    } else {
+      this.chatroom__email_input.value = ""
+      this.chatroom__email_input.style.borderBottom = "1px solid #E94E77";
+      this.offline__textarea_input.style.border = "1px solid #E94E77";
     }
   }
   /**
@@ -284,6 +299,12 @@ class SalezyWidget {
   NopeSubmitEmail(){
     this.chatroom__email_input.value = ""
     this.SetVisitorEmail('');
+  }
+  /**
+   * When offline, the visitor submits a new email to the admin
+   */
+  OfflineSendEmail(){
+    
   }
   /**
    * Set the email form state
@@ -355,6 +376,7 @@ class SalezyWidget {
     this.chatroom__sure_btn = submitButton;
     this.chatroom__nope_btn = refuseButton;
     this.chatroom__email_input = emailInput;
+    this.offline__textarea_input = offlineTextArea;
     // div container for that email copy bubble, input and buttons
     const emailFormContainer = document.createElement("div");
     emailFormContainer.classList.add("chatroom__email-form-container");
@@ -375,6 +397,13 @@ class SalezyWidget {
     requestAnimationFrame(() => {
       this.chatRoomContainer.scrollTop = this.chatRoomContainer.scrollHeight;
     });
+  }
+  /**
+   * Set the widget state if an error happens
+   */
+  ErrorState(){
+    // display error message
+    // button to refresh and restart the widget
   }
   /**
    * Inform visitor that the admin deleted the conversation
