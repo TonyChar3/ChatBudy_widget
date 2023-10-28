@@ -379,7 +379,7 @@ export const styles = `
         resize: none;
         overflow-y: auto;
         color: #gray-500;
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         white-space: pre-wrap;
         word-wrap: break-word;
         background: transparent;
