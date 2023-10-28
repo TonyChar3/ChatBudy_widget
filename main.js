@@ -283,18 +283,19 @@ class SalezyWidget {
    */
   OfflineVisitorEmailSubmit(){
     let error_message_element = this.chatRoomContainer.querySelector('#error_message');
-    console.log(error_message_element)
     if(error_message_element){
       error_message_element.remove();
     }
     const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const sanitized_value = this.chatroom__email_input.value.replace(/[^\w\s@.\-]/gi, '');
     if(email_pattern.test(sanitized_value) && this.chatroom__email_input.value !== ''){
-      this.chatroom__email_input.classList.remove("set__input-error")
+      this.chatroom__email_input.style.borderBottom = "1px solid #6C2E9C";
+      this.offline__textarea_input.style.border = "2px solid #6C2E9C";
       // send to function to make request to the backend
-      this.chatroom__email_input.value = ""
+      this.chatroom__email_input.value = "";
+      this.offline__textarea_input.value = "";
     } else {
-      this.chatroom__email_input.value = ""
+      this.chatroom__email_input.value = "";
       this.chatroom__email_input.style.borderBottom = "1px solid #E94E77";
       this.offline__textarea_input.style.border = "1px solid #E94E77";
       this.ErrorChatStyle('Missing credentials. Please enter your email and a message :)');
