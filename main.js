@@ -282,7 +282,7 @@ class SalezyWidget {
    * Offline email submit
    */
   OfflineVisitorEmailSubmit(){
-    let error_message_element = document.getElementById('error_message');
+    let error_message_element = this.chatRoomContainer.getElementById('error_message');
     console.log(error_message_element)
     if(error_message_element){
       this.chatRoomContainer.removeChild(error_message_element);
