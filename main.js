@@ -282,6 +282,10 @@ class SalezyWidget {
    * Offline email submit
    */
   OfflineVisitorEmailSubmit(){
+    let error_message_element = document.getElementById('error_message');
+    if(error_message_element){
+      error_message_element.remove()
+    }
     const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const sanitized_value = this.chatroom__email_input.value.replace(/[^\w\s@.\-]/gi, '');
     if(email_pattern.test(sanitized_value) && this.chatroom__email_input.value !== ''){
