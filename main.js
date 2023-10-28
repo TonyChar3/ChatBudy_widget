@@ -292,6 +292,7 @@ class SalezyWidget {
       this.chatroom__email_input.value = ""
       this.chatroom__email_input.style.borderBottom = "1px solid #E94E77";
       this.offline__textarea_input.style.border = "1px solid #E94E77";
+      this.ErrorChatStyle('Missing credentials. Please enter your email and a message :)');
     }
   }
   /**
@@ -300,12 +301,6 @@ class SalezyWidget {
   NopeSubmitEmail(){
     this.chatroom__email_input.value = ""
     this.SetVisitorEmail('');
-  }
-  /**
-   * When offline, the visitor submits a new email to the admin
-   */
-  OfflineSendEmail(){
-    
   }
   /**
    * Set the email form state
@@ -397,6 +392,27 @@ class SalezyWidget {
     this.chatroom__sure_btn.addEventListener("click", this.VisitorEmailSubmit.bind(this));
     // if click no
     this.chatroom__nope_btn.addEventListener("click", this.NopeSubmitEmail.bind(this));
+    requestAnimationFrame(() => {
+      this.chatRoomContainer.scrollTop = this.chatRoomContainer.scrollHeight;
+    });
+  }
+  /**
+   * Display error message as a normal chat but it is error red
+   */
+  ErrorChatStyle(error_message){
+    const chatBubbleDIV = document.createElement("div");
+    const chatTextSpan = document.createElement('span');
+    chatBubbleDIV.setAttribute('id', 'error_message');
+    chatBubbleDIV.classList.add("chatroom__chat");
+
+    chatBubbleDIV.classList.add('right');
+    chatBubbleDIV.style.backgroundColor = 'white';
+    chatBubbleDIV.style.border = '1px solid #E94E77';
+    chatBubbleDIV.style.color = '#E94E77';
+    chatTextSpan.innerText = `${error_message}`
+    chatBubbleDIV.appendChild(chatTextSpan);
+
+    this.chatRoomContainer.appendChild(chatBubbleDIV);
     requestAnimationFrame(() => {
       this.chatRoomContainer.scrollTop = this.chatRoomContainer.scrollHeight;
     });
