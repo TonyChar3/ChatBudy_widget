@@ -376,6 +376,7 @@ export const styles = `
         margin: 1em;
         border: none;
         outline: none;
+        resize: none;
         overflow-y: auto;
         color: #gray-500;
         font-size: 1.1rem;

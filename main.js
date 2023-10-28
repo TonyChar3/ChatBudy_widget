@@ -431,6 +431,12 @@ class SalezyWidget {
     // button to refresh and restart the widget
   }
   /**
+   * Set a offline email sent success page
+   */
+  OfflineSuccessState(){
+    
+  }
+  /**
    * Inform visitor that the admin deleted the conversation
   */
   ConversationClosed(){
