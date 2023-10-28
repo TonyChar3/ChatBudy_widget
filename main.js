@@ -282,6 +282,7 @@ class SalezyWidget {
    * Offline email submit
    */
   OfflineVisitorEmailSubmit(){
+    this.chatRoomContainer.remove(this.chatRoomContainer.querySelector('#error_message'));
     const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const sanitized_value = this.chatroom__email_input.value.replace(/[^\w\s@.\-]/gi, '');
     if(email_pattern.test(sanitized_value) && this.chatroom__email_input.value !== ''){
@@ -405,7 +406,7 @@ class SalezyWidget {
     chatBubbleDIV.setAttribute('id', 'error_message');
     chatBubbleDIV.classList.add("chatroom__chat");
 
-    chatBubbleDIV.classList.add('right');
+    chatBubbleDIV.classList.add('left');
     chatBubbleDIV.style.backgroundColor = 'white';
     chatBubbleDIV.style.border = '1px solid #E94E77';
     chatBubbleDIV.style.color = '#E94E77';
