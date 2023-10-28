@@ -283,6 +283,7 @@ class SalezyWidget {
    */
   OfflineVisitorEmailSubmit(){
     const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const sanitized_value = this.chatroom__email_input.value.replace(/[^\w\s@.\-]/gi, '');
     if(email_pattern.test(sanitized_value) && this.chatroom__email_input.value !== ''){
       this.chatroom__email_input.classList.remove("set__input-error")
       // send to function to make request to the backend
