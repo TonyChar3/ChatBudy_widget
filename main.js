@@ -113,8 +113,6 @@ class SalezyWidget {
         this.handleSSEConnection();
         this.DOMLoaded = true;
       }
-      console.log('SSE handler')
-      this.SSEhandler();
     })
     /**
      * Invoke the createWidget Method
@@ -228,6 +226,9 @@ class SalezyWidget {
     });
     this.chat_input_divider.classList.add("widget__hidden");
     this.chat_room_input.classList.add("widget__hidden");
+    // start the SSE
+    console.log('SSE handler')
+    this.SSEhandler();
   }
   /**
   * Add the style of the widget
