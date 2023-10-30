@@ -625,7 +625,6 @@ class SalezyWidget {
       this.widgetContainer.classList.remove("content__hidden");
     } else {
       this.createWidgetContent();
-      this.SSEhandler();
       if(this.position === 'left'){
         this.mainWidgetContainer.classList.remove('widget-open__left');
         this.mainWidgetContainer.classList.add('widget-position__left');
