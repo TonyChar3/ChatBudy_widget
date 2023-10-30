@@ -278,7 +278,7 @@ export const styles = `
         display: inline-block;
         max-width: 50%;
         height: auto;
-        margin: 1.01em 1.01em 0 1.01em;
+        margin: 1.05em 1.05em;
         padding: .5em; 
         border-radius: 10px 10px 10px 0;
     }
