@@ -531,6 +531,7 @@ class SalezyWidget {
       if(socket){
         socket.addEventListener('open', () => {});
         socket.addEventListener('message', (event) => {
+          console.log(JSON.parse(event.data))
             const chat = JSON.parse(event.data)
             if(Array.isArray(chat)){
               this.loadingAnimationDIV.style.display = 'none';
