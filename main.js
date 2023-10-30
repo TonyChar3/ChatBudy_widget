@@ -294,6 +294,11 @@ class SalezyWidget {
       // send to function to make request to the backend
       this.chatroom__email_input.value = "";
       this.offline__textarea_input.value = "";
+      if(this.emailFormContainer){
+        this.emailFormContainer.style.display = 'none';
+      }
+      // display success message
+      this.OfflineSuccessState();
     } else {
       this.chatroom__email_input.value = "";
       this.chatroom__email_input.style.borderBottom = "1px solid #E94E77";
@@ -434,7 +439,19 @@ class SalezyWidget {
    * Set a offline email sent success page
    */
   OfflineSuccessState(){
-    
+    // add it to the container
+    const successMessageDIV = document.createElement("div");
+    const successMessageSpan = document.createElement('span');
+    successMessageDIV.classList.add("chatroom__chat");
+    successMessageDIV.classList.add("left");
+    successMessageDIV.style.backgroundColor = '#d1d1d1';
+    successMessageDIV.style.color = '#3f3f46';
+    successMessageSpan.innerText = '✅ Success! Your question has been sent to our support team. Please check your inbox for our reply. Thank you for reaching out!';
+    successMessageDIV.appendChild(successMessageSpan);
+    this.chatRoomContainer.appendChild(successMessageDIV);
+    requestAnimationFrame(() => {
+      this.chatRoomContainer.scrollTop = this.chatRoomContainer.scrollHeight;
+    });
   }
   /**
    * Inform visitor that the admin deleted the conversation
