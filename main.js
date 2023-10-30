@@ -1,4 +1,4 @@
-import { styles, openChat, stopChat, sendChat, EmitIsTyping, SetVisitorEmail, getWSlink, SetupSSEconnection } from "./asset.js";
+import { styles, openChat, stopChat, sendChat, EmitIsTyping, SetVisitorEmail, getWSlink, SetupSSEconnection, OfflineSendEmail } from "./asset.js";
 import { LoadUpsequence } from "./LoaderTemplate.js";
 
 class SalezyWidget {
@@ -24,6 +24,7 @@ class SalezyWidget {
     this.EmitIsTyping = EmitIsTyping.bind(this);
     this.SetVisitorEmail = SetVisitorEmail.bind(this);
     this.getWSlink = getWSlink.bind(this);
+    this.OfflineSendEmail = OfflineSendEmail.bind(this);
   }
   
   position = "";

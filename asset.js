@@ -627,6 +627,30 @@ export const SetupSSEconnection = async(widget_id) => {
     }
 };
 /**
+ * Offline email submit
+ */
+export const OfflineSendEmail = async(widget_id, email_from, email_content) => {
+    try{
+        // will send the user_hash and the httpOnly cookie jwt 
+        //TODO: credentials: 'include' once in production to send the httpOnly cookie
+        const token = getCookie('visitor_jwt');
+        if(!token){
+            return false;
+        }
+        await fetch(`http://localhost:8080/visitor/send-email-:${widget_id}`,{
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ from: email_from, content: email_content })
+        });
+        return;
+    } catch(err){
+        console.log('ERROR sending email. try again or contact support');
+    }
+}
+/**
  * Dev env set a cookie
  */
 function getCookie(name) {
