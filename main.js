@@ -8,6 +8,7 @@ class SalezyWidget {
     this.ask_email_copy = this.style.greeting_message;
     this.ask_email_page = true;// show the input for the email and the buttons & hide the chat input
     this.widgetID = JSON.parse(localStorage.getItem('chatbudy_state')).access_id// To identify the widget for each request he makes
+    this.chat_mode = '';// chat mode set by the admin (Live chat or email)
     this.adminStatus = false;// To set the Online - Offline status of the admin in the widget header
     this.DOMLoaded = false;
     this.mute_sound = false;// to mute the notification sound if the user want to
@@ -331,7 +332,10 @@ class SalezyWidget {
     ask_emailBubbleDIV.classList.add("left");
     ask_emailBubbleDIV.style.backgroundColor = '#d1d1d1';
     ask_emailBubbleDIV.style.color = '#3f3f46';
-    chatTextSpan.innerText = this.adminStatus ? `${this.ask_email_copy}` : 'We are currently unavaible right now, please provide your email and we will get back to you as soon as possible 🙃!' 
+    chatTextSpan.innerText = this.chat_mode === 'live-chat' ? 
+    `${this.ask_email_copy}` 
+    : 
+    'We are currently unavaible right now, please provide your email and we will get back to you as soon as possible 🙃!';
     ask_emailBubbleDIV.appendChild(chatTextSpan);
     // generate the email input and the buttons
     const chatBubbleDIV = document.createElement("div");
@@ -378,7 +382,7 @@ class SalezyWidget {
     offlineCancelButton.innerText = "Cancel ❌";
     offlineCancelButton.style.border = `1px solid ${this.style.main_color}`;
     offlineCancelButton.style.color = `${this.style.main_color}`;
-    if(this.adminStatus){
+    if(this.chat_mode === 'live-chat'){
       submitButtonDiv.appendChild(submitButton);
       submitButtonDiv.appendChild(refuseButton);
     } else {
@@ -397,7 +401,7 @@ class SalezyWidget {
     this.emailFormContainer = emailFormContainer;
     this.emailFormContainer.appendChild(ask_emailBubbleDIV);
     this.emailFormContainer.appendChild(chatBubbleDIV);
-    if(!this.adminStatus){
+    if(this.chat_mode === 'email-chat'){
       this.emailFormContainer.appendChild(offlineTextArea);
     }
     this.emailFormContainer.appendChild(submitButtonDiv);
