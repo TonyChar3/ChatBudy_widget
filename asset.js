@@ -283,6 +283,10 @@ export const styles = `
             font-size: 1rem;
             margin: 1em 0 .5em 1em;
         }
+        .success-offline__chat {
+            font-size: 1rem;
+            margin: 1em 0 .5em 1em;
+        }
     }
     .chatroom__email-input-div {
         display: inline-block;
