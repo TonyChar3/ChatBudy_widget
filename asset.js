@@ -188,8 +188,8 @@ export const styles = `
     }
     .mute-notification-icon {
         position: absolute;
-        margin: .2em;
-        right: 12%;
+        margin: .3em;
+        right: 13%;
         font-size: 1.2rem;
         cursor: pointer;
     }
