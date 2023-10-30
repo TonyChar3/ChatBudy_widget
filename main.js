@@ -323,96 +323,97 @@ class SalezyWidget {
   EmailFormState(){
     if(localStorage.getItem('chatbudy_offline-email-sent')){
       this.OfflineSuccessState();
-    }
-    // the ask email copy chat bubble
-    const ask_emailBubbleDIV = document.createElement("div");
-    const chatTextSpan = document.createElement('span');
-    ask_emailBubbleDIV.classList.add("greeting-offline__chat");
-    ask_emailBubbleDIV.classList.add("left");
-    ask_emailBubbleDIV.style.backgroundColor = '#d1d1d1';
-    ask_emailBubbleDIV.style.color = '#3f3f46';
-    chatTextSpan.innerText = this.adminStatus ? `${this.ask_email_copy}` : 'We are currently unavaible right now, please provide your email and we will get back to you as soon as possible 🙃!' 
-    ask_emailBubbleDIV.appendChild(chatTextSpan);
-    // generate the email input and the buttons
-    const chatBubbleDIV = document.createElement("div");
-    chatBubbleDIV.classList.add("chatroom__email-input-div");
-    chatBubbleDIV.style.border = `2px solid ${this.style.main_color}`;
-    const emailInput = document.createElement("input");
-    emailInput.setAttribute("type", "text");
-    emailInput.setAttribute("placeholder", "email@adress.com");
-    emailInput.classList.add("chatroom__email-input");
-    emailInput.addEventListener('focus', () => {
-      emailInput.style.borderBottomColor = `${this.style.main_color}`
-    });
-    // Offline message input
-    const offlineTextArea = document.createElement("textarea");
-    offlineTextArea.classList.add('offline__textarea-input');
-    offlineTextArea.setAttribute('placeholder', "Your message...")
-    offlineTextArea.style.border = `2px solid ${this.style.main_color}`;
-    chatBubbleDIV.appendChild(emailInput);
-    // Sure - Nope buttons and div
-    // DIV
-    const submitButtonDiv = document.createElement("div");
-    submitButtonDiv.classList.add("chatroom__submit-btn-div");
-    // Submit button
-    const submitButton = document.createElement("button");
-    submitButton.innerText = "submit 👍";
-    submitButton.classList.add("chatroom__email-buttons");
-    submitButton.style.border = `1px solid ${this.style.main_color}`;
-    submitButton.style.color = `${this.style.main_color}`;
-    // Refuse button
-    const refuseButton = document.createElement("button");
-    refuseButton.classList.add("chatroom__email-buttons");
-    refuseButton.innerText = "I refuse 👎";
-    refuseButton.style.border = `1px solid ${this.style.main_color}`;
-    refuseButton.style.color = `${this.style.main_color}`;
-    // Offline email submit button
-    const offlineSubmitButton = document.createElement("button");
-    offlineSubmitButton.classList.add("chatroom__email-buttons");
-    offlineSubmitButton.innerText = "Submit 💬";
-    offlineSubmitButton.style.border = `1px solid ${this.style.main_color}`;
-    offlineSubmitButton.style.color = `${this.style.main_color}`;
-    // Offline cancel button
-    const offlineCancelButton = document.createElement("button");
-    offlineCancelButton.classList.add("chatroom__email-buttons");
-    offlineCancelButton.innerText = "Cancel ❌";
-    offlineCancelButton.style.border = `1px solid ${this.style.main_color}`;
-    offlineCancelButton.style.color = `${this.style.main_color}`;
-    if(this.adminStatus){
-      submitButtonDiv.appendChild(submitButton);
-      submitButtonDiv.appendChild(refuseButton);
     } else {
-      submitButtonDiv.appendChild(offlineSubmitButton);
-      submitButtonDiv.appendChild(offlineCancelButton);
+      // the ask email copy chat bubble
+      const ask_emailBubbleDIV = document.createElement("div");
+      const chatTextSpan = document.createElement('span');
+      ask_emailBubbleDIV.classList.add("greeting-offline__chat");
+      ask_emailBubbleDIV.classList.add("left");
+      ask_emailBubbleDIV.style.backgroundColor = '#d1d1d1';
+      ask_emailBubbleDIV.style.color = '#3f3f46';
+      chatTextSpan.innerText = this.adminStatus ? `${this.ask_email_copy}` : 'We are currently unavaible right now, please provide your email and we will get back to you as soon as possible 🙃!' 
+      ask_emailBubbleDIV.appendChild(chatTextSpan);
+      // generate the email input and the buttons
+      const chatBubbleDIV = document.createElement("div");
+      chatBubbleDIV.classList.add("chatroom__email-input-div");
+      chatBubbleDIV.style.border = `2px solid ${this.style.main_color}`;
+      const emailInput = document.createElement("input");
+      emailInput.setAttribute("type", "text");
+      emailInput.setAttribute("placeholder", "email@adress.com");
+      emailInput.classList.add("chatroom__email-input");
+      emailInput.addEventListener('focus', () => {
+        emailInput.style.borderBottomColor = `${this.style.main_color}`
+      });
+      // Offline message input
+      const offlineTextArea = document.createElement("textarea");
+      offlineTextArea.classList.add('offline__textarea-input');
+      offlineTextArea.setAttribute('placeholder', "Your message...")
+      offlineTextArea.style.border = `2px solid ${this.style.main_color}`;
+      chatBubbleDIV.appendChild(emailInput);
+      // Sure - Nope buttons and div
+      // DIV
+      const submitButtonDiv = document.createElement("div");
+      submitButtonDiv.classList.add("chatroom__submit-btn-div");
+      // Submit button
+      const submitButton = document.createElement("button");
+      submitButton.innerText = "submit 👍";
+      submitButton.classList.add("chatroom__email-buttons");
+      submitButton.style.border = `1px solid ${this.style.main_color}`;
+      submitButton.style.color = `${this.style.main_color}`;
+      // Refuse button
+      const refuseButton = document.createElement("button");
+      refuseButton.classList.add("chatroom__email-buttons");
+      refuseButton.innerText = "I refuse 👎";
+      refuseButton.style.border = `1px solid ${this.style.main_color}`;
+      refuseButton.style.color = `${this.style.main_color}`;
+      // Offline email submit button
+      const offlineSubmitButton = document.createElement("button");
+      offlineSubmitButton.classList.add("chatroom__email-buttons");
+      offlineSubmitButton.innerText = "Submit 💬";
+      offlineSubmitButton.style.border = `1px solid ${this.style.main_color}`;
+      offlineSubmitButton.style.color = `${this.style.main_color}`;
+      // Offline cancel button
+      const offlineCancelButton = document.createElement("button");
+      offlineCancelButton.classList.add("chatroom__email-buttons");
+      offlineCancelButton.innerText = "Cancel ❌";
+      offlineCancelButton.style.border = `1px solid ${this.style.main_color}`;
+      offlineCancelButton.style.color = `${this.style.main_color}`;
+      if(this.adminStatus){
+        submitButtonDiv.appendChild(submitButton);
+        submitButtonDiv.appendChild(refuseButton);
+      } else {
+        submitButtonDiv.appendChild(offlineSubmitButton);
+        submitButtonDiv.appendChild(offlineCancelButton);
+      }
+      this.chatroom__offline_submit = offlineSubmitButton;
+      this.chatroom__offline_cancel = offlineCancelButton;
+      this.chatroom__sure_btn = submitButton;
+      this.chatroom__nope_btn = refuseButton;
+      this.chatroom__email_input = emailInput;
+      this.offline__textarea_input = offlineTextArea;
+      // div container for that email copy bubble, input and buttons
+      const emailFormContainer = document.createElement("div");
+      emailFormContainer.classList.add("chatroom__email-form-container");
+      this.emailFormContainer = emailFormContainer;
+      this.emailFormContainer.appendChild(ask_emailBubbleDIV);
+      this.emailFormContainer.appendChild(chatBubbleDIV);
+      if(!this.adminStatus){
+        this.emailFormContainer.appendChild(offlineTextArea);
+      }
+      this.emailFormContainer.appendChild(submitButtonDiv);
+      this.chatRoomContainer.appendChild(this.emailFormContainer);
+      // If offline submit click
+      this.chatroom__offline_submit.addEventListener("click", this.OfflineVisitorEmailSubmit.bind(this));
+      // If offline cancel click
+      this.chatroom__offline_cancel.addEventListener("click", this.toggleOpen.bind(this));
+      // If click submit
+      this.chatroom__sure_btn.addEventListener("click", this.VisitorEmailSubmit.bind(this));
+      // if click no
+      this.chatroom__nope_btn.addEventListener("click", this.NopeSubmitEmail.bind(this));
+      requestAnimationFrame(() => {
+        this.chatRoomContainer.scrollTop = this.chatRoomContainer.scrollHeight;
+      });
     }
-    this.chatroom__offline_submit = offlineSubmitButton;
-    this.chatroom__offline_cancel = offlineCancelButton;
-    this.chatroom__sure_btn = submitButton;
-    this.chatroom__nope_btn = refuseButton;
-    this.chatroom__email_input = emailInput;
-    this.offline__textarea_input = offlineTextArea;
-    // div container for that email copy bubble, input and buttons
-    const emailFormContainer = document.createElement("div");
-    emailFormContainer.classList.add("chatroom__email-form-container");
-    this.emailFormContainer = emailFormContainer;
-    this.emailFormContainer.appendChild(ask_emailBubbleDIV);
-    this.emailFormContainer.appendChild(chatBubbleDIV);
-    if(!this.adminStatus){
-      this.emailFormContainer.appendChild(offlineTextArea);
-    }
-    this.emailFormContainer.appendChild(submitButtonDiv);
-    this.chatRoomContainer.appendChild(this.emailFormContainer);
-    // If offline submit click
-    this.chatroom__offline_submit.addEventListener("click", this.OfflineVisitorEmailSubmit.bind(this));
-    // If offline cancel click
-    this.chatroom__offline_cancel.addEventListener("click", this.toggleOpen.bind(this));
-    // If click submit
-    this.chatroom__sure_btn.addEventListener("click", this.VisitorEmailSubmit.bind(this));
-    // if click no
-    this.chatroom__nope_btn.addEventListener("click", this.NopeSubmitEmail.bind(this));
-    requestAnimationFrame(() => {
-      this.chatRoomContainer.scrollTop = this.chatRoomContainer.scrollHeight;
-    });
   }
   /**
    * Display error message as a normal chat but it is error red
