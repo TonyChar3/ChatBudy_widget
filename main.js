@@ -227,7 +227,6 @@ class SalezyWidget {
     this.chat_input_divider.classList.add("widget__hidden");
     this.chat_room_input.classList.add("widget__hidden");
     // start the SSE
-    console.log('SSE handler')
     this.SSEhandler();
   }
   /**
