@@ -113,6 +113,7 @@ class SalezyWidget {
         this.handleSSEConnection();
         this.DOMLoaded = true;
       }
+      console.log('SSE handler')
       this.SSEhandler();
     })
     /**
