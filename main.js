@@ -113,6 +113,7 @@ class SalezyWidget {
         this.handleSSEConnection();
         this.DOMLoaded = true;
       }
+      this.SSEhandler();
     })
     /**
      * Invoke the createWidget Method
