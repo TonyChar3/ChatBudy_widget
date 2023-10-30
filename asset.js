@@ -638,7 +638,7 @@ export const OfflineSendEmail = async(widget_id, email_from, email_content) => {
         if(!token){
             return false;
         }
-        await fetch(`http://localhost:8080/visitor/send-email-:${widget_id}`,{
+        await fetch(`http://localhost:8080/visitor/send-email-${widget_id}`,{
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
