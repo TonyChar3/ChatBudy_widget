@@ -267,7 +267,10 @@ export const styles = `
     }
     @media (min-width: 1024px) {
         .chatroom__chat {
-            font-size: 1.02rem;
+            font-size: 1rem;
+        }
+        .greeting-offline__chat {
+            font-size: 1rem;
         }
     }
     .chatroom__email-input-div {
