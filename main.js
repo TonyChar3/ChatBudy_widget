@@ -290,11 +290,13 @@ class SalezyWidget {
       error_message_element.remove();
     }
     const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const sanitized_value = this.chatroom__email_input.value.replace(/[^\w\s@.\-]/gi, '');
-    if(email_pattern.test(sanitized_value) && this.chatroom__email_input.value !== ''){
+    const sanitized_input = this.chatroom__email_input.value.replace(/[^\w\s@.\-]/gi, '');
+    const sanitized_textarea = this.offline__textarea_input.value.replace(/[^\w\s@.\-]/gi, '');
+    if(email_pattern.test(sanitized_input) && this.chatroom__email_input.value !== '' && this.offline__textarea_input.value !== ''){
       this.chatroom__email_input.style.borderBottom = "1px solid #6C2E9C";
       this.offline__textarea_input.style.border = "2px solid #6C2E9C";
       // send to function to make request to the backend
+      this.OfflineSendEmail(this.widgetID, sanitized_input, sanitized_textarea);
       this.chatroom__email_input.value = "";
       this.offline__textarea_input.value = "";
       if(this.emailFormContainer){
