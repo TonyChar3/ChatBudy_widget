@@ -433,13 +433,6 @@ class SalezyWidget {
     });
   }
   /**
-   * Set the widget state if an error happens
-   */
-  ErrorState(){
-    // display error message
-    // button to refresh and restart the widget
-  }
-  /**
    * Set a offline email sent success page
    */
   OfflineSuccessState(){
