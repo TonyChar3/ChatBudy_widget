@@ -547,7 +547,12 @@ class SalezyWidget {
             } else if(chat.type === 'ask-email'){
               this.loadingAnimationDIV.style.display = 'none';
               if(localStorage.getItem('chatbudy_offline-email-sent')){
-                this.OfflineSuccessState();
+                if(this.adminStatus){
+                  localStorage.removeItem('chatbudy_offline-email-sent');
+                  this.EmailFormState();
+                } else {
+                  this.OfflineSuccessState();
+                }
               } else {
                 this.EmailFormState();
               }
