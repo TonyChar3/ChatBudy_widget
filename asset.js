@@ -271,6 +271,7 @@ export const styles = `
         }
         .greeting-offline__chat {
             font-size: 1rem;
+            margin: 1em;
         }
     }
     .chatroom__email-input-div {
