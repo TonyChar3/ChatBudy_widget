@@ -284,7 +284,7 @@ export const styles = `
     }
     @media (min-width: 1024px) {
         .chatroom__email-input-div {
-            margin: 1em;
+            margin: 1em 0 .5em 1em;
         }
     }
     .closed__convo_btn-div {
