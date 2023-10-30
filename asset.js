@@ -282,6 +282,11 @@ export const styles = `
         padding: .5em; 
         border-radius: 10px 10px 10px 0;
     }
+    @media (min-width: 1024px) {
+        .chatroom__email-input-div {
+            margin: 1em;
+        }
+    }
     .closed__convo_btn-div {
         display: inline-block;
         max-width: 50%;
