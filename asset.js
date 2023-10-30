@@ -395,6 +395,10 @@ export const styles = `
             max-height: 30%;
             font-size: 1rem;
         }
+        .offline__textarea-input {
+            font-size: 1rem;
+            margin: .5em;
+        }
     }
     .chat__footer {
         width: 100%;
