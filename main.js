@@ -446,7 +446,7 @@ class SalezyWidget {
     successMessageDIV.classList.add("left");
     successMessageDIV.style.backgroundColor = '#d1d1d1';
     successMessageDIV.style.color = '#3f3f46';
-    successMessageSpan.innerText = '✅ Success! Your question has been sent to our support team. Please check your inbox or junk for our reply. Thank you for reaching out!';
+    successMessageSpan.innerText = '✅ Success! Your question has been sent to the admin. Please check your inbox or junk for our reply. Thank you for reaching out!';
     successMessageDIV.appendChild(successMessageSpan);
     this.chatRoomContainer.appendChild(successMessageDIV);
     requestAnimationFrame(() => {
