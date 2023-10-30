@@ -402,7 +402,7 @@ export const styles = `
         }
         .offline__textarea-input {
             font-size: 1rem;
-            margin: .5em;
+            margin: 1em 0 .5em 1em;
         }
     }
     .chat__footer {
