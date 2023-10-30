@@ -631,6 +631,7 @@ export const SetupSSEconnection = async(widget_id) => {
  */
 export const OfflineSendEmail = async(widget_id, email_from, email_content) => {
     try{
+        console.log('email sent')
         // will send the user_hash and the httpOnly cookie jwt 
         //TODO: credentials: 'include' once in production to send the httpOnly cookie
         const token = getCookie('visitor_jwt');
