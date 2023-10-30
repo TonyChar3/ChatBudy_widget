@@ -586,13 +586,16 @@ class SalezyWidget {
     }
     this.SSElink = new EventSource(auth_widget.sse_link, { withCredentials: true })
     this.SSElink.addEventListener('message', (event) => {
-      console.log(JSON.parse(event.data))
-      const number_unreadchat = JSON.parse(event.data)
-      if(number_unreadchat > 0){
+      const sse_data = JSON.parse(event.data)
+      if(sse_data.type === 'admin-status'){
+        this.adminStatus = sse_data.data
+      }
+
+      if(sse_data > 0){
         if(!this.mute_sound) {
           this.notification_sound.play();
         }
-        this.unreadChatCountSpan.textContent = number_unreadchat
+        this.unreadChatCountSpan.textContent = sse_data
         this.buttonContainer.appendChild(this.unreadChatCountSpan);
       } else {
         this.buttonContainer.contains(this.unreadChatCountSpan)? this.buttonContainer.removeChild(this.unreadChatCountSpan) : '';
