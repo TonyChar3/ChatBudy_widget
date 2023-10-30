@@ -267,7 +267,7 @@ export const styles = `
     }
     @media (min-width: 1024px) {
         .chatroom__chat {
-            font-size: 1rem;
+            font-size: 1.02rem;
         }
     }
     .chatroom__email-input-div {
