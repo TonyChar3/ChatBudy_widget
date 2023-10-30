@@ -534,7 +534,6 @@ class SalezyWidget {
       if(socket){
         socket.addEventListener('open', () => {});
         socket.addEventListener('message', (event) => {
-          console.log(JSON.parse(event.data))
             const chat = JSON.parse(event.data)
             if(Array.isArray(chat)){
               this.loadingAnimationDIV.style.display = 'none';
@@ -587,6 +586,7 @@ class SalezyWidget {
     }
     this.SSElink = new EventSource(auth_widget.sse_link, { withCredentials: true })
     this.SSElink.addEventListener('message', (event) => {
+      console.log(JSON.parse(event.data))
       const number_unreadchat = JSON.parse(event.data)
       if(number_unreadchat > 0){
         if(!this.mute_sound) {
