@@ -321,6 +321,9 @@ class SalezyWidget {
    * Set the email form state
    */
   EmailFormState(){
+    if(localStorage.getItem('chatbudy_offline-email-sent')){
+      this.OfflineSuccessState();
+    }
     // the ask email copy chat bubble
     const ask_emailBubbleDIV = document.createElement("div");
     const chatTextSpan = document.createElement('span');
