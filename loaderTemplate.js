@@ -99,6 +99,8 @@ const GetWidgetStyle = async(widget_id) => {
             });
             const style_data = await style_request.json();
             if(style_data){
+                // set the chat mode for the widget
+                localStorage.setItem('chatbudy_mode', JSON.stringify(style_data.widget_chat_mode));
                 // set the styling in the localstorage
                 localStorage.setItem('chatbudy_style', JSON.stringify(style_data.widget_style));
             }
