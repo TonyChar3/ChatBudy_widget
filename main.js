@@ -299,6 +299,8 @@ class SalezyWidget {
       }
       // display success message
       this.OfflineSuccessState();
+      // persist the state with session storage
+      localStorage.setItem('chatbudy_offline-email-sent', true);
     } else {
       this.chatroom__email_input.value = "";
       this.chatroom__email_input.style.borderBottom = "1px solid #E94E77";
@@ -561,7 +563,6 @@ class SalezyWidget {
         this.ConversationClosed();
         this.DOMLoaded = false;
       }
-
     }
   }
   /**
@@ -584,7 +585,7 @@ class SalezyWidget {
     this.SSElink.addEventListener('message', (event) => {
       const number_unreadchat = JSON.parse(event.data)
       if(number_unreadchat > 0){
-        if(!this.mute_sound){
+        if(!this.mute_sound) {
           this.notification_sound.play();
         }
         this.unreadChatCountSpan.textContent = number_unreadchat
