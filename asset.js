@@ -493,7 +493,8 @@ export const openChat = async(widget_id, sse_connection) => {
             if(!sessionStorage.getItem('convoClosed') && sessionStorage.getItem('widgetLoaded')){
                 // will send the user_hash and the httpOnly cookie jwt 
                 //TODO: credentials: 'include' once in production to send the httpOnly cookie
-                const token = getCookie('visitor_jwt');
+                //const token = getCookie('visitor_jwt');
+                const token = 'helo'
                 const ws_auth_fetch = await fetch('http://localhost:8080/chat/auth-ws',{
                     method: 'post',
                     headers: {
