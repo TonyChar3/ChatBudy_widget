@@ -401,7 +401,7 @@ class SalezyWidget {
     this.emailFormContainer = emailFormContainer;
     this.emailFormContainer.appendChild(ask_emailBubbleDIV);
     this.emailFormContainer.appendChild(chatBubbleDIV);
-    if(this.chat_mode === 'email-chat'){
+    if(this.chat_mode === 'lead-gen'){
       this.emailFormContainer.appendChild(offlineTextArea);
     }
     this.emailFormContainer.appendChild(submitButtonDiv);
