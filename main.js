@@ -442,7 +442,7 @@ class SalezyWidget {
     // add it to the container
     const successMessageDIV = document.createElement("div");
     const successMessageSpan = document.createElement('span');
-    successMessageDIV.classList.add("chatroom__chat");
+    successMessageDIV.classList.add("success-offline__chat");
     successMessageDIV.classList.add("left");
     successMessageDIV.style.backgroundColor = '#d1d1d1';
     successMessageDIV.style.color = '#3f3f46';
