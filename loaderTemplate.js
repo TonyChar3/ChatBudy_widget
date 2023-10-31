@@ -106,22 +106,22 @@ const GetWidgetStyle = async(widget_id) => {
 */
 export const setNewVisitor = async(visitor_data, widget_id) => {
     try{
-        const newVisitor = {
-            isoCode: visitor_data.info.country.iso_code,
-            browser: navigator.userAgent
-        }
-        await fetch(`https://chatbudy-api.onrender.com/visitor/new-visitor-${widget_id}`,{
+        const response = await fetch(`https://chatbudy-api.onrender.com/visitor/new-visitor-${widget_id}`,{
             method: 'post',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(newVisitor)
+            credentials: 'include',
+            body: JSON.stringify({
+                isoCode: visitor_data.info.country.iso_code,
+                browser: navigator.userAgent
+            })
         });
 
         // const data = await visitor.json()
 
         // setCookie('visitor_jwt', data.visitorToken.jwtToken)
+        console.log(response)
         return true
     } catch(err){
         console.log(err)
