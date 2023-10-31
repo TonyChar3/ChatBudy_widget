@@ -82,7 +82,7 @@ const GetWidgetStyle = async(widget_id) => {
             // get the jwt token
             // TODO: add credentials: true for PROD
             // make a request using the widget_id (user hash)
-            const style_request = await fetch(`https://chatbudy-api.onrender.com/code/style-${widget_id}`,{
+            const style_request = await fetch(`https://f76f-2607-fa49-d344-6500-7d16-a4ca-23d5-7012.ngrok-free.app/code/style-${widget_id}`,{
                 method: 'get',
                 headers: {
                     'Content-Type': 'application/json'
@@ -105,7 +105,7 @@ const GetWidgetStyle = async(widget_id) => {
 */
 export const setNewVisitor = async(visitor_data, widget_id) => {
     try{
-        const response = await fetch(`https://chatbudy-api.onrender.com/visitor/new-visitor-${widget_id}`,{
+        const response = await fetch(`https://f76f-2607-fa49-d344-6500-7d16-a4ca-23d5-7012.ngrok-free.app/visitor/new-visitor-${widget_id}`,{
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
@@ -135,7 +135,7 @@ export const initiateChat = async(widget_id) => {
     try{
         // const token = getCookie('visitor_jwt');
         // if(token){
-        const start_chat = await fetch('https://chatbudy-api.onrender.com/chat/new-room',{
+        const start_chat = await fetch('https://f76f-2607-fa49-d344-6500-7d16-a4ca-23d5-7012.ngrok-free.app/chat/new-room',{
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
@@ -166,7 +166,7 @@ export const LoadUpsequence = async(widget_id) => {
         if (sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
             return
         }
-        const response = await fetch(`https://chatbudy-api.onrender.com/visitor/visitor-info`,{
+        const response = await fetch(`https://f76f-2607-fa49-d344-6500-7d16-a4ca-23d5-7012.ngrok-free.app/visitor/visitor-info`,{
             method: 'get',
             headers: {
                 'Content-Type': 'application/json'
