@@ -110,7 +110,7 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
             isoCode: visitor_data.info.country.iso_code,
             browser: navigator.userAgent
         }
-        const visitor = await fetch(`https://chatbudy-api.onrender.com/visitor/new-visitor-${widget_id}`,{
+        const visitor = await fetch(`https://5d0c-2607-fa49-d344-6500-7d16-a4ca-23d5-7012.ngrok-free.app/visitor/new-visitor-${widget_id}`,{
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
@@ -119,10 +119,12 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
             body: JSON.stringify(newVisitor)
         });
 
-        const data = await visitor.json()
+        // const data = await visitor.json()
 
-        setCookie('visitor_jwt', data.visitorToken.jwtToken)
-        return true
+        // setCookie('visitor_jwt', data.visitorToken.jwtToken)
+        if(visitor){
+            return true
+        }
     } catch(err){
         console.log(err)
         return false
