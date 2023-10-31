@@ -166,7 +166,7 @@ export const LoadUpsequence = async(widget_id) => {
         if (sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
             return
         }
-        const response = await fetch(`https://f76f-2607-fa49-d344-6500-7d16-a4ca-23d5-7012.ngrok-free.app/visitor/visitor-info`,{
+        const response = await fetch(`http://localhost:8080/visitor/visitor-info`,{
             method: 'get',
             headers: {
                 'Content-Type': 'application/json'
