@@ -1,19 +1,19 @@
 //TODO: DEV env functions
-function getCookie(name) {
-    const cookieString = window.parent.document.cookie
-    const cookies = cookieString.split('; ');
-    for (let i = 0; i < cookies.length; i++) {
-      const cookie = cookies[i].split('=');
-      if (cookie[0] === name) {
-        return cookie[1];
-      }
-    }
-    return null;
-}
-function setCookie(name, value) {
-    const cookieString = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
-    window.parent.document.cookie = cookieString;
-}
+// function getCookie(name) {
+//     const cookieString = window.parent.document.cookie
+//     const cookies = cookieString.split('; ');
+//     for (let i = 0; i < cookies.length; i++) {
+//       const cookie = cookies[i].split('=');
+//       if (cookie[0] === name) {
+//         return cookie[1];
+//       }
+//     }
+//     return null;
+// }
+// function setCookie(name, value) {
+//     const cookieString = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
+//     window.parent.document.cookie = cookieString;
+// }
 // -------------------------------
 let useraccess = '{{USER_HASH}}';
 /**
@@ -24,10 +24,6 @@ const SetupIframe = async (Iframe_element) => {
         if(Iframe_element){
             // Define the initial HTML content
             const initialHTML = `<!DOCTYPE html></html>`;
-            const token = getCookie("visitor_jwt");
-            if (!token) {
-                return;
-            }
             Iframe_element.style.display = "none";
             Iframe_element.title = "ChatBudy chat widget code";
             // Set the srcdoc attribute to the initial HTML content
@@ -84,18 +80,15 @@ const GetWidgetStyle = async(widget_id) => {
         if(!localStorage.getItem('chatbudy_style')){
             // TODO: to be removed for production
             // get the jwt token
-            const token = getCookie("visitor_jwt")
-            if(!token){
-                return;
-            }
             // TODO: add credentials: true for PROD
             // make a request using the widget_id (user hash)
-            const style_request = await fetch(`http://localhost:8080/code/style-${widget_id}`,{
+            const style_request = await fetch(`https://chatbudy-api.onrender.com/code/style-${widget_id}`,{
                 method: 'get',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
-                }
+                },
+                credentials: 'include'
             });
             const style_data = await style_request.json();
             if(style_data){
@@ -117,17 +110,18 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
             isoCode: visitor_data.info.country.iso_code,
             browser: navigator.userAgent
         }
-        const visitor = await fetch(`http://localhost:8080/visitor/new-visitor-${widget_id}`,{
+        await fetch(`https://chatbudy-api.onrender.com/visitor/new-visitor-${widget_id}`,{
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify(newVisitor)
         });
 
-        const data = await visitor.json()
+        // const data = await visitor.json()
 
-        setCookie('visitor_jwt', data.visitorToken.jwtToken)
+        // setCookie('visitor_jwt', data.visitorToken.jwtToken)
         return true
     } catch(err){
         console.log(err)
@@ -143,23 +137,24 @@ export const initiateChat = async(widget_id) => {
         const chat = {
             user_hash: widget_id
         }
-        const token = getCookie('visitor_jwt');
-        if(token){
-            const start_chat = await fetch('http://localhost:8080/chat/new-room',{
-                method: 'post',
-                headers: {
+        // const token = getCookie('visitor_jwt');
+        // if(token){
+        const start_chat = await fetch('https://chatbudy-api.onrender.com/chat/new-room',{
+            method: 'post',
+            headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
-                },
-                body: JSON.stringify(chat)
-            });
+            },
+            credentials: 'include',
+            body: JSON.stringify(chat)
+        });
 
-            if (!start_chat) {
-                console.log('No chatrooms found...reset everything')
-            }
-
-            return true
+        if (!start_chat) {
+            console.log('No chatrooms found...reset everything')
         }
+
+        return true
+        // }
 
     } catch(err){
         console.log(err);
@@ -174,7 +169,7 @@ export const LoadUpsequence = async(widget_id) => {
         if (sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
             return
         }
-        const response = await fetch(`http://localhost:8080/visitor/visitor-info`,{
+        const response = await fetch(`https://chatbudy-api.onrender.com/visitor/visitor-info`,{
             method: 'get',
             headers: {
                 'Content-Type': 'application/json'

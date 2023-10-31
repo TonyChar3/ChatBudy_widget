@@ -493,13 +493,13 @@ export const openChat = async(widget_id, sse_connection) => {
             if(!sessionStorage.getItem('convoClosed') && sessionStorage.getItem('widgetLoaded')){
                 // will send the user_hash and the httpOnly cookie jwt 
                 //TODO: credentials: 'include' once in production to send the httpOnly cookie
-                const token = getCookie('visitor_jwt');
+                // const token = getCookie('visitor_jwt');
                 const ws_auth_fetch = await fetch('http://localhost:8080/chat/auth-ws',{
                     method: 'post',
                     headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer '+ token
+                        'Content-Type': 'application/json'
                     },
+                    credentials: 'include',
                     body: JSON.stringify({ user_hash: widget_id })
                 });
                 // the fetch request will return the jwt with the hash and jwt inside
@@ -517,7 +517,7 @@ export const openChat = async(widget_id, sse_connection) => {
                     sessionStorage.setItem('convoClosed', true);
                 } else if(data.wss_connection){
                     // the WS connection will be made with the same jwt inside the params
-                    socket = new WebSocket(`ws://localhost:8080?id=${data.wss_connection}`);
+                    socket = new WebSocket(`ws://chatbudy-api.onrender.com?id=${data.wss_connection}`);
                     return socket
                 } 
             } 
@@ -539,8 +539,7 @@ export const getWSlink = (widget_id) => {
  */
 export const stopChat = () => {
     try{
-        const token = getCookie('visitor_jwt');
-        if(socket && token){
+        if(socket){
             socket.close()
         }
     } catch(err){
@@ -604,16 +603,16 @@ export const SetupSSEconnection = async(widget_id) => {
     try{
         // will send the user_hash and the httpOnly cookie jwt 
         //TODO: credentials: 'include' once in production to send the httpOnly cookie
-        const token = getCookie('visitor_jwt');
-        if(!token){
-            return
-        }
-        const response = await fetch('http://localhost:8080/code/sse-auth',{
+        // const token = getCookie('visitor_jwt');
+        // if(!token){
+        //     return
+        // }
+        const response = await fetch('https://chatbudy-api.onrender.com/code/sse-auth',{
             method: 'post',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Content-Type': 'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify({ user_hash: widget_id })
         });
         const data = await response.json()
@@ -637,12 +636,13 @@ export const OfflineSendEmail = async(widget_id, email_from, email_content) => {
         if(!token){
             return false;
         }
-        await fetch(`http://localhost:8080/visitor/send-email-${widget_id}`,{
+        await fetch(`https://chatbudy-api.onrender.com/visitor/send-email-${widget_id}`,{
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
+            credentials: 'include',
             body: JSON.stringify({ from: email_from, content: email_content })
         });
         return;
@@ -653,14 +653,14 @@ export const OfflineSendEmail = async(widget_id, email_from, email_content) => {
 /**
  * Dev env set a cookie
  */
-function getCookie(name) {
-    const cookieString = window.parent.document.cookie
-    const cookies = cookieString.split('; ');
-    for (let i = 0; i < cookies.length; i++) {
-      const cookie = cookies[i].split('=');
-      if (cookie[0] === name) {
-        return cookie[1];
-      }
-    }
-    return null;
-}
+// function getCookie(name) {
+//     const cookieString = window.parent.document.cookie
+//     const cookies = cookieString.split('; ');
+//     for (let i = 0; i < cookies.length; i++) {
+//       const cookie = cookies[i].split('=');
+//       if (cookie[0] === name) {
+//         return cookie[1];
+//       }
+//     }
+//     return null;
+// }
