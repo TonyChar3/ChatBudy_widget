@@ -107,10 +107,10 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
     try{
         const response = await fetch(`http://localhost:8080/visitor/new-visitor-${widget_id}`,{
             method: 'post',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
-            credentials: 'include',
             body: JSON.stringify({
                 isoCode: visitor_data.info.country.iso_code,
                 browser: navigator.userAgent
@@ -121,7 +121,7 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
 
         // setCookie('visitor_jwt', data.visitorToken.jwtToken)
         console.log(data)
-        return true
+        // return true
     } catch(err){
         console.log(err)
         return false
