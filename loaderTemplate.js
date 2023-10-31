@@ -105,7 +105,7 @@ const GetWidgetStyle = async(widget_id) => {
 */
 export const setNewVisitor = async(visitor_data, widget_id) => {
     try{
-        const response = await fetch(`https://f76f-2607-fa49-d344-6500-7d16-a4ca-23d5-7012.ngrok-free.app/visitor/new-visitor-${widget_id}`,{
+        const response = await fetch(`https://chatbudy-api.onrender.com/visitor/new-visitor-${widget_id}`,{
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
@@ -162,7 +162,7 @@ export const LoadUpsequence = async(widget_id) => {
         if (sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
             return
         }
-        const response = await fetch(`http://localhost:8080/visitor/visitor-info`,{
+        const response = await fetch(`https://chatbudy-api.onrender.com/visitor/visitor-info`,{
             method: 'get',
             headers: {
                 'Content-Type': 'application/json'
