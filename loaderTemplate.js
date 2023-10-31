@@ -110,12 +110,12 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
             isoCode: visitor_data.info.country.iso_code,
             browser: navigator.userAgent
         }
-        const visitor = await fetch(`https://chatbudy-api.onrender.com/visitor/new-visitor-${widget_id}`,{
+        await fetch(`https://chatbudy-api.onrender.com/visitor/new-visitor-${widget_id}`,{
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
             },
-            credentials: true,
+            credentials: 'include',
             body: JSON.stringify(newVisitor)
         });
 
