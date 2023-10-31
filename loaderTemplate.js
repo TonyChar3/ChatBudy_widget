@@ -85,8 +85,7 @@ const GetWidgetStyle = async(widget_id) => {
             const style_request = await fetch(`https://chatbudy-api.onrender.com/code/style-${widget_id}`,{
                 method: 'get',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    'Content-Type': 'application/json'
                 },
                 credentials: 'include'
             });
@@ -134,19 +133,17 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
 */
 export const initiateChat = async(widget_id) => {
     try{
-        const chat = {
-            user_hash: widget_id
-        }
         // const token = getCookie('visitor_jwt');
         // if(token){
         const start_chat = await fetch('https://chatbudy-api.onrender.com/chat/new-room',{
             method: 'post',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token
+                'Content-Type': 'application/json'
             },
             credentials: 'include',
-            body: JSON.stringify(chat)
+            body: JSON.stringify({
+                user_hash: widget_id
+            })
         });
 
         if (!start_chat) {
