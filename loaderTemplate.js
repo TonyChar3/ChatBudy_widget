@@ -107,7 +107,6 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
     try{
         const response = await fetch(`http://localhost:8080/visitor/new-visitor-${widget_id}`,{
             method: 'post',
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
