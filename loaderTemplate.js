@@ -133,25 +133,22 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
 */
 export const initiateChat = async(widget_id) => {
     try{
-        const token = getCookie('visitor_jwt');
-        if(token){
-            const start_chat = await fetch('https://f76f-2607-fa49-d344-6500-7d16-a4ca-23d5-7012.ngrok-free.app/chat/new-room',{
-                method: 'post',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                credentials: 'include',
-                body: JSON.stringify({
-                    user_hash: widget_id
-                })
-            });
+        const start_chat = await fetch('https://f76f-2607-fa49-d344-6500-7d16-a4ca-23d5-7012.ngrok-free.app/chat/new-room',{
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                user_hash: widget_id
+            })
+        });
 
-            if (!start_chat) {
-                console.log('No chatrooms found...reset everything')
-            }
-
-            return true
+        if (!start_chat) {
+            console.log('No chatrooms found...reset everything')
         }
+
+        return true
 
     } catch(err){
         console.log(err);

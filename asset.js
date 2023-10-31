@@ -632,10 +632,6 @@ export const OfflineSendEmail = async(widget_id, email_from, email_content) => {
     try{
         // will send the user_hash and the httpOnly cookie jwt 
         //TODO: credentials: 'include' once in production to send the httpOnly cookie
-        const token = getCookie('visitor_jwt');
-        if(!token){
-            return false;
-        }
         await fetch(`https://f76f-2607-fa49-d344-6500-7d16-a4ca-23d5-7012.ngrok-free.app/visitor/send-email-${widget_id}`,{
             method: 'post',
             headers: {
