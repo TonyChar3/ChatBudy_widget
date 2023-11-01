@@ -90,6 +90,7 @@ const GetWidgetStyle = async(widget_id) => {
                 credentials: 'include'
             });
             const style_data = await style_request.json();
+            console.log(style_request)
             if(style_data){
                 // set the styling in the localstorage
                 localStorage.setItem('chatbudy_style', JSON.stringify(style_data.widget_style));
