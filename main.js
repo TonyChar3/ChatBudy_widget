@@ -585,11 +585,10 @@ class SalezyWidget {
   async SSEhandler() {
     // auth for the sse
     const auth_widget = await SetupSSEconnection(this.widgetID)
-    if(Object.keys(auth_widget).length <= 0){
+    if(!auth_widget){
       return;
     }
-    console.log(auth_widget)
-    this.SSElink = new EventSource(auth_widget.sse_link)
+    this.SSElink = new EventSource(auth_widget.sse_link, { withCredentials: true })
     this.SSElink.addEventListener('message', (event) => {
       const sse_data = JSON.parse(event.data)
       if(sse_data.type === 'admin-status'){
