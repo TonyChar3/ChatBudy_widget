@@ -91,13 +91,15 @@ const GetWidgetStyle = async(widget_id) => {
                 credentials: 'include'
             });
             const style_data = await style_request.json();
-            // set the styling in the localstorage
-            localStorage.setItem('chatbudy_style', JSON.stringify(style_data.widget_style));
-            // Create the iframe element with srcdoc
-            const Iframe = document.createElement('iframe');
-            // Setting up the Iframe in the document
-            SetupIframe(Iframe);
-            // successful?? -> set the returned object in the local storage
+            if(style_data){
+                // set the styling in the localstorage
+                localStorage.setItem('chatbudy_style', JSON.stringify(style_data.widget_style));
+                // Create the iframe element with srcdoc
+                const Iframe = document.createElement('iframe');
+                // Setting up the Iframe in the document
+                await SetupIframe(Iframe);
+                // successful?? -> set the returned object in the local storage
+            }
         }
     } catch(err){
         console.log('ERROR setting up the widget style: ', err);
@@ -108,7 +110,7 @@ const GetWidgetStyle = async(widget_id) => {
 */
 export const setNewVisitor = async(visitor_data, widget_id) => {
     try{
-        const response = await fetch(`https://chatbudy-api.onrender.com/visitor/new-visitor-${widget_id}`,{
+        await fetch(`https://chatbudy-api.onrender.com/visitor/new-visitor-${widget_id}`,{
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
@@ -119,12 +121,6 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
                 browser: navigator.userAgent
             })
         });
-
-        const data = await response.json()
-
-        // setCookie('visitor_jwt', data.visitorToken.jwtToken)
-        console.log(data)
-        // return true
     } catch(err){
         console.log(err)
         return false
