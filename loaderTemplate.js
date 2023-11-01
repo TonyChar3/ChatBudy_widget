@@ -92,14 +92,12 @@ const GetWidgetStyle = async(widget_id) => {
             });
             const style_data = await style_request.json();
             // set the styling in the localstorage
-            const set_localstorage = localStorage.setItem('chatbudy_style', JSON.stringify(style_data.widget_style));
+            localStorage.setItem('chatbudy_style', JSON.stringify(style_data.widget_style));
             // successful?? -> set the returned object in the local storage
-            if(set_localstorage){
-                // Create the iframe element with srcdoc
-                const Iframe = document.createElement('iframe');
-                // Setting up the Iframe in the document
-                await SetupIframe(Iframe);
-            }
+            // Create the iframe element with srcdoc
+            const Iframe = document.createElement('iframe');
+            // Setting up the Iframe in the document
+            await SetupIframe(Iframe);
         }
     } catch(err){
         console.log('ERROR setting up the widget style: ', err);
