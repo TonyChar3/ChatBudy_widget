@@ -2,10 +2,10 @@ import { styles, openChat, stopChat, sendChat, EmitIsTyping, SetVisitorEmail, ge
 import { LoadUpsequence } from "./loaderTemplate.js";
 
 class SalezyWidget {
-  constructor(position = `${JSON.parse(localStorage.getItem('chatbudy_style')).position}`) {
-    this.position = position// save the position of the widget
+  constructor() {
     this.style = JSON.parse(localStorage.getItem('chatbudy_style'));
     this.ask_email_copy = this.style.greeting_message;
+    this.position = this.style.position// save the position of the widget
     this.ask_email_page = true;// show the input for the email and the buttons & hide the chat input
     this.widgetID = JSON.parse(localStorage.getItem('chatbudy_state')).access_id// To identify the widget for each request he makes
     this.chat_mode = this.style.chat_mode;// chat mode set by the admin (Live chat or email)
