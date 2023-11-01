@@ -167,14 +167,18 @@ export const LoadUpsequence = async(widget_id) => {
             }
         });
         const data = await response.json();
-        await Promise.all([
+        const [set_visitor, set_room] = await Promise.all([
             setNewVisitor(data, widget_id),
             initiateChat(widget_id),
         ]);
-        sessionStorage.setItem('widgetLoaded', true);
-        const state_obj = JSON.stringify({access_id: widget_id})
-        if(!localStorage.getItem('chatbudy_state')){
-            localStorage.setItem('chatbudy_state', state_obj)
+        if(set_visitor && set_room){
+            sessionStorage.setItem('widgetLoaded', true);
+            const state_obj = JSON.stringify({access_id: widget_id})
+            // loade the widget style
+            await GetWidgetStyle(widget_id);
+            if(!localStorage.getItem('chatbudy_state')){
+                localStorage.setItem('chatbudy_state', state_obj)
+            }
         }
     } catch(err){
         console.log('Load up sequence ERROR: ', err)
@@ -184,8 +188,6 @@ export const LoadUpsequence = async(widget_id) => {
 document.addEventListener('DOMContentLoaded', async() => {
     // load visitor chat session + his info
     LoadUpsequence(useraccess);
-    // loade the widget style
-    await GetWidgetStyle(useraccess);
     if(sessionStorage.getItem('widgetLoaded')){
         // Create the iframe element with srcdoc
         const Iframe = document.createElement('iframe');
