@@ -191,11 +191,7 @@ export const LoadUpsequence = async(widget_id) => {
     }
 };
 
-document.addEventListener('DOMContentLoaded', async() => {
+document.addEventListener('DOMContentLoaded', () => {
     // load visitor chat session + his info
     LoadUpsequence(useraccess);
-    // Create the iframe element with srcdoc
-    const Iframe = document.createElement('iframe');
-    // Setting up the Iframe in the document
-    SetupIframe(Iframe);
 });
