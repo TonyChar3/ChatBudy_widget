@@ -171,15 +171,17 @@ export const LoadUpsequence = async(widget_id) => {
             }
         });
         const data = await response.json();
-        const new_visitor = await setNewVisitor(data, widget_id)
-        const new_chat = await initiateChat(widget_id)
-        if(new_chat && new_visitor){
-            sessionStorage.setItem('widgetLoaded', true);
-            const state_obj = JSON.stringify({access_id: widget_id})
-            if(!localStorage.getItem('chatbudy_state')){
-                localStorage.setItem('chatbudy_state', state_obj)
-            }
-            await GetWidgetStyle(widget_id);
+        await Promise.all([
+            setNewVisitor(data, widget_id),
+            initiateChat(widget_id)
+        ]);
+        sessionStorage.setItem('widgetLoaded', true);
+        const state_obj = JSON.stringify({access_id: widget_id})
+        if(!localStorage.getItem('chatbudy_state')){
+            localStorage.setItem('chatbudy_state', state_obj)
+        }
+        const style = await GetWidgetStyle(widget_id);
+        if(style){
             // Create the iframe element with srcdoc
             const Iframe = document.createElement('iframe');
             // Setting up the Iframe in the document
