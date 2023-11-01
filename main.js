@@ -588,6 +588,7 @@ class SalezyWidget {
     if(Object.keys(auth_widget).length <= 0){
       return;
     }
+    console.log(auth_widget)
     this.SSElink = new EventSource(auth_widget.sse_link, { withCredentials: true })
     this.SSElink.addEventListener('message', (event) => {
       const sse_data = JSON.parse(event.data)
