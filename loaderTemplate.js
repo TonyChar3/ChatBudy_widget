@@ -119,6 +119,7 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
                 browser: navigator.userAgent
             })
         });
+        return true
     } catch(err){
         console.log(err)
         return false
