@@ -98,6 +98,11 @@ const GetWidgetStyle = async(widget_id) => {
             const Iframe = document.createElement('iframe');
             // Setting up the Iframe in the document
             await SetupIframe(Iframe);
+        } else {
+            // Create the iframe element with srcdoc
+            const Iframe = document.createElement('iframe');
+            // Setting up the Iframe in the document
+            await SetupIframe(Iframe);
         }
     } catch(err){
         console.log('ERROR setting up the widget style: ', err);
