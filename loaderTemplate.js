@@ -91,11 +91,12 @@ const GetWidgetStyle = async(widget_id) => {
                 credentials: 'include'
             });
             const style_data = await style_request.json();
-            
-            if(style_data){
-                // set the styling in the localstorage
-                localStorage.setItem('chatbudy_style', JSON.stringify(style_data.widget_style));
-            }
+            // set the styling in the localstorage
+            localStorage.setItem('chatbudy_style', JSON.stringify(style_data.widget_style));
+            // Create the iframe element with srcdoc
+            const Iframe = document.createElement('iframe');
+            // Setting up the Iframe in the document
+            SetupIframe(Iframe);
             // successful?? -> set the returned object in the local storage
         }
     } catch(err){
@@ -183,10 +184,7 @@ export const LoadUpsequence = async(widget_id) => {
         }
         const style = await GetWidgetStyle(widget_id);
         if(style){
-            // Create the iframe element with srcdoc
-            const Iframe = document.createElement('iframe');
-            // Setting up the Iframe in the document
-            SetupIframe(Iframe);
+
         }
     } catch(err){
         console.log('Load up sequence ERROR: ', err)
