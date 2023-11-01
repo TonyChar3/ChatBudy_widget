@@ -514,9 +514,9 @@ export const openChat = async(widget_id, sse_connection) => {
                     // Open the closed conversation message
                     sessionStorage.setItem('convoClosed', true);
                 } else if(data.wss_connection){
-                    console.log(data)
                     // the WS connection will be made with the same jwt inside the params
                     socket = new WebSocket(`ws://chatbudy-api.onrender.com?id=${data.wss_connection}`);
+                    console.log(socket)
                     return socket
                 } 
             } 
