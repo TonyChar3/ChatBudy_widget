@@ -587,11 +587,10 @@ export const EmitIsTyping = (input_value) => {
 export const SetVisitorEmail = (email_value) => {
     if(email_value || email_value === ''){
         // send the email to the WebSocket server
-        const set_visitor_email = {
+        socket.send(JSON.stringify({
             type: "set-email",
             visitor_email: email_value
-        }
-        socket.send(JSON.stringify(set_visitor_email))
+        }))
     }
 };
 /**
