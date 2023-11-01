@@ -43,7 +43,7 @@ class SalezyWidget {
     const container = document.createElement("div");
     container.classList.add("main__container");
     container.style.position = "fixed";
-    container.style.zIndex = "20";
+    container.style.zIndex = "80";
     this.position === 'right'? container.classList.add('widget-position__right') : container.classList.add('widget-position__left')
     window.parent.document.body.appendChild(container);
     this.mainWidgetContainer = container;
