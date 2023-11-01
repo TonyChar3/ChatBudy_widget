@@ -98,11 +98,6 @@ const GetWidgetStyle = async(widget_id) => {
             const Iframe = document.createElement('iframe');
             // Setting up the Iframe in the document
             await SetupIframe(Iframe);
-        } else {
-            // Create the iframe element with srcdoc
-            const Iframe = document.createElement('iframe');
-            // Setting up the Iframe in the document
-            await SetupIframe(Iframe);
         }
     } catch(err){
         console.log('ERROR setting up the widget style: ', err);
@@ -164,7 +159,10 @@ export const initiateChat = async(widget_id) => {
 export const LoadUpsequence = async(widget_id) => {
     try{
         if (sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
-            await GetWidgetStyle(widget_id);
+            // Create the iframe element with srcdoc
+            const Iframe = document.createElement('iframe');
+            // Setting up the Iframe in the document
+            await SetupIframe(Iframe);
             return
         }
         const response = await fetch(`https://chatbudy-api.onrender.com/visitor/visitor-info`,{
@@ -193,9 +191,6 @@ export const LoadUpsequence = async(widget_id) => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
-        GetWidgetStyle(useraccess);
-    }
     // load visitor chat session + his info
     LoadUpsequence(useraccess);
 });
