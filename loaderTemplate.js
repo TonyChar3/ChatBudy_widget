@@ -82,7 +82,7 @@ const GetWidgetStyle = async(widget_id) => {
             // get the jwt token
             // TODO: add credentials: true for PROD
             // make a request using the widget_id (user hash)
-            const style_request = await fetch(`http://localhost:8080/code/style-${widget_id}`,{
+            const style_request = await fetch(`https://chatbudy-api.onrender.com/code/style-${widget_id}`,{
                 method: 'get',
                 headers: {
                     'Content-Type': 'application/json'
@@ -133,7 +133,7 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
 */
 export const initiateChat = async(widget_id) => {
     try{
-        const start_chat = await fetch('https://f76f-2607-fa49-d344-6500-7d16-a4ca-23d5-7012.ngrok-free.app/chat/new-room',{
+        const start_chat = await fetch('https://chatbudy-api.onrender.com/chat/new-room',{
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
