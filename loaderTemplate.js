@@ -172,7 +172,6 @@ export const LoadUpsequence = async(widget_id) => {
         await Promise.all([
             setNewVisitor(data, widget_id),
             initiateChat(widget_id),
-            GetWidgetStyle(widget_id)
         ]);
         sessionStorage.setItem('widgetLoaded', true);
         const state_obj = JSON.stringify({access_id: widget_id})
@@ -184,11 +183,15 @@ export const LoadUpsequence = async(widget_id) => {
     }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async() => {
     // load visitor chat session + his info
     LoadUpsequence(useraccess);
-    // Create the iframe element with srcdoc
-    const Iframe = document.createElement('iframe');
-    // Setting up the Iframe in the document
-    SetupIframe(Iframe);
+    // loade the widget style
+    await GetWidgetStyle(useraccess);
+    if(sessionStorage.getItem('widgetLoaded')){
+        // Create the iframe element with srcdoc
+        const Iframe = document.createElement('iframe');
+        // Setting up the Iframe in the document
+        SetupIframe(Iframe);
+    }
 });
