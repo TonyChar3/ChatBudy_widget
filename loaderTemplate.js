@@ -164,6 +164,7 @@ export const initiateChat = async(widget_id) => {
 export const LoadUpsequence = async(widget_id) => {
     try{
         if (sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
+            await GetWidgetStyle(widget_id);
             return
         }
         const response = await fetch(`https://chatbudy-api.onrender.com/visitor/visitor-info`,{
