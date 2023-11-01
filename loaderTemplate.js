@@ -182,10 +182,8 @@ export const LoadUpsequence = async(widget_id) => {
         if(!localStorage.getItem('chatbudy_state')){
             localStorage.setItem('chatbudy_state', state_obj)
         }
-        const style = await GetWidgetStyle(widget_id);
-        if(style){
-
-        }
+        // get the style for the widget
+        await GetWidgetStyle(widget_id);
     } catch(err){
         console.log('Load up sequence ERROR: ', err)
     }

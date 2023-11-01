@@ -511,8 +511,6 @@ export const openChat = async(widget_id, sse_connection) => {
                     sessionStorage.removeItem('widgetLoaded');
                     // remove the state and access id of the widget
                     localStorage.removeItem('chatbudy_state');
-                    // Remove visitor_jwt cookie
-                    document.cookie = 'visitor_jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
                     // Open the closed conversation message
                     sessionStorage.setItem('convoClosed', true);
                 } else if(data.wss_connection){
@@ -603,10 +601,6 @@ export const SetupSSEconnection = async(widget_id) => {
     try{
         // will send the user_hash and the httpOnly cookie jwt 
         //TODO: credentials: 'include' once in production to send the httpOnly cookie
-        // const token = getCookie('visitor_jwt');
-        // if(!token){
-        //     return
-        // }
         const response = await fetch('https://chatbudy-api.onrender.com/code/sse-auth',{
             method: 'post',
             headers: {
@@ -635,8 +629,7 @@ export const OfflineSendEmail = async(widget_id, email_from, email_content) => {
         await fetch(`https://chatbudy-api.onrender.com/visitor/send-email-${widget_id}`,{
             method: 'post',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Content-Type': 'application/json'
             },
             credentials: 'include',
             body: JSON.stringify({ from: email_from, content: email_content })
