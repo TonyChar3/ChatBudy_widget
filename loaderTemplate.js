@@ -81,6 +81,7 @@ const GetWidgetStyle = async(widget_id) => {
             // TODO: to be removed for production
             // get the jwt token
             // TODO: add credentials: true for PROD
+            console.log('requesting style..')
             // make a request using the widget_id (user hash)
             const style_request = await fetch(`https://chatbudy-api.onrender.com/code/style-${widget_id}`,{
                 method: 'get',
@@ -90,7 +91,7 @@ const GetWidgetStyle = async(widget_id) => {
                 credentials: 'include'
             });
             const style_data = await style_request.json();
-            console.log(style_request)
+            
             if(style_data){
                 // set the styling in the localstorage
                 localStorage.setItem('chatbudy_style', JSON.stringify(style_data.widget_style));
