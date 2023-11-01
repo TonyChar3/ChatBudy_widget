@@ -91,15 +91,9 @@ const GetWidgetStyle = async(widget_id) => {
                 credentials: 'include'
             });
             const style_data = await style_request.json();
-            if(style_data){
-                // set the styling in the localstorage
-                localStorage.setItem('chatbudy_style', JSON.stringify(style_data.widget_style));
-                // Create the iframe element with srcdoc
-                const Iframe = document.createElement('iframe');
-                // Setting up the Iframe in the document
-                await SetupIframe(Iframe);
-                // successful?? -> set the returned object in the local storage
-            }
+            // set the styling in the localstorage
+            localStorage.setItem('chatbudy_style', JSON.stringify(style_data.widget_style));
+            // successful?? -> set the returned object in the local storage
         }
     } catch(err){
         console.log('ERROR setting up the widget style: ', err);
@@ -171,15 +165,18 @@ export const LoadUpsequence = async(widget_id) => {
         const data = await response.json();
         await Promise.all([
             setNewVisitor(data, widget_id),
-            initiateChat(widget_id)
+            initiateChat(widget_id),
+            GetWidgetStyle(widget_id)
         ]);
         sessionStorage.setItem('widgetLoaded', true);
         const state_obj = JSON.stringify({access_id: widget_id})
         if(!localStorage.getItem('chatbudy_state')){
             localStorage.setItem('chatbudy_state', state_obj)
         }
-        // get the style for the widget
-        await GetWidgetStyle(widget_id);
+        // Create the iframe element with srcdoc
+        const Iframe = document.createElement('iframe');
+        // Setting up the Iframe in the document
+        await SetupIframe(Iframe);
     } catch(err){
         console.log('Load up sequence ERROR: ', err)
     }
