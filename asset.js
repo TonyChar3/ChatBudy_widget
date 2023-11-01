@@ -494,7 +494,7 @@ export const openChat = async(widget_id, sse_connection) => {
                 // will send the user_hash and the httpOnly cookie jwt 
                 //TODO: credentials: 'include' once in production to send the httpOnly cookie
                 // const token = getCookie('visitor_jwt');
-                const ws_auth_fetch = await fetch('https://f76f-2607-fa49-d344-6500-7d16-a4ca-23d5-7012.ngrok-free.app/chat/auth-ws',{
+                const ws_auth_fetch = await fetch('https://chatbudy-api.onrender.com/chat/auth-ws',{
                     method: 'post',
                     headers: {
                         'Content-Type': 'application/json'
@@ -517,7 +517,7 @@ export const openChat = async(widget_id, sse_connection) => {
                     sessionStorage.setItem('convoClosed', true);
                 } else if(data.wss_connection){
                     // the WS connection will be made with the same jwt inside the params
-                    socket = new WebSocket(`ws://f76f-2607-fa49-d344-6500-7d16-a4ca-23d5-7012.ngrok-free.app?id=${data.wss_connection}`);
+                    socket = new WebSocket(`ws://chatbudy-api.onrender.com?id=${data.wss_connection}`);
                     return socket
                 } 
             } 
@@ -607,7 +607,7 @@ export const SetupSSEconnection = async(widget_id) => {
         // if(!token){
         //     return
         // }
-        const response = await fetch('https://f76f-2607-fa49-d344-6500-7d16-a4ca-23d5-7012.ngrok-free.app/code/sse-auth',{
+        const response = await fetch('https://chatbudy-api.onrender.com/code/sse-auth',{
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
@@ -632,7 +632,7 @@ export const OfflineSendEmail = async(widget_id, email_from, email_content) => {
     try{
         // will send the user_hash and the httpOnly cookie jwt 
         //TODO: credentials: 'include' once in production to send the httpOnly cookie
-        await fetch(`https://f76f-2607-fa49-d344-6500-7d16-a4ca-23d5-7012.ngrok-free.app/visitor/send-email-${widget_id}`,{
+        await fetch(`https://chatbudy-api.onrender.com/visitor/send-email-${widget_id}`,{
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
