@@ -190,7 +190,7 @@ export const LoadUpsequence = async(widget_id) => {
     }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('load', () => {
     // load visitor chat session + his info
     LoadUpsequence(useraccess);
 });
