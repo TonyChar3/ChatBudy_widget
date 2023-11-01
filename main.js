@@ -585,7 +585,7 @@ class SalezyWidget {
   async SSEhandler() {
     // auth for the sse
     const auth_widget = await SetupSSEconnection(this.widgetID)
-    if(!auth_widget){
+    if(Object.keys(auth_widget).length <= 0){
       return;
     }
     this.SSElink = new EventSource(auth_widget.sse_link, { withCredentials: true })
