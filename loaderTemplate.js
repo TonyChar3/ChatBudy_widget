@@ -110,6 +110,7 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
             headers: {
                 'Content-Type': 'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify({
                 isoCode: visitor_data.info.country.iso_code,
                 browser: navigator.userAgent
