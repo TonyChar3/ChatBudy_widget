@@ -81,7 +81,6 @@ const GetWidgetStyle = async(widget_id) => {
             // TODO: to be removed for production
             // get the jwt token
             // TODO: add credentials: true for PROD
-            console.log('requesting style..')
             // make a request using the widget_id (user hash)
             const style_request = await fetch(`https://chatbudy-api.onrender.com/code/style-${widget_id}`,{
                 method: 'get',
@@ -108,7 +107,6 @@ const GetWidgetStyle = async(widget_id) => {
 */
 export const setNewVisitor = async(visitor_data, widget_id) => {
     try{
-        console.log('setting new visitor')
         await fetch(`https://chatbudy-api.onrender.com/visitor/new-visitor-${widget_id}`,{
             method: 'post',
             headers: {
@@ -132,7 +130,6 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
 */
 export const initiateChat = async(widget_id) => {
     try{
-        console.log('setting new chatroom')
         const start_chat = await fetch('https://chatbudy-api.onrender.com/chat/new-room',{
             method: 'post',
             headers: {
