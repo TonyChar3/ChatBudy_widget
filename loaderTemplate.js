@@ -97,7 +97,7 @@ const GetWidgetStyle = async(widget_id) => {
             // Create the iframe element with srcdoc
             const Iframe = document.createElement('iframe');
             // Setting up the Iframe in the document
-            await SetupIframe(Iframe);
+            SetupIframe(Iframe);
         }
     } catch(err){
         console.log('ERROR setting up the widget style: ', err);
@@ -108,7 +108,7 @@ const GetWidgetStyle = async(widget_id) => {
 */
 export const setNewVisitor = async(visitor_data, widget_id) => {
     try{
-        const generating_new_visitor = await fetch(`https://chatbudy-api.onrender.com/visitor/new-visitor-${widget_id}`,{
+        await fetch(`https://chatbudy-api.onrender.com/visitor/new-visitor-${widget_id}`,{
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
@@ -119,9 +119,7 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
                 browser: navigator.userAgent
             })
         });
-        if(generating_new_visitor){
-            return true
-        }
+        return true
     } catch(err){
         console.log(err)
         return false
@@ -143,13 +141,10 @@ export const initiateChat = async(widget_id) => {
                 user_hash: widget_id
             })
         });
-
         if (!start_chat) {
             console.log('No chatrooms found...reset everything')
         }
-
         return true
-
     } catch(err){
         console.log(err);
         return false
@@ -160,11 +155,11 @@ export const initiateChat = async(widget_id) => {
 */
 export const LoadUpsequence = async(widget_id) => {
     try{
-        if (sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
+        if(sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
             // Create the iframe element with srcdoc
             const Iframe = document.createElement('iframe');
             // Setting up the Iframe in the document
-            await SetupIframe(Iframe);
+            SetupIframe(Iframe);
             return
         }
         const response = await fetch(`https://chatbudy-api.onrender.com/visitor/visitor-info`,{
