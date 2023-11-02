@@ -155,10 +155,6 @@ export const initiateChat = async(widget_id) => {
 export const LoadUpsequence = async(widget_id) => {
     try{
         if(sessionStorage.getItem('widgetLoaded') || sessionStorage.getItem('convoClosed')) {
-            // Create the iframe element with srcdoc
-            const Iframe = document.createElement('iframe');
-            // Setting up the Iframe in the document
-            SetupIframe(Iframe);
             return
         }
         const response = await fetch(`https://chatbudy-api.onrender.com/visitor/visitor-info`,{
@@ -185,6 +181,10 @@ export const LoadUpsequence = async(widget_id) => {
 };
 
 window.addEventListener('load', () => {
+    // Create the iframe element with srcdoc
+    const Iframe = document.createElement('iframe');
+    // Setting up the Iframe in the document
+    SetupIframe(Iframe);
     // load visitor chat session + his info
     LoadUpsequence(useraccess);
 });
