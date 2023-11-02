@@ -171,10 +171,8 @@ export const LoadUpsequence = async(widget_id) => {
             }
         });
         const data = await response.json();
-        const [set_visitor, set_room] = await Promise.all([
-            setNewVisitor(data, widget_id),
-            initiateChat(widget_id),
-        ]);
+        const set_visitor = await setNewVisitor(data, widget_id);
+        const set_room = await initiateChat(widget_id);
         if(set_visitor && set_room){
             sessionStorage.setItem('widgetLoaded', true);
             const state_obj = JSON.stringify({access_id: widget_id})
