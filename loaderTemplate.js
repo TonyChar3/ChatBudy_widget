@@ -108,6 +108,7 @@ const GetWidgetStyle = async(widget_id) => {
 */
 export const setNewVisitor = async(visitor_data, widget_id) => {
     try{
+        console.log('setting new visitor')
         await fetch(`https://chatbudy-api.onrender.com/visitor/new-visitor-${widget_id}`,{
             method: 'post',
             headers: {
@@ -131,6 +132,7 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
 */
 export const initiateChat = async(widget_id) => {
     try{
+        console.log('setting new chatroom')
         const start_chat = await fetch('https://chatbudy-api.onrender.com/chat/new-room',{
             method: 'post',
             headers: {
