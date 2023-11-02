@@ -594,7 +594,7 @@ class SalezyWidget {
       if(sse_data.type === 'admin-status'){
         this.adminStatus = sse_data.data
       }
-
+      console.log('sse data', sse_data)
       if(sse_data > 0){
         if(!this.mute_sound) {
           this.notification_sound.play();
