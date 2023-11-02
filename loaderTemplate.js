@@ -108,7 +108,7 @@ const GetWidgetStyle = async(widget_id) => {
 */
 export const setNewVisitor = async(visitor_data, widget_id) => {
     try{
-        await fetch(`https://chatbudy-api.onrender.com/visitor/new-visitor-${widget_id}`,{
+        const generating_new_visitor = await fetch(`https://chatbudy-api.onrender.com/visitor/new-visitor-${widget_id}`,{
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
@@ -119,7 +119,9 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
                 browser: navigator.userAgent
             })
         });
-        return true
+        if(generating_new_visitor){
+            return true
+        }
     } catch(err){
         console.log(err)
         return false

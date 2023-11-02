@@ -516,7 +516,6 @@ export const openChat = async(widget_id, sse_connection) => {
                 } else if(data.wss_connection){
                     // the WS connection will be made with the same jwt inside the params
                     socket = new WebSocket(`ws://chatbudy-api.onrender.com?id=${data.wss_connection}`);
-                    console.log(socket)
                     return socket
                 } 
             } 
