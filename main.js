@@ -624,7 +624,7 @@ class SalezyWidget {
       this.widgetContainer.style.zIndex = 30
       this.buttonContainer.style.zIndex = 50
       console.log('clsing', this.SSElink)
-      this.SSElink ? this.SSElink.close() : '';// Shut off the SSE connection for the notifications
+      this.SSElink !== null ? this.SSElink.close() : '';// Shut off the SSE connection for the notifications
       console.log(this.SSElink)
       this.WebSocketHandler(this.widgetID);
       this.widgetIcon.classList.add("widget__hidden");
