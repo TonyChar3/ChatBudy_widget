@@ -623,7 +623,7 @@ class SalezyWidget {
       }
       this.widgetContainer.style.zIndex = 30
       this.buttonContainer.style.zIndex = 50
-      console.log('ssse', this.SSElink)
+      console.log('ssse', this.SSElink.close())
       this.WebSocketHandler(this.widgetID);
       this.widgetIcon.classList.add("widget__hidden");
       this.sendIcon.classList.remove("widget__hidden");
