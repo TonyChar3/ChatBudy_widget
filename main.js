@@ -611,6 +611,10 @@ class SalezyWidget {
         console.error('SSE Error:', event);
         this.SSElink.close();
       });
+
+      this.SSElink.addEventListener('close', (event) => {
+        console.error('SSE Error:', event);
+      });
     }
   }
   /**
