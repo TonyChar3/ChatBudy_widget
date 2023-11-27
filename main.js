@@ -623,7 +623,7 @@ class SalezyWidget {
       }
       this.widgetContainer.style.zIndex = 30
       this.buttonContainer.style.zIndex = 50
-      this.SSElink !== null ? console.log('close sse') : '';// Shut off the SSE connection for the notifications
+      console.log('ssse', this.SSElink)
       this.WebSocketHandler(this.widgetID);
       this.widgetIcon.classList.add("widget__hidden");
       this.sendIcon.classList.remove("widget__hidden");
