@@ -530,6 +530,7 @@ class SalezyWidget {
   */
   async WebSocketHandler(widget_id){
     if(widget_id){
+      console.log('WS sse ', this.SSElink)
       const socket = await openChat(this.widgetID, this.SSElink);
       if(socket){
         socket.addEventListener('open', () => {});
