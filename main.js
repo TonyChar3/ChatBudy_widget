@@ -589,9 +589,8 @@ class SalezyWidget {
     if(!auth_widget){
       return;
     }
+    this.SSElink = new EventSource(auth_widget.sse_link);
     if(this.SSElink){
-      this.SSElink = new EventSource(auth_widget.sse_link);
-
       this.SSElink.addEventListener('message', (event) => {
         const sse_data = JSON.parse(event.data)
         if(sse_data.type === 'admin-status'){
