@@ -589,7 +589,7 @@ class SalezyWidget {
     if(!auth_widget){
       return;
     }
-    this.SSElink = new EventSource(auth_widget.sse_link);
+    this.SSElink = new EventSource(auth_widget.sse_link, { withCredentials: true });
     if(this.SSElink){
       this.SSElink.addEventListener('message', (event) => {
         const sse_data = JSON.parse(event.data)
@@ -610,10 +610,6 @@ class SalezyWidget {
       this.SSElink.addEventListener('error', (event) => {
         console.error('SSE Error:', event);
         this.SSElink.close();
-      });
-
-      this.SSElink.addEventListener('close', (event) => {
-        console.error('SSE Error:', event);
       });
     }
   }
