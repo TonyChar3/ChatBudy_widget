@@ -612,9 +612,6 @@ class SalezyWidget {
         console.error('SSE Error:', event);
         this.SSElink.close();
       });
-      return () => {
-        this.SSElink.close()
-      }
     }
   }
   /**
@@ -630,7 +627,7 @@ class SalezyWidget {
       }
       this.widgetContainer.style.zIndex = 30
       this.buttonContainer.style.zIndex = 50
-      this.SSElink = null;
+      this.SSElink ? this.SSElink.close() : '';
       this.WebSocketHandler(this.widgetID);
       this.widgetIcon.classList.add("widget__hidden");
       this.sendIcon.classList.remove("widget__hidden");
