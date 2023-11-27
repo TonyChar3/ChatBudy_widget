@@ -590,46 +590,27 @@ class SalezyWidget {
       return;
     }
     this.SSElink = new EventSource(auth_widget.sse_link);
-    this.SSElink.onmessage = (event) => {
-        const sse_data = JSON.parse(event.data)
-        if(sse_data.type === 'admin-status'){
-          this.adminStatus = sse_data.data
-        }
-        if(sse_data > 0){
-          if(!this.mute_sound) {
-            this.notification_sound.play();
-          }
-          this.unreadChatCountSpan.textContent = sse_data
-          this.buttonContainer.appendChild(this.unreadChatCountSpan);
-        } else {
-          this.buttonContainer.contains(this.unreadChatCountSpan)? this.buttonContainer.removeChild(this.unreadChatCountSpan) : '';
-        }
-    }
 
-    this.SSElink.onerror = (event) => {
+    this.SSElink.addEventListener('message', (event) => {
+      const sse_data = JSON.parse(event.data)
+      if(sse_data.type === 'admin-status'){
+        this.adminStatus = sse_data.data
+      }
+      if(sse_data > 0){
+        if(!this.mute_sound) {
+          this.notification_sound.play();
+        }
+        this.unreadChatCountSpan.textContent = sse_data
+        this.buttonContainer.appendChild(this.unreadChatCountSpan);
+      } else {
+        this.buttonContainer.contains(this.unreadChatCountSpan)? this.buttonContainer.removeChild(this.unreadChatCountSpan) : '';
+      }
+    });
+
+    this.SSElink.addEventListener('error', (event) => {
       console.error('SSE Error:', event);
-      this.SSElink.close();     
-    }
-    // this.SSElink.addEventListener('message', (event) => {
-    //   const sse_data = JSON.parse(event.data)
-    //   if(sse_data.type === 'admin-status'){
-    //     this.adminStatus = sse_data.data
-    //   }
-    //   if(sse_data > 0){
-    //     if(!this.mute_sound) {
-    //       this.notification_sound.play();
-    //     }
-    //     this.unreadChatCountSpan.textContent = sse_data
-    //     this.buttonContainer.appendChild(this.unreadChatCountSpan);
-    //   } else {
-    //     this.buttonContainer.contains(this.unreadChatCountSpan)? this.buttonContainer.removeChild(this.unreadChatCountSpan) : '';
-    //   }
-    // });
-
-    // this.SSElink.addEventListener('error', (event) => {
-    //   console.error('SSE Error:', event);
-    //   this.SSElink.close();
-    // });
+      this.SSElink.close();
+    });
   }
   /**
    * Open or close the widget
