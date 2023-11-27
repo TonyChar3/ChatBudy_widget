@@ -589,6 +589,9 @@ class SalezyWidget {
       return;
     }
     this.SSElink = new EventSource(auth_widget.sse_link, { withCredentials: true })
+    this.SSElink.addEventListener('open', (event) => {
+      console.log('SSE open ', event)
+    })
     this.SSElink.addEventListener('message', (event) => {
       const sse_data = JSON.parse(event.data)
       if(sse_data.type === 'admin-status'){
