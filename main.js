@@ -589,9 +589,7 @@ class SalezyWidget {
       return;
     }
     this.SSElink = new EventSource(auth_widget.sse_link, { withCredentials: true })
-    console.log(this.SSElink)
     this.SSElink.addEventListener('message', (event) => {
-      console.log('data: ', event)
       const sse_data = JSON.parse(event.data)
       if(sse_data.type === 'admin-status'){
         this.adminStatus = sse_data.data
@@ -625,7 +623,7 @@ class SalezyWidget {
       }
       this.widgetContainer.style.zIndex = 30
       this.buttonContainer.style.zIndex = 50
-      this.SSElink !== null ? console.log(this.SSElink.close()) : '';// Shut off the SSE connection for the notifications
+      this.SSElink !== null ? console.log('close sse') : '';// Shut off the SSE connection for the notifications
       this.WebSocketHandler(this.widgetID);
       this.widgetIcon.classList.add("widget__hidden");
       this.sendIcon.classList.remove("widget__hidden");
