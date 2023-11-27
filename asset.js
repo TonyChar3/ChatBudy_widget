@@ -599,8 +599,9 @@ export const SetVisitorEmail = (email_value) => {
 export const SetupSSEconnection = async(widget_id) => {
     try{
         // will send the user_hash and the httpOnly cookie jwt 
+        // https://chatbudy-api.onrender.com
         //TODO: credentials: 'include' once in production to send the httpOnly cookie
-        const response = await fetch('https://chatbudy-api.onrender.com/code/sse-auth',{
+        const response = await fetch('http://localhost:8080/code/sse-auth',{
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'

@@ -594,7 +594,6 @@ class SalezyWidget {
       if(sse_data.type === 'admin-status'){
         this.adminStatus = sse_data.data
       }
-      console.log('sse data', sse_data)
       if(sse_data > 0){
         if(!this.mute_sound) {
           this.notification_sound.play();
@@ -617,7 +616,7 @@ class SalezyWidget {
   toggleOpen(){
     this.open = !this.open;
     if(this.open) {
-      if(this.position === 'left'){
+      if(this.position === 'left') {
         this.mainWidgetContainer.classList.remove('widget-position__left');
         this.mainWidgetContainer.classList.add('widget-open__left');
         this.buttonContainer.classList.add('widget-button__open');
