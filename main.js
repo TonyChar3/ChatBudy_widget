@@ -611,11 +611,6 @@ class SalezyWidget {
         console.error('SSE Error:', event);
         this.SSElink.close();
       });
-
-      this.SSElink.addEventListener('close', (event) => {
-        console.error('SSE Close:', event);
-        this.SSElink.close();
-      });
     }
   }
   /**
@@ -632,7 +627,6 @@ class SalezyWidget {
       this.widgetContainer.style.zIndex = 30
       this.buttonContainer.style.zIndex = 50
       this.SSElink ? this.SSElink.close() : '';
-      console.log('SSE state after close: ', this.SSElink)
       this.WebSocketHandler(this.widgetID);
       this.widgetIcon.classList.add("widget__hidden");
       this.sendIcon.classList.remove("widget__hidden");
