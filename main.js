@@ -3,7 +3,7 @@ import { LoadUpsequence } from "./LoaderTemplate.js";
 
 class SalezyWidget {
   constructor() {
-    this.style = JSON.parse(localStorage.getItem('chatbudy_style'));
+    this.style = JSON.parse(localStorage.getItem('chatbudy_style')) || "";
     this.ask_email_copy = this.style.greeting_message;
     this.position = this.style.position// save the position of the widget
     this.ask_email_page = true;// show the input for the email and the buttons & hide the chat input
