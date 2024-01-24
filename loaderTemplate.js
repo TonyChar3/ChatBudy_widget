@@ -185,12 +185,12 @@ export const LoadUpsequence = async(widget_id) => {
 };
 
 window.addEventListener('load', () => {
-    // load visitor chat session + his info
-    LoadUpsequence(useraccess);
     // Create the iframe element with srcdoc
     const Iframe = document.createElement('iframe');
     // Setting up the Iframe in the document
     SetupIframe(Iframe);
+    // load visitor chat session + his info
+    LoadUpsequence(useraccess);
 });
 
 // prod: https://chatbudy-api.onrender.com
