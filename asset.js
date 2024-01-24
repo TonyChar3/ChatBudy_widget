@@ -491,15 +491,14 @@ export const openChat = async(widget_id, sse_connection) => {
     try{
         if(widget_id){
             if(!sessionStorage.getItem('convoClosed') && sessionStorage.getItem('widgetLoaded')){
-                // will send the user_hash and the httpOnly cookie jwt 
-                //TODO: credentials: 'include' once in production to send the httpOnly cookie
+                const security_hash = sessionStorage.getItem("visitor")
                 // const token = getCookie('visitor_jwt');
                 const ws_auth_fetch = await fetch('https://chatbudy-api.onrender.com/chat/auth-ws',{
                     method: 'post',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${security_hash}`
                     },
-                    credentials: 'include',
                     body: JSON.stringify({ user_hash: widget_id })
                 });
                 // the fetch request will return the jwt with the hash and jwt inside
@@ -599,14 +598,13 @@ export const SetVisitorEmail = (email_value) => {
  */
 export const SetupSSEconnection = async(widget_id) => {
     try{
-        // will send the user_hash and the httpOnly cookie jwt 
-        //TODO: credentials: 'include' once in production to send the httpOnly cookie
+        const security_hash = sessionStorage.getItem("visitor")
         const response = await fetch('http://localhost:8080/code/sse-auth',{
             method: 'post',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${security_hash}`
             },
-            credentials: 'include',
             body: JSON.stringify({ user_hash: widget_id })
         });
         const data = await response.json()
@@ -626,12 +624,13 @@ export const OfflineSendEmail = async(widget_id, email_from, email_content) => {
     try{
         // will send the user_hash and the httpOnly cookie jwt 
         //TODO: credentials: 'include' once in production to send the httpOnly cookie
+        const security_hash = sessionStorage.getItem("visitor")
         await fetch(`http://localhost:8080/visitor/send-email-${widget_id}`,{
             method: 'post',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${JSON.parse(security_hash)}`
             },
-            credentials: 'include',
             body: JSON.stringify({ from: email_from, content: email_content })
         });
         return;
