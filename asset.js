@@ -605,6 +605,7 @@ export const SetupSSEconnection = async(widget_id) => {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${security_hash}`
             },
+            credentials: 'include',
             body: JSON.stringify({ user_hash: widget_id })
         });
         const data = await response.json()
