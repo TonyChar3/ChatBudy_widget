@@ -181,6 +181,7 @@ export const LoadUpsequence = async(widget_id) => {
 };
 
 window.addEventListener('load', () => {
+    console.log("Load up: ", useraccess);
     // load visitor chat session + his info
     LoadUpsequence(useraccess);
     // Create the iframe element with srcdoc
