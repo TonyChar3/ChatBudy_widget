@@ -82,12 +82,13 @@ const GetWidgetStyle = async(widget_id) => {
             // get the jwt token
             // TODO: add credentials: true for PROD
             // make a request using the widget_id (user hash)
+            const security_hash = sessionStorage.getItem("visitor_hash");
             const style_request = await fetch(`https://chatbudy-api.onrender.com/code/style-${widget_id}`,{
                 method: 'get',
                 headers: {
-                    'Content-Type': 'application/json'
-                },
-                credentials: 'include'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${security_hash}`
+                }
             });
             const style_data = await style_request.json();
             // set the styling in the localstorage
@@ -107,7 +108,7 @@ const GetWidgetStyle = async(widget_id) => {
 */
 export const setNewVisitor = async(visitor_data, widget_id) => {
     try{
-        await fetch(`https://chatbudy-api.onrender.com/visitor/new-visitor-${widget_id}`,{
+        const response = await fetch(`https://chatbudy-api.onrender.com/visitor/new-visitor-${widget_id}`,{
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
@@ -118,6 +119,7 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
                 browser: navigator.userAgent
             })
         });
+        sessionStorage.setItem("visitor", JSON.stringify(response.data.visitor_hash));
         return true
     } catch(err){
         console.log(err)
