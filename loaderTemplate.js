@@ -119,7 +119,8 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
                 browser: navigator.userAgent
             })
         });
-        console.log(response);
+        const data = await response.json();
+        console.log(data);
         sessionStorage.setItem("visitor", JSON.stringify(response.data.visitor_hash));
         return true
     } catch(err){
