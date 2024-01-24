@@ -120,8 +120,7 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
             })
         });
         const data = await response.json();
-        console.log(data);
-        sessionStorage.setItem("visitor", JSON.stringify(response.data.visitor_hash));
+        sessionStorage.setItem("visitor", JSON.stringify(data.visitor_hash));
         return true
     } catch(err){
         console.log(err)
