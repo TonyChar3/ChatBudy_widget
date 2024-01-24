@@ -77,7 +77,7 @@ const SetupIframe = async (Iframe_element) => {
  */
 const GetWidgetStyle = async(widget_id) => {
     try{
-        if(!localStorage.getItem('chatbudy_style')){
+        if(!sessionStorage.getItem('chatbudy_style')){
             // TODO: to be removed for production
             // get the jwt token
             // TODO: add credentials: true for PROD
@@ -91,7 +91,7 @@ const GetWidgetStyle = async(widget_id) => {
             });
             const style_data = await style_request.json();
             // set the styling in the localstorage
-            localStorage.setItem('chatbudy_style', JSON.stringify(style_data.widget_style));
+            sessionStorage.setItem('chatbudy_style', JSON.stringify(style_data.widget_style));
             // successful?? -> set the returned object in the local storage
             // Create the iframe element with srcdoc
             const Iframe = document.createElement('iframe');
@@ -171,8 +171,8 @@ export const LoadUpsequence = async(widget_id) => {
             const state_obj = JSON.stringify({access_id: widget_id})
             // loade the widget style
             await GetWidgetStyle(widget_id);
-            if(!localStorage.getItem('chatbudy_state')){
-                localStorage.setItem('chatbudy_state', state_obj)
+            if(!sessionStorage.getItem('chatbudy_state')){
+                sessionStorage.setItem('chatbudy_state', state_obj)
             }
         }
     } catch(err){
@@ -181,7 +181,6 @@ export const LoadUpsequence = async(widget_id) => {
 };
 
 window.addEventListener('load', () => {
-    console.log("Load up: ", useraccess);
     // load visitor chat session + his info
     LoadUpsequence(useraccess);
     // Create the iframe element with srcdoc
