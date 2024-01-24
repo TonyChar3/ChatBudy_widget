@@ -133,12 +133,13 @@ export const setNewVisitor = async(visitor_data, widget_id) => {
 */
 export const initiateChat = async(widget_id) => {
     try{
+        const security_hash = sessionStorage.getItem("visitor");
         const start_chat = await fetch('http://localhost:8080/chat/new-room',{
             method: 'post',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${JSON.parse(security_hash)}`
             },
-            credentials: 'include',
             body: JSON.stringify({
                 user_hash: widget_id
             })
