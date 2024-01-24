@@ -82,7 +82,7 @@ const GetWidgetStyle = async(widget_id) => {
             // get the jwt token
             // TODO: add credentials: true for PROD
             // make a request using the widget_id (user hash)
-            const security_hash = sessionStorage.getItem("visitor_hash");
+            const security_hash = sessionStorage.getItem("visitor");
             const style_request = await fetch(`http://localhost:8080/code/style-${widget_id}`,{
                 method: 'get',
                 headers: {
