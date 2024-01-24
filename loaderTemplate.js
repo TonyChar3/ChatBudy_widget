@@ -104,31 +104,6 @@ const GetWidgetStyle = async(widget_id) => {
     }
 }
 /**
-* Set up a new visitor
-*/
-export const setNewVisitor = async(visitor_data, widget_id) => {
-    try{
-        const response = await fetch(`http://localhost:8080/visitor/new-visitor-${widget_id}`,{
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            credentials: 'include',
-            body: JSON.stringify({
-                isoCode: visitor_data.info.country.iso_code,
-                browser: navigator.userAgent
-            })
-        });
-        const data = await response.json();
-        sessionStorage.setItem("visitor", JSON.stringify(data.visitor_hash));
-        return true
-    } catch(err){
-        console.log(err)
-        return false
-    }
-
-};
-/**
 * Create a new chat room - Salesman
 */
 export const initiateChat = async(widget_id) => {
@@ -154,6 +129,32 @@ export const initiateChat = async(widget_id) => {
     }
 };
 /**
+* Set up a new visitor
+*/
+export const setNewVisitor = async(visitor_data, widget_id) => {
+    try{
+        const response = await fetch(`http://localhost:8080/visitor/new-visitor-${widget_id}`,{
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                isoCode: visitor_data.info.country.iso_code,
+                browser: navigator.userAgent
+            })
+        });
+        const data = await response.json();
+        sessionStorage.setItem("visitor", JSON.stringify(data.visitor_hash));
+        await initiateChat(widget_id);
+        return true
+    } catch(err){
+        console.log(err)
+        return false
+    }
+
+};
+/**
 * Get the visitor info once it loads up
 */
 export const LoadUpsequence = async(widget_id) => {
@@ -169,8 +170,7 @@ export const LoadUpsequence = async(widget_id) => {
         });
         const data = await response.json();
         const set_visitor = await setNewVisitor(data, widget_id);
-        const set_room = await initiateChat(widget_id);
-        if(set_visitor && set_room){
+        if(set_visitor){
             sessionStorage.setItem('widgetLoaded', true);
             const state_obj = JSON.stringify({access_id: widget_id})
             // loade the widget style
