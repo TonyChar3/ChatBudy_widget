@@ -497,7 +497,7 @@ export const openChat = async(widget_id, sse_connection) => {
                     method: 'post',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${security_hash}`
+                        'Authorization': `Bearer ${JSON.parse(security_hash)}`
                     },
                     body: JSON.stringify({ user_hash: widget_id })
                 });
@@ -603,7 +603,7 @@ export const SetupSSEconnection = async(widget_id) => {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${security_hash}`
+                'Authorization': `Bearer ${JSON.parse(security_hash)}`
             },
             credentials: 'include',
             body: JSON.stringify({ user_hash: widget_id })
